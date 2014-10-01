@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?oxygen RNGSchema="https://faustedition.uni-wuerzburg.de/xml/schema/printed_editions_neu.rng" type="xml"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Kodierungsbeispiele für die Digitalisierung gedruckter
+                    Faust&#45;Editionen</title>
+                <author>Digitale Faust&#45;Edition</author>
+            </titleStmt>
+            <publicationStmt>
+                <ab/>
+            </publicationStmt>
+            <sourceDesc>
+                <ab/>
+            </sourceDesc>
+        </fileDesc>
+        <revisionDesc>
+            <change when="2012-03-12" who="bruening">angelegt</change>
+            <change when="2012-03-15" who="bruening">Faust I in Q hierhin überführt</change>
+            <change when="2012-03-19" who="henzel">geprueft</change>
+            <change when="2012-03-19" who="bruening">Prosa&#45;Bsp.</change>
+            <change when="2012-03-29" who="bruening">@facs&#45;Werte; Angleichung der Schreibung und Interpunktion an Q.</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <group>
+            <text>
+                <front>
+                    <docEdition>Nach der Ausgabe D1</docEdition>
+                    <pb facs="000_a.TIF"/>
+
+                    <pb facs="000_b.TIF"/>
+                    <pb facs="000_c.TIF"/>
+                    <pb facs="001.TIF" n="1"/>
+                    <titlePage>
+                        <docTitle>
+                            <titlePart rend="centered big letter-spaced" type="main">Fauſt.</titlePart>
+                            <figure type="swelledRule"/>
+                            <titlePart rend="centered big letter-spaced" type="sub">Eine
+                                Tragödie.</titlePart>
+                        </docTitle>
+                        <byline rend="centered letter-spaced">
+                            <hi rend="small">von</hi>
+                            <lb/>
+                            <docAuthor rend="big">Goethe.</docAuthor>
+                        </byline>
+                        <figure type="swelledRule"/>
+                        <figure type="swelledRule"/>
+                        <docImprint rend="centered">
+                            <pubPlace rend="letter-spaced">Tübingen.</pubPlace>
+                            <lb/>
+                            <publisher rend="small">in der J. G. <hi rend="letter-spaced">Cotta’</hi>ſchen Buchhandlung.</publisher>
+                            <lb/>
+                            <docDate rend="letter-spaced">1808.</docDate>
+                        </docImprint>
+                    </titlePage>
+                    <pb facs="002.TIF" n="2"/>
+                    <pb facs="003.TIF" n="3"/>
+                </front>
+                <body>
+                    <div>
+                        <head rend="centered big"><hi rend="letter-spaced">Zueignung</hi>.</head>
+                        <figure type="swelledRule"/>
+                        <pb facs="004.TIF" n="4"/>
+                        <pb facs="005.TIF" n="5"/>
+                        <figure type="swelledRule"/>
+                        <lg>
+                            <l>Ihr naht euch wieder, ſchwankende Geſtalten!</l>
+                            <l>Die früh ſich einſt dem trüben Blick gezeigt.</l>
+                            <l>Verſuch’ ich wohl euch diesmal feſt zu halten?</l>
+                            <l>Fühl’ ich mein Herz noch jenem Wahn geneigt?</l>
+                            <l>Ihr drängt euch zu! nun gut, ſo mögt ihr walten,</l>
+                            <l>Wie ihr aus Dunſt und Nebel um mich ſteigt;</l>
+                            <l>Mein Buſen fühlt ſich jugendlich erſchüttert</l>
+                            <l>Vom Zauberhauch der euren Zug umwittert.</l>
+                        </lg>
+                        <space/>
+                        <lg>
+                            <l>Ihr bringt mit euch die Bilder froher Tage,</l>
+                            <l>Und manche liebe Schatten ſteigen auf;</l>
+                            <l>Gleich einer alten, halbverklungnen Sage,</l>
+                            <l>Kommt erſte Lieb’ und Freundſchaft mit herauf;</l>
+                            <l>Der Schmerz wird neu, es wiederholt die Klage</l>
+                            <l>Des Lebens labyrinthiſch irren Lauf,</l>
+                            <l>Und nennt die Guten, die, um ſchöne Stunden</l>
+                            <l>Vom Glück getäuſcht, vor mir hinweggeſchwunden.</l>
+                        </lg>
+                        <pb facs="006.TIF" n="6"/>
+                        <fw rend="centered" type="pageNum">— 6 —</fw>
+                        <lg>
+                            <l>Sie hören nicht die folgenden Geſänge,</l>
+                            <l>Die Seelen, denen ich die erſten ſang,</l>
+                            <l>Zerſtoben iſt das freundliche Gedränge,</l>
+                            <l>Verklungen ach! der erſte Wiederklang.</l>
+                            <l>Mein Leid ertönt der unbekannten Menge,</l>
+                            <l>Ihr Beyfall ſelbſt macht meinem Herzen bang,</l>
+                            <l>Und was ſich ſonſt an meinem Lied erfreuet,</l>
+                            <l>Wenn es noch lebt, irrt in der Welt zerſtreuet.</l>
+                        </lg>
+                        <space/>
+                        <lg>
+                            <l>Und mich ergreift ein längſt entwöhntes Sehnen</l>
+                            <l>Nach jenem ſtillen, ernſten Geiſterreich,</l>
+                            <l>Es ſchwebet nun, in unbeſtimmten Tönen,</l>
+                            <l>Mein lispelnd Lied, der Aeolsharfe gleich,</l>
+                            <l>Ein Schauer faßt mich, Thräne folgt den Thränen,</l>
+                            <l>Das ſtrenge Herz es fühlt ſich mild und weich;</l>
+                            <l>Was ich beſitze ſeh’ ich wie im weiten,</l>
+                            <l>Und was verſchwand wird mir zu Wirklichkeiten.</l>
+                        </lg>
+                        
+                        <figure type="swelledRule"/>
+                    </div>
+                    <pb facs="007.TIF" n="7"/>
+                    <div type="scene">
+                        <head rend="big centered"><hi rend="letter-spaced">Vorſpiel</hi><lb/>auf dem
+                            Theater.</head>
+                        <figure type="swelledRule"/>
+                        <pb facs="008.TIF" n="8"/>
+                        <pb facs="009.TIF" n="9"/>
+                        <figure type="swelledRule"/>
+                        <stage rend="centered big"><hi rend="letter-spaced">Director,
+                                Theaterdichter,<lb/>luſtige Perſon</hi>.</stage>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Director</hi>.</speaker>
+                            <l>Ihr beyden die ihr mir ſo oft,</l>
+                            <l>In Noth und Trübſal, beygeſtanden,</l>
+                            <l>Sagt was ihr wohl, in deutſchen Landen,</l>
+                            <l>Von unſrer Unternehmung hofft?</l>
+                            <l>Ich wünſchte ſehr der Menge zu behagen,</l>
+                            <l>Beſonders weil ſie lebt und leben läßt.</l>
+                            <l>Die Pfoſten ſind, die Breter aufgeſchlagen,</l>
+                            <l>Und jedermann erwartet ſich ein Feſt.</l>
+                            <l>Sie ſitzen ſchon, mit hohen Augenbraunen,</l>
+                            <l>Gelaſſen da und möchten gern erſtaunen.</l>
+                            <l>Ich weiß wie man den Geiſt des Volks verſöhnt;</l>
+                            <l>Doch ſo verlegen bin ich nie geweſen;</l>
+                            <l>Zwar ſind ſie an das Beſte nicht gewöhnt,</l>
+                            <pb facs="010.TIF" n="10"/>
+                            <fw rend="centered" type="pageNum">— 10 —</fw>
+                            <l>Allein ſie haben ſchrecklich viel geleſen.</l>
+                            <l>Wie machen wir’s? daß alles friſch und neu</l>
+                            <l>Und mit Bedeutung auch gefällig ſey.</l>
+                            <l>Denn freylich mag ich gern die Menge ſehen,</l>
+                            <l>Wenn ſich der Strom nach unſrer Bude drängt,</l>
+                            <l>Und mit gewaltig wiederholten Wehen,</l>
+                            <l>Sich durch die enge Gnadenpforte zwängt;</l>
+                            <l>Bey hellem Tage, ſchon vor Vieren,</l>
+                            <l>Mit Stößen ſich bis an die Kaſſe ficht</l>
+                            <l>Und, wie in Hungersnoth um Brot an Beckerthüren,</l>
+                            <l>Um ein Billet ſich faſt die Hälſe bricht.</l>
+                            <l>Dieß Wunder wirkt auf ſo verſchiedne Leute</l>
+                            <l>Der Dichter nur; mein Freund, o! thu es heute.</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Dichter</hi>.</speaker>
+                            <lg>
+                                <l>O ſprich mir nicht von jener bunten Menge,</l>
+                                <l>Bey deren Anblick uns der Geiſt entflieht.</l>
+                                <l>Verhülle mir das wogende Gedränge,</l>
+                                <l>Das wider Willen uns zum Strudel zieht.</l>
+                                <l>Nein, führe mich zur ſtillen Himmelsenge,</l>
+                                <l>Wo nur dem Dichter reine Freude blüht;</l>
+                                <l>Wo Lieb’ und Freundſchaft unſres Herzens Segen</l>
+                                <l>Mit Götterhand erſchaffen und erpflegen.</l>
+                            </lg>
+                            <pb facs="011.TIF" n="11"/>
+                            <fw rend="centered" type="pageNum">— 11 —</fw>
+                            <lg>
+                                <l rend="indented">Ach! was in tiefer Bruſt uns da entſprungen,</l>
+                                <l>Was ſich die Lippe ſchüchtern vorgelallt,</l>
+                                <l>Mißrathen jetzt und jetzt vielleicht gelungen,</l>
+                                <l>Verſchlingt des wilden Augenblicks Gewalt.</l>
+                                <l>Oft wenn es erſt durch Jahre durchgedrungen</l>
+                                <l>Erſcheint es in vollendeter Geſtalt.</l>
+                                <l>Was glänzt iſt für den Augenblick geboren,</l>
+                                <l>Das Aechte bleibt der Nachwelt unverloren.</l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Luſtige
+                                Perſon</hi>.</speaker>
+                            <l>Wenn ich nur nichts von Nachwelt hören ſollte.</l>
+                            <l>Geſetzt daß <hi rend="letter-spaced">ich</hi> von Nachwelt reden
+                                wollte,</l>
+                            <l>Wer machte denn der Mitwelt Spaß?</l>
+                            <l>Den will ſie doch und ſoll ihn haben.</l>
+                            <l>Die Gegenwart von einem braven Knaben</l>
+                            <l>Iſt, dächt’ ich, immer auch ſchon was.</l>
+                            <l>Wer ſich behaglich mitzutheilen weiß,</l>
+                            <l>Den wird des Volkes Laune nicht erbittern;</l>
+                            <l>Er wünſcht ſich einen großen Kreis,</l>
+                            <l>Um ihn gewiſſer zu erſchüttern.</l>
+                            <l>Drum ſeyd nur brav und zeigt euch muſterhaft,</l>
+                            <l>Laßt Phantaſie, mit allen ihren Chören,</l>
+                            <pb facs="012.TIF" n="12"/>
+                            <fw rend="centered" type="pageNum">— 12 —</fw>
+                            <l>Vernunft, Verſtand, Empfindung, Leidenſchaft,</l>
+                            <l>Doch, merkt euch wohl! nicht ohne Narrheit hören.</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Director</hi>.</speaker>
+                            <l>Beſonders aber laßt genug geſchehn!</l>
+                            <l>Man kommt zu ſchaun, man will am liebſten ſehn.</l>
+                            <l>Wird vieles vor den Augen abgeſponnen,</l>
+                            <l>So daß die Menge ſtaunend gaffen kann,</l>
+                            <l>Da habt ihr in der Breite gleich gewonnen,</l>
+                            <l>Ihr ſeyd ein vielgeliebter Mann.</l>
+                            <l>Die Maſſe könnt ihr nur durch Maſſe zwingen,</l>
+                            <l>Ein jeder ſucht ſich endlich ſelbſt was aus.</l>
+                            <l>Wer vieles bringt, wird manchem etwas bringen;</l>
+                            <l>Und jeder geht zufrieden aus dem Haus.</l>
+                            <l>Gebt ihr ein Stück, ſo gebt es gleich in Stücken!</l>
+                            <l>Solch ein Ragout es muß euch glücken;</l>
+                            <l>Leicht iſt es vorgelegt, ſo leicht als ausgedacht.</l>
+                            <l>Was hilft’s wenn ihr ein Ganzes dargebracht,</l>
+                            <l>Das Publikum wird es euch doch zerpflücken.</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Dichter</hi>.</speaker>
+                            <l>Ihr fühlet nicht wie ſchlecht ein ſolches Handwerk ſey!</l>
+                            <l>Wie wenig das den ächten Künſtler zieme!</l>
+                            <pb facs="013.TIF" n="13"/>
+                            <fw rend="centered" type="pageNum">— 13 —</fw>
+                            <l>Der ſaubern Herren Pfuſcherey</l>
+                            <l>Iſt, merk’ ich, ſchon bey euch Maxime.</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Director</hi>.</speaker>
+                            <l>Ein ſolcher Vorwurf läßt mich ungekränkt;</l>
+                            <l>Ein Mann, der recht zu wirken denkt,</l>
+                            <l>Muß auf das beſte Werkzeug halten.</l>
+                            <l>Bedenkt, ihr habet weiches Holz zu ſpalten,</l>
+                            <l>Und ſeht nur hin für wen ihr ſchreibt!</l>
+                            <l>Wenn dieſen Langeweile treibt,</l>
+                            <l>Kommt jener ſatt vom übertiſchten Mahle,</l>
+                            <l>Und, was das allerſchlimmſte bleibt,</l>
+                            <l>Gar mancher kommt vom Leſen der Journale.</l>
+                            <l>Man eilt zerſtreut zu uns, wie zu den Maskenfeſten,</l>
+                            <l>Und Neugier nur beflügelt jeden Schritt;</l>
+                            <l>Die Damen geben ſich und ihren Putz zum beſten</l>
+                            <l>Und ſpielen ohne Gage mit.</l>
+                            <l>Was träumet ihr auf eurer Dichter&#45;Höhe?</l>
+                            <l>Was macht ein volles Haus euch froh?</l>
+                            <l>Beſeht die Gönner in der Nähe!</l>
+                            <l>Halb ſind ſie kalt, halb ſind ſie roh.</l>
+                            <l>Der, nach dem Schauſpiel, hofft ein Kartenſpiel,</l>
+                            <l>Der eine wilde Nacht an einer Dirne Buſen.</l>
+                            <pb facs="014.TIF" n="14"/>
+                            <fw rend="centered" type="pageNum">— 14 —</fw>
+                            <l>Was plagt ihr armen Thoren viel,</l>
+                            <l>Zu ſolchem Zweck, die holden Muſen?</l>
+                            <l>Ich ſag’ euch, gebt nur mehr, und immer, immer mehr,</l>
+                            <l>So könnt ihr euch vom Ziele nie verirren.</l>
+                            <l>Sucht nur die Menſchen zu verwirren,</l>
+                            <l>Sie zu befriedigen iſt ſchwer — —</l>
+                            <l>Was fällt euch an? Entzückung oder Schmerzen?</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Dichter</hi>.</speaker>
+                            <l>Geh hin und ſuch dir einen andern Knecht!</l>
+                            <l>Der Dichter ſollte wohl das höchſte Recht,</l>
+                            <l>Das Menſchenrecht, das ihm Natur vergönnt,</l>
+                            <l>Um deinetwillen freventlich verſcherzen!</l>
+                            <l>Wodurch bewegt er alle Herzen?</l>
+                            <l>Wodurch beſiegt er jedes Element?</l>
+                            <l>Iſt es der Einklang nicht? der aus dem Buſen dringt,</l>
+                            <l>Und in ſein Herz die Welt zurücke ſchlingt.</l>
+                            <l>Wenn die Natur des Fadens ew’ge Länge,</l>
+                            <l>Gleichgültig drehend, auf die Spindel zwingt,</l>
+                            <l>Wenn aller Weſen unharmon’ſche Menge</l>
+                            <l>Verdrießlich durch einander klingt;</l>
+                            <l>Wer theilt die fließend immer gleiche Reihe</l>
+                            <l>Belebend ab, daß ſie ſich rythmiſch regt?</l>
+                            <pb facs="015.TIF" n="15"/>
+                            <fw rend="centered" type="pageNum">— 15 —</fw>
+                            <l>Wer ruft das Einzelne zur allgemeinen Weihe?</l>
+                            <l>Wo es in herrlichen Accorden ſchlägt,</l>
+                            <l>Wer läßt den Sturm zu Leidenſchaften wüthen?</l>
+                            <l>Das Abendroth im ernſten Sinne glühn?</l>
+                            <l>Wer ſchüttet alle ſchönen Frühlingsblüten</l>
+                            <l>Auf der Geliebten Pfade hin?</l>
+                            <l>Wer flicht die unbedeutend grünen Blätter</l>
+                            <l>Zum Ehrenkranz Verdienſten jeder Art?</l>
+                            <l>Wer ſichert den Olymp? vereinet Götter?</l>
+                            <l>Des Menſchen Kraft im Dichter offenbart.</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Luſtige
+                                Perſon</hi>.</speaker>
+                            <l>So braucht ſie denn die ſchönen Kräfte</l>
+                            <l>Und treibt die dicht’riſchen Geſchäfte,</l>
+                            <l>Wie man ein Liebesabenteuer treibt.</l>
+                            <l>Zufällig naht man ſich, man fühlt, man bleibt</l>
+                            <l>Und nach und nach wird man verflochten;</l>
+                            <l>Es wächſt das Glück, dann wird es angefochten,</l>
+                            <l>Man iſt entzückt, nun kommt der Schmerz heran,</l>
+                            <l>Und eh man ſich’s verſieht iſt’s eben ein Roman.</l>
+                            <l>Laßt uns auch ſo ein Schauſpiel geben!</l>
+                            <l>Greift nur hinein ins volle Menſchenleben!</l>
+                            <l>Ein jeder lebt’s, nicht vielen iſt’s bekannt,</l>
+                            <pb facs="016.TIF" n="16"/>
+                            <fw rend="centered" type="pageNum">— 16 —</fw>
+                            <l>Und wo ihr’s packt, da iſt’s intereſſant.</l>
+                            <l>In bunten Bildern wenig Klarheit,</l>
+                            <l>Viel Irrthum und ein Fünkchen Wahrheit,</l>
+                            <l>So wird der beſte Trank gebraut,</l>
+                            <l>Der alle Welt erquickt und auferbaut.</l>
+                            <l>Dann ſammelt ſich der Jugend ſchönſte Blüte</l>
+                            <l>Vor eurem Spiel und lauſcht der Offenbarung,</l>
+                            <l>Dann ſauget jedes zärtliche Gemüthe</l>
+                            <l>Aus eurem Werk ſich melanchol’ſche Nahrung;</l>
+                            <l>Dann wird bald dies bald jenes aufgeregt,</l>
+                            <l>Ein jeder ſieht was er im Herzen trägt.</l>
+                            <l>Noch ſind ſie gleich bereit zu weinen und zu lachen,</l>
+                            <l>Sie ehren noch den Schwung, erfreuen ſich am Schein;</l>
+                            <l>Wer fertig iſt, dem iſt nichts recht zu machen,</l>
+                            <l>Ein Werdender wird immer dankbar ſeyn.</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Dichter</hi>.</speaker>
+                            <l>So gieb mir auch die Zeiten wieder,</l>
+                            <l>Da ich noch ſelbſt im Werden war,</l>
+                            <l>Da ſich ein Quell gedrängter Lieder</l>
+                            <l>Ununterbrochen neu gebar,</l>
+                            <l>Da Nebel mir die Welt verhüllten,</l>
+                            <l>Die Knospe Wunder noch verſprach,</l>
+                            <pb facs="017.TIF" n="17"/>
+                            <fw rend="centered" type="pageNum">— 17 —</fw>
+                            <l>Da ich die tauſend Blumen brach,</l>
+                            <l>Die alle Thäler reichlich füllten.</l>
+                            <l>Ich hatte nichts und doch genug,</l>
+                            <l>Den Drang nach Wahrheit und die Luſt am Trug.</l>
+                            <l>Gieb ungebändigt jene Triebe,</l>
+                            <l>Das tiefe ſchmerzenvolle Glück,</l>
+                            <l>Des Haſſes Kraft, die Macht der Liebe,</l>
+                            <l>Gieb meine Jugend mir zurück!</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Luſtige
+                                Perſon</hi>.</speaker>
+                            <l>Der Jugend, guter Freund, bedarfſt du allenfalls</l>
+                            <l>Wenn dich in Schlachten Feinde drängen,</l>
+                            <l>Wenn mit Gewalt an deinen Hals</l>
+                            <l>Sich allerliebſte Mädchen hängen,</l>
+                            <l>Wenn fern des ſchnellen Laufes Kranz</l>
+                            <l>Vom ſchwer erreichten Ziele winket,</l>
+                            <l>Wenn nach dem heftgen Wirbeltanz</l>
+                            <l>Die Nächte ſchmauſend man vertrinket.</l>
+                            <l>Doch ins bekannte Saitenſpiel</l>
+                            <l>Mit Muth und Anmuth einzugreifen,</l>
+                            <l>Nach einem ſelbgeſteckten Ziel</l>
+                            <l>Mit holdem Irren hinzuſchweifen,</l>
+                            <l>Das, alte Herrn, iſt eure Pflicht,</l>
+                            <fw rend="indented" type="sig">2</fw>
+                            <!-- ... -->
+                        </sp>
+                        <!--  -->
+                    </div>
+                    <div type="scene">
+                        <pb facs="023.TIF" n="23"/>
+                        <figure type="swelledRule"/>
+                        <stage rend="centered big"><hi rend="letter-spaced">Der Herr,<lb/>die
+                                himmliſchen Heerſcharen</hi>,<lb/>nachher <hi rend="letter-spaced">Mephiſtopheles</hi>.</stage>
+                        <stage rend="centered small">Die drey Erzengel treten vor.</stage>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Raphael</hi>.</speaker>
+                            <l>Die Sonne tönt, nach alter Weiſe,</l>
+                            <l>In Bruderſphären Wettgeſang,</l>
+                            <l>Und ihre vorgeſchriebne Reiſe</l>
+                            <l>Vollendet ſie mit Donnergang.</l>
+                            <l>Ihr Anblick giebt den Engeln Stärke,</l>
+                            <l>Wenn keiner ſie ergründen mag.</l>
+                            <l>Die unbegreiflich hohen Werke</l>
+                            <l>Sind herrlich wie am erſten Tag.</l>
+                        </sp>
+                        <sp rend="centered">
+                            <speaker><hi rend="letter-spaced">Gabriel</hi>.</speaker>
+                            <l>Und ſchnell und unbegreiflich ſchnelle</l>
+                            <!-- ... -->
+                        </sp>
+                        <!-- ... -->
+                        <sp>
+                            <pb facs="026.TIF" n="26"/>
+                            <fw rend="centered" type="pageNum">— 26 —</fw>
+                            <l>Und läg’ er nur noch immer in dem Graſe!</l>
+                            <l>In jeden Quark begräbt er ſeine Naſe.</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Der
+                                Herr</hi>.</speaker>
+                            <l>Haſt du mir weiter nichts zu ſagen?</l>
+                            <l>Kommſt du nur immer anzuklagen?</l>
+                            <l>Iſt auf der Erde ewig dir nichts recht?</l>
+                        </sp>
+
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Mephiſtopheles</hi>.</speaker>
+                            <l>Nein Herr! ich find’ es dort, wie immer, herzlich ſchlecht.</l>
+                            <l>Die Menſchen dauern mich in ihren Jammertagen,</l>
+                            <l>Ich mag ſogar die Armen ſelbſt nicht plagen.</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Der
+                                Herr</hi>.</speaker>
+                            <l part="I">Kennſt du den Fauſt?</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Mephiſtopheles</hi>.</speaker>
+                            <l part="M">Den Doctor?</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Der
+                                Herr</hi>.</speaker>
+                            <l part="F">Meinen Knecht!</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Mephiſtopheles</hi>.</speaker>
+                            <l>Fürwahr! er dient euch auf beſondre Weiſe.</l>
+                            <l>Nicht irdiſch iſt des Thoren Trank noch Speiſe.</l>
+                            <l>Ihn treibt die Gährung in die Ferne,</l>
+                            <l>Er iſt ſich ſeiner Tollheit halb bewußt;</l>
+                            <l>Vom Himmel fordert er die ſchönſten Sterne,</l>
+                            <!--  -->
+                        </sp>
+                        <!--  -->
+                        <sp>
+                            <pb facs="029.TIF" n="29"/>
+                            <fw rend="centered" type="pageNum">— 29 —</fw>
+                            <l>Drum geb’ ich gern ihm den Geſellen zu,</l>
+                            <l>Der reizt und wirkt, und muß, als Teufel, ſchaffen.</l>
+                            <l>Doch ihr, die ächten Götterſöhne,</l>
+                            <l>Erfreut euch der lebendig reichen Schöne!</l>
+                            <l>Das Werdende, das ewig wirkt und lebt,</l>
+                            <l>Umfaß’ euch mit der Liebe holden Schranken,</l>
+                            <l>Und was in ſchwankender Erſcheinung ſchwebt,</l>
+                            <l>Befeſtiget mit dauernden Gedanken.</l>
+                        </sp>
+                        <stage rend="centered small">Der Himmel ſchließt, die Erzengel vertheilen
+                            ſich,</stage>
+                        <sp>
+                            <speaker rend="centered">
+                                <hi rend="letter-spaced">Mephiſtopheles</hi>
+                            </speaker>
+                            <stage rend="inline">allein.</stage>
+                            <l>Von Zeit zu Zeit ſeh’ ich den Alten gern,</l>
+                            <l>Und hüte mich mit ihm zu brechen.</l>
+                            <l>Es iſt gar hübſch von einem großen Herrn</l>
+                            <l>So menſchlich mit dem Teufel ſelbſt zu ſprechen.</l>
+                        </sp>
+                        <figure type="swelledRule"/>
+                    </div>
+                    <pb facs="033.TIF" n="33"/>
+                    <figure type="swelledRule"/>
+                    <div type="scene">
+                        <head rend="centered small"><hi rend="letter-spaced">Nacht</hi>.</head>
+                        <stage rend="firstLineIndented small">In einem hochgewölbten, engen,
+                            gothiſchen Zimmer <hi rend="big letter-spaced">Fauſt</hi><lb/>unruhig
+                            auf ſeinem Seſſel am Pulte.</stage>
+                        <figure type="line"/>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Fauſt</hi>.</speaker>
+                            <lg>
+                                <l>Habe nun, ach! Philoſophie,</l>
+                                <l>Juriſterey und Medicin,</l>
+                                <l>Und leider auch Theologie!</l>
+                                <l>Durchaus ſtudirt, mit heißem Bemühn.</l>
+                                <l>Da ſteh’ ich nun, ich armer Thor!</l>
+                                <l>Und bin ſo klug als wie zuvor;</l>
+                                <l>Heiße Magiſter, heiße Doctor gar,</l>
+                                <l>Und ziehe ſchon an die zehen Jahr,</l>
+                                <l>Herauf, herab und quer und krumm,</l>
+                                <l>Meine Schüler an der Naſe herum —</l>
+                                <fw rend="indented" type="sig">3</fw>
+                                <!-- ... -->
+                            </lg>
+                            <!-- ... -->
+                            <pb facs="035.TIF" n="35"/>
+                            <fw rend="centered" type="pageNum">— 35 —</fw>
+                            <lg>
+                                <l rend="indented">O ſähſt du, voller Mondenſchein,</l>
+                                <l>Zum letztenmal auf meine Pein,</l>
+                                <l>Den ich ſo manche Mitternacht</l>
+                                <l>An dieſem Pult herangewacht:</l>
+                                <l>Dann über Büchern und Papier,</l>
+                                <l>Trübſel’ger Freund, erſchienſt du mir!</l>
+                                <l>Ach! könnt’ ich doch auf Berges&#45;Höh’n,</l>
+                                <l>In deinem lieben Lichte gehn,</l>
+                                <l>Um Bergeshöle mit Geiſtern ſchweben,</l>
+                                <l>Auf Wieſen in deinem Dämmer weben,</l>
+                                <l>Von allem Wiſſensqualm entladen,</l>
+                                <l>In deinem Thau geſund mich baden!</l>
+                            </lg>
+                            <space/>
+                            <lg>
+                                <l rend="indented">Weh! ſteck’ ich in dem Kerker noch?</l>
+                                <l>Verfluchtes, dumpfes Mauerloch!</l>
+                                <l>Wo ſelbſt das liebe Himmelslicht</l>
+                                <l>Trüb’ durch gemahlte Scheiben bricht.</l>
+                                <l>Beſchränkt mit dieſem Bücherhauf,</l>
+                                <l>Den Würme nagen, Staub bedeckt,</l>
+                                <l>Den, bis an’s hohe Gewölb’ hinauf,</l>
+                                <l>Ein angeraucht Papier umſteckt;</l>
+                                <l>Mit Gläſern, Büchſen rings umſtellt,</l>
+                                <!-- ... -->
+                            </lg>
+                            <!-- ... -->
+                        </sp>
+                        <!-- ... -->
+                    </div>
+                    <!--  -->
+                    <div type="scene">
+                        <!-- ... -->
+                        <sp>
+                            <!-- ... -->
+                            <lg rend="indented">
+                                <!-- ... -->
+                                <pb facs="084.TIF" n="84"/>
+                                <fw rend="centered" type="pageNum">— 84 —</fw>
+                                <l><hi rend="antiqua">Incubus! incubus!</hi></l>
+                                <l>Tritt hervor und mache den Schluß. </l>
+                            </lg>
+                            <lg>
+                                <l>Keines der Viere</l>
+                                <l>Steckt in dem Thiere.</l>
+                                <l>Es liegt ganz ruhig und grinſ’t mich an,</l>
+                                <l>Ich hab’ ihm noch nicht weh gethan.</l>
+                                <l>Du ſollſt mich hören</l>
+                                <l>Stärker beſchwören.</l>
+                            </lg>
+                            <space quantity="0.5" unit="lines"/>
+                            <lg rend="indented">
+                                <l>Biſt du Geſelle</l>
+                                <l>Ein Flüchtling der Hölle?</l>
+                                <l>So ſieh dies Zeichen!</l>
+                                <l>Dem ſie ſich beugen</l>
+                                <l>Die ſchwarzen Schaaren. </l>
+                            </lg>
+                            <l>Schon ſchwillt es auf mit borſtigen Haaren.</l>
+                            <lg rend="indented">
+                                <l>Verworfnes Weſen!</l>
+                                <l>Kannſt du ihn leſen?</l>
+                                <l>Den nie entſproſſnen,</l>
+                                <l>Unausgeſprochnen,</l>
+                                <l>Durch alle Himmel gegoſſnen,</l>
+                                <l>Freventlich durchſtochnen.</l>
+                            </lg>
+                            <lb/>
+                            <pb facs="085.TIF" n="85"/>
+                            <l>Hinter den Ofen gebannt</l>
+                            <l>Schwillt es wie ein Elephant,</l>
+                            <l>Den ganzen Raum füllt es an,</l>
+                            <l>Es will zum Nebel zerfließen.</l>
+                            <l>Steige nicht zur Decke hinan!</l>
+                            <l>Lege dich zu des Meiſters Füßen!</l>
+                            <l>Du ſiehſt daß ich nicht vergebens drohe.</l>
+                            <l>Ich verſenge dich mit heiliger Lohe!</l>
+                            <l>Erwarte nicht</l>
+                            <l>Das dreymal glühende Licht!</l>
+                            <l>Erwarte nicht</l>
+                            <l>Die ſtärkſte von meinen Künſten!</l>
+                        </sp>
+                        <!-- ... -->
+                    </div>
+                    <!--  -->
+                    <pb facs="291.TIF" n="291"/>
+                    <figure type="swelledRule"/>
+                    <div type="scene">
+                        <head rend="centered small"><hi rend="letter-spaced">Trüber Tag</hi>.<lb/><hi rend="letter-spaced">Feld</hi>.</head>
+                        <figure type="line"/>
+                        <stage rend="centered big"><hi rend="letter-spaced">Fauſt</hi>. <hi rend="letter-spaced">Mephiſtopheles</hi>.</stage>
+                        <sp>
+                            <speaker rend="centered"><hi rend="letter-spaced">Fauſt</hi>.</speaker>
+                            <p rend="firstLineIndented">Im Elend! Verzweifelnd! Erbärmlich auf der
+                                Erde lange<lb/>verirrt und nun gefangen! Als Miſſethäterinn im
+                                Kerker<lb/>zu entſetzlichen Qualen eingeſperrt das holde unſelige
+                                Ge&#173;<lb break="no"/>ſchöpf! Bis dahin! dahin! — Verräthriſcher,
+                                nichtswürdi&#173;<lb break="no"/>ger Geiſt, und das haſt du mir verheimlicht! — Steh
+                                nur,<lb/>ſteh! wälze die teufliſchen Augen ingrimmend im Kopf
+                                her&#173;<lb break="no"/>um! Steh und trutze mir durch deine unerträgliche
+                                Gegen&#173;<lb break="no"/>wart! Gefangen! Im unwiederbringlichen Elend!
+                                Böſen<lb/>Geiſtern übergeben und der richtenden gefühlloſen Menſch&#173;<lb break="no"/>
+                                <!-- ... --></p>
+                        </sp>
+                    </div>
+                </body>
+            </text>
+            <text>
+                <front>
+                    <docEdition>Nach der Ausgabe Q</docEdition>
+                </front>
+                <body>
+                    <pb facs="0062.TIF" n="62"/>
+                    <fw type="pageNum">62</fw>
+                    <fw rend="centered big textualis" type="header"><hi rend="letter-spaced">Faust</hi>.</fw>
+                    <head rend="centered big bold" type="main"><hi rend="letter-spaced">Fauſt</hi>.</head>
+                    <head rend="centered big textualis" type="sub"><hi rend="letter-spaced">Eine
+                            Tragödie</hi>.</head>
+                    <figure type="vignette"/>
+                    <milestone n="2" unit="cols"/>
+                    <cb/>
+                    <div>
+                        <head rend="centered big textualis">Zueignung.</head>
+                        <figure type="line"/>
+                        <lg>
+                            <l>Ihr naht euch wieder, ſchwankende Geſtalten!</l>
+                            <l>Die früh ſich einſt dem trüben Blick gezeigt.</l>
+                            <l>Verſuch’ ich wohl euch dießmal feſt zu halten?</l>
+                            <l>Fühl’ ich mein Herz noch jenem Wahn geneigt?</l>
+                            <l>Ihr drängt euch zu! nun gut, ſo mögt ihr walten,</l>
+                            <l>Wie ihr aus Dunſt und Nebel um mich ſteigt;</l>
+                            <l>Mein Buſen fühlt ſich jugendlich erſchüttert</l>
+                            <l>Vom Zauberhauch, der euren Zug umwittert.</l>
+                        </lg>
+                        <space/>
+                        <lg>
+                            <l>Ihr bringt mit euch die Bilder froher Tage,</l>
+                            <l>Und manche liebe Schatten ſteigen auf;</l>
+                            <l>Gleich einer alten, halbverklungnen Sage,</l>
+                            <l>Kommt erſte Lieb’ und Freundſchaft mit herauf;</l>
+                            <l>Der Schmerz wird neu, es wiederholt die Klage</l>
+                            <l>Des Lebens labyrinthiſch irren Lauf,</l>
+                            <l>Und nennt die Guten, die, um ſchöne Stunden</l>
+                            <l>Vom Glück getäuſcht, vor mir hinweggeſchwunden.</l>
+                        </lg>
+                        <space/>
+                        <lg>
+                            <l>Sie hören nicht die folgenden Geſänge,</l>
+                            <l>Die Seelen, denen ich die erſten ſang,</l>
+                            <l>Zerſtoben iſt das freundliche Gedränge,</l>
+                            <l>Verklungen ach! der erſte Wiederklang.</l>
+                            <l>Mein Lied ertönt der unbekannten Menge,</l>
+                            <l>Ihr Beifall ſelbſt macht meinem Herzen bang,</l>
+                            <l>Und was ſich ſonſt an meinem Lied erfreuet,</l>
+                            <l>Wenn es noch lebt, irrt in der Welt zerſtreuet.</l>
+                        </lg>
+                        <space/>
+                        <lg>
+                            <l>Und mich ergreift ein längſt entwöhntes Sehnen</l>
+                            <l>Nach jenem ſtillen, ernſten Geiſterreich;</l>
+                            <l>Es ſchwebet nun, in unbeſtimmten Tönen,</l>
+                            <l>Mein lispelnd Lied, der Aeolsharfe gleich;</l>
+                            <l>Ein Schauer faßt mich, Thräne folgt den Thränen,</l>
+                            <l>Das ſtrenge Herz es fühlt ſich mild und weich;</l>
+                            <l>Was ich beſitze ſeh’ ich wie im Weiten,</l>
+                            <l>Und was verſchwand wird mir zu Wirklichkeiten.</l>
+                        </lg>
+                        <figure type="vignette"/>
+                    </div>
+                    <div type="scene">
+                        <head rend="centered big textualis">Vorſpiel auf dem Theater.</head>
+                        <figure type="line"/>
+                        <stage rend="centered textualis">Director. Theaterdichter. Lustige
+                            Person.</stage>
+                        <sp>
+                            <speaker rend="centered textualis">Director.</speaker>
+                            <l>Ihr Beiden, die ihr mir ſo oft,</l>
+                            <l>In Noth und Trübſal beigeſtanden,</l>
+                            <l>Sagt was ihr wohl, in deutſchen Landen</l>
+                            <l>Von unſrer Unternehmung hofft?</l>
+                            <l>Ich wünſchte ſehr der Menge zu behagen,</l>
+                            <l>Beſonders weil ſie lebt und leben läßt.</l>
+                            <l>Die Pfoſten ſind, die Bretter aufgeſchlagen,</l>
+                            <l>Und jedermann erwartet ſich ein Feſt.</l>
+                            <cb/>
+                            <l>Sie ſitzen ſchon, mit hohen Augenbraunen,</l>
+                            <l>Gelaſſen da und möchten gern erſtaunen.</l>
+                            <l>Ich weiß wie man den Geiſt des Volks verſöhnt;</l>
+                            <l>Doch ſo verlegen bin ich nie geweſen;</l>
+                            <l>Zwar ſind ſie an das Beſte nicht gewöhnt,</l>
+                            <l>Allein ſie haben ſchrecklich viel geleſen.</l>
+                            <l>Wie machen wir’s, daß alles friſch und neu</l>
+                            <l>Und mit Bedeutung auch gefällig ſey?</l>
+                            <l>Denn freilich mag ich gern die Menge ſehen,</l>
+                            <l>Wenn ſich der Strom nach unſrer Bude drängt,</l>
+                            <l>Und mit gewaltig wiederholten Wehen,</l>
+                            <l>Sich durch die enge Gnadenpforte zwängt;</l>
+                            <l>Bei hellem Tage, ſchon vor Vieren,</l>
+                            <l>Mit Stößen ſich bis an die Kaſſe ficht,</l>
+                            <l>Und, wie in Hungersnoth um Brot an Bäckerthüren,</l>
+                            <l>Um ein Billet ſich faſt die Hälſe bricht.</l>
+                            <l>Dieß Wunder wirkt auf ſo verſchiedne Leute</l>
+                            <l>Der Dichter nur; mein Freund, o, thu’ es heute!</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered textualis">Dichter.</speaker>
+                            <lg>
+                                <l>O ſprich mir nicht von jener bunten Menge,</l>
+                                <l>Bei deren Anblick uns der Geiſt entflieht.</l>
+                                <l>Verhülle mir das wogende Gedränge,</l>
+                                <l>Das wider Willen uns zum Strudel zieht.</l>
+                                <l>Nein, führe mich zur ſtillen Himmelsenge,</l>
+                                <l>Wo nur dem Dichter reine Freude blüht;</l>
+                                <l>Wo Lieb’ und Freundſchaft unſres Herzens Segen</l>
+                                <l>Mit Götterhand erſchaffen und erpflegen.</l>
+                            </lg>
+                            <space/>
+                            <lg>
+                                <l>Ach! was in tiefer Bruſt uns da entſprungen,</l>
+                                <l>Was ſich die Lippe ſchüchtern vorgelallt,</l>
+                                <l>Mißrathen jetzt und jetzt vielleicht gelungen,</l>
+                                <l>Verſchlingt des wilden Augenblicks Gewalt.</l>
+                                <l>Oft wenn es erſt durch Jahre durchgedrungen</l>
+                                <l>Erſcheint es in vollendeter Geſtalt.</l>
+                                <l>Was glänzt iſt für den Augenblick geboren,</l>
+                                <l>Das Aechte bleibt der Nachwelt unverloren.</l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered textualis">Lustige Person.</speaker>
+                            <l>Wenn ich nur nichts von Nachwelt hören ſollte;</l>
+                            <l>Geſetzt daß <hi rend="letter-spaced">ich</hi> von Nachwelt reden
+                                wollte,</l>
+                            <l>Wer machte denn der Mitwelt Spaß?</l>
+                            <l>Den will ſie doch und ſoll ihn haben.</l>
+                            <l>Die Gegenwart von einem braven Knaben</l>
+                            <l>Iſt, dächt’ ich, immer auch ſchon was.</l>
+                            <l>Wer ſich behaglich mitzutheilen weiß,</l>
+                            <l>Den wird des Volkes Laune nicht erbittern;</l>
+                            <l>Er wünſcht ſich einen großen Kreis,</l>
+                            <l>Um ihn gewiſſer zu erſchüttern.</l>
+                            <l>Drum ſeyd nur brav und zeigt euch muſterhaft;</l>
+                            <l>Laßt Phantaſie, mit allen ihren Chören,</l>
+                            <l>Vernunft, Verſtand, Empfindung, Leidenſchaft,</l>
+                            <l>Doch, merkt euch wohl! nicht ohne Narrheit hören.</l>
+                        </sp>
+                        <sp>
+                            <speaker rend="centered textualis">Director.</speaker>
+                            <l>Beſonders aber laßt genug geſchehn!</l>
+                            <l>Man kommt zu ſchaun, man will am liebſten ſehn,</l>
+                            <l>Wird Vieles vor den Augen abgeſponnen,</l>
+                            <l>So daß die Menge ſtaunend gaffen kann,</l>
+                            <!-- ... -->
+                        </sp>
+                    </div>
+                </body>
+            </text>
+        </group>
+    </text>
+</TEI>

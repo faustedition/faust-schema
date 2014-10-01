@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.faustedition.net/ns"
+    targetNamespace="http://www.faustedition.net/ns" elementFormDefault="qualified">
+
+
+    <xs:simpleType name="faustURI">
+        <xs:restriction base="xs:anyURI">
+            <xs:pattern value="faust://.+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="macrogenesis">
+        <xs:annotation>
+            <xs:documentation>The root element. Can contain any amount of genetic
+                information.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:choice>
+                    <xs:element ref="relation"/>
+                    <xs:element ref="date"/>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="relation">
+        <xs:annotation>
+            <xs:documentation>Establishes a relation on two or more items.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                    <xs:element ref="source"/>
+                </xs:sequence>
+
+                <xs:sequence minOccurs="0">
+                    <xs:element ref="comment"/>
+                </xs:sequence>
+
+                <xs:sequence minOccurs="2" maxOccurs="unbounded">
+                    <xs:element ref="item"/>
+                </xs:sequence>
+            </xs:sequence>
+            <xs:attribute name="name">
+                <xs:simpleType>
+                    <xs:restriction base="xs:Name">
+                        <xs:enumeration value="temp-pre">
+                            <xs:annotation>
+                                <xs:documentation>Temporal precedence</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="temp-syn">
+                            <xs:annotation>
+                                <xs:documentation>Synchronicity</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="date">
+        <xs:annotation>
+            <xs:documentation>Assigns a date to an item.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                    <xs:element ref="source"/>
+                </xs:sequence>
+                <xs:sequence>
+                    <xs:sequence minOccurs="0">
+                        <xs:element ref="comment"/>
+                    </xs:sequence>
+                    <xs:sequence>
+                        <xs:element ref="item"/>
+                    </xs:sequence>
+                </xs:sequence>
+            </xs:sequence>
+            <xs:attribute name="when" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Specifies the exact date. </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="notBefore" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>The earliest possible date </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="notAfter" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>The latest possible date. </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="from" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>The starting point of the period. </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="to" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>The ending point of the period.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="type" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="normalized"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="item">
+        <xs:annotation>
+            <xs:documentation>An item that can be dated or related to another item. Items can be
+                manuscripts, but also events or anything else with genetic
+                significance.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="uri" use="required" type="faustURI"> </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="comment">
+        <xs:annotation>
+            <xs:documentation>Any information that cannot be expressed in the
+                formalisation.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+            <xs:restriction base="xs:normalizedString"/>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="source">
+        <xs:annotation>
+            <xs:documentation>The source of the information. The URI identifying the source must be
+                given. More bibliogrpahical detail (volume, page, ...) can be given inside the
+                element.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:normalizedString">
+                    <xs:attribute name="uri" use="required" type="faustURI">
+                        <xs:annotation>
+                            <xs:documentation>The URI identifying the source.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

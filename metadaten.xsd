@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.faustedition.net/ns"
+    targetNamespace="http://www.faustedition.net/ns" elementFormDefault="qualified">
+
+
+    <!-- Struktur -->
+
+    <xs:element name="Archivalieneinheit" xmlns="http://www.faustedition.net/ns">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Metadaten">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:group ref="EhE"/>
+                            <xs:group ref="WA-Verzeichnungen"/>
+                            <xs:group ref="Siglen"/>
+                            <xs:element ref="Klassifikation"/>
+                            <xs:element ref="Umfang"/>
+                            <xs:element ref="Papierbeschreibung"/>
+                            <xs:element ref="Ränder"/>
+                            <xs:element ref="Bindung"/>
+                            <xs:element ref="Blatteigenschaften"/>
+                            <xs:element ref="Bemerkung"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:choice minOccurs="1" maxOccurs="unbounded">
+                    <xs:element ref="Archivale"/>
+                    <xs:element ref="Dokument"/>
+                    <xs:group ref="Archivalienstruktur"/>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Archivale" type="DokumentTyp"/>
+
+    <xs:element name="Dokument" type="DokumentTyp"/>
+
+    <xs:complexType name="DokumentTyp">
+        <xs:sequence>
+            <xs:element name="Metadaten">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:group ref="EhE"/>
+                        <xs:group ref="WA-Verzeichnungen"/>
+                        <xs:group ref="Siglen"/>
+                        <xs:element ref="Klassifikation"/>
+                        <xs:element ref="Umfang"/>
+                        <xs:element ref="Papierbeschreibung"/>
+                        <xs:element ref="Ränder"/>
+                        <xs:element ref="Bindung"/>
+                        <xs:element ref="Blatteigenschaften"/>
+                        <xs:element ref="Bemerkung"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:group ref="Archivalienstruktur" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:group name="Archivalienstruktur">
+        <xs:choice>
+            <xs:element ref="Lage" minOccurs="0" maxOccurs="1"/>
+            <xs:group ref="Lagenstruktur" minOccurs="0" maxOccurs="1"/>
+        </xs:choice>
+    </xs:group>
+
+
+    <xs:element name="Lage">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Metadaten">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:group ref="WA-Verzeichnungen"/>
+                            <xs:group ref="Siglen"/>
+                            <xs:element ref="Klassifikation"/>
+                            <xs:element ref="Umfang"/>
+                            <xs:element ref="Papierbeschreibung"/>
+                            <xs:element ref="Ränder"/>
+                            <xs:element ref="Bindung"/>
+                            <xs:element ref="Blatteigenschaften"/>
+                            <xs:element ref="Bemerkung"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:group ref="Lagenstruktur" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:group name="Lagenstruktur">
+        <xs:choice>
+            <xs:element ref="Doppelblatt"/>
+            <xs:element ref="Einzelblatt"/>
+        </xs:choice>
+    </xs:group>
+
+
+    <xs:element name="Doppelblatt">
+        <xs:complexType>
+            <xs:sequence>
+
+                <xs:element name="Metadaten">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:group ref="WA-Verzeichnungen"/>
+                            <xs:group ref="Siglen"/>
+                            <xs:element ref="Klassifikation"/>
+                            <xs:element ref="Papierbeschreibung"/>
+                            <xs:element ref="Ränder"/>
+                            <xs:element ref="Bindung"/>
+                            <xs:element ref="Blatteigenschaften"/>
+                            <xs:element ref="Bemerkung"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element ref="Bogenblatt"/>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="Einzelblatt"/>
+                    <xs:element ref="Doppelblatt"/>
+                </xs:choice>
+                <xs:element ref="Bogenblatt"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Einzelblatt">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Metadaten">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:group ref="WA-Verzeichnungen"/>
+                            <xs:group ref="Siglen"/>
+                            <xs:element ref="Klassifikation"/>
+                            <xs:element ref="Papierbeschreibung"/>
+                            <xs:element ref="Ränder"/>
+                            <xs:element ref="Bindung"/>
+                            <xs:element ref="Blatteigenschaften"/>
+                            <xs:element ref="Foliierung"/>
+                            <xs:element ref="WelchesZeichen"/>
+                            <xs:element ref="Bemerkung"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="Seite" minOccurs="2" maxOccurs="2"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Bogenblatt">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Metadaten">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:group ref="WA-Verzeichnungen"/>
+                            <xs:group ref="Siglen"/>
+                            <xs:element ref="Klassifikation"/>
+                            <xs:element ref="Bindung"/>
+                            <xs:element ref="Blatteigenschaften"/>
+                            <xs:element ref="Foliierung"/>
+                            <xs:element ref="WelchesZeichen"/>
+                            <xs:element ref="Bemerkung"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="Seite" minOccurs="2" maxOccurs="2"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Seite">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Metadaten">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="Bemerkung" minOccurs="0" maxOccurs="1"/>
+                            <xs:element name="Digitalisat" type="KeinURI" minOccurs="1" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element ref="Anbringung" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+
+            <xs:attribute name="Art" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="recto"/>
+                        <xs:enumeration value="verso"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Anbringung">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Metadaten">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="Bemerkung"/>
+                            <xs:element ref="Anbringungsweise"/>
+                            <xs:element name="Maße" type="MaßXY"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:sequence>
+                    <xs:element ref="ASeite" minOccurs="2" maxOccurs="2"/>
+                </xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ASeite">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Metadaten">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="Bemerkung"/>
+                            <xs:element name="Digitalisat" type="KeinURI" minOccurs="1" maxOccurs="unbounded"/> 
+                       
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!-- Eigenschaften -->
+
+
+    <xs:group name="EhE">
+        <xs:sequence>
+            <xs:element name="Aufbewahrungsort" type="KeinString"/>
+
+            <xs:element name="Sammlung" type="KeinString"/>
+
+            <xs:element name="Signatur" type="KeinString"/>
+
+            <xs:element name="Provenienz" type="KeinString"/>
+
+            <xs:element name="Aufbewahrung" type="KeinString"/>
+
+            <xs:element name="Einband" type="KeinString"/>
+
+            <xs:element name="Foliierung-Paginierung" type="KeinString"/>
+
+            <xs:element name="Erhaltungszustand" type="KeinString"/>
+
+            <xs:element ref="Zählung"/>
+
+        </xs:sequence>
+    </xs:group>
+
+    <xs:group name="WA-Verzeichnungen">
+        <xs:sequence>
+            <xs:element name="WA-Verzeichnung" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:group>
+
+    <xs:group name="Siglen">
+        <xs:sequence>
+            <xs:element name="Sigle" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="Art" use="required">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="WA"/>
+                                <xs:enumeration value="WA-nicht-Faust"/>
+                                <xs:enumeration value="GSA"/>
+                                <xs:enumeration value="Landeck"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+
+    <xs:element name="Klassifikation">
+        <xs:simpleType>
+            <xs:union>
+                <xs:simpleType>
+                    <xs:restriction base="kAType"/>
+                </xs:simpleType>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Entwurf"/>
+                        <xs:enumeration value="Mundum"/>
+                        <xs:enumeration value="Reinschrift"/>
+                        <xs:enumeration value="...?"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="Umfang" type="Maß"/> 
+
+    <xs:element name="Papierbeschreibung">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Papierart" type="KeinString"/>
+                <xs:element name="Farbe" type="KeinString"/>
+                <xs:element name="Qualität">
+                    <xs:simpleType>
+                        <xs:union>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="grob"/>
+                                    <xs:enumeration value="fein"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                            <xs:simpleType>
+                                <xs:restriction base="kAType"/>
+                            </xs:simpleType>
+                        </xs:union>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Steglinienabstand" type="Maß"/>
+                <xs:element name="Mühle" type="KeinString"/>
+                <xs:element name="Papiersorte" type="KeinString"/>
+                <xs:element ref="WZeichen"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Ränder" type="KeinString"/>
+
+
+
+    <xs:element name="WZeichen">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Wasserzeichen-Listen-Nummer" type="xs:string"/>
+                <xs:element name="Wasserzeichen" type="Wasserzeichenbeschreibung"/>
+                <xs:element name="Gegenzeichen" type="Wasserzeichenbeschreibung"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Wasserzeichenbeschreibung">
+        <xs:sequence>
+            <xs:element name="Position" type="xs:string"/>
+            <xs:element name="Beschreibung" type="xs:string"/>
+            <xs:element name="Größe" type="MaßXY"> </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+    <xs:element name="Bindung">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="Bindematerial" type="KeinString"/>
+                <xs:element name="Stichlöcher">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Abstand" type="Maß" minOccurs="1"
+                                maxOccurs="unbounded"/>
+                            <xs:element ref="Bemerkung" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+
+
+    <xs:element name="Zählung">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Art" type="xs:string"/>
+                <xs:element name="Position" type="xs:string"/>
+                <xs:element name="Gezählt">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="[0-9]*(-[0-9]*)?"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Ungezählt">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="[0-9]*(-[0-9]*)?"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Hand" type="KeinString"/>
+                <xs:element name="Schreibmaterial" type="KeinString"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Blatteigenschaften">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="Blattmaße" type="MaßXY"/>
+                <xs:element name="Format">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="2"/>
+                            <xs:enumeration value="4"/>
+                            <xs:enumeration value="8"/>
+                            <xs:enumeration value="16"/>
+                            <xs:enumeration value="kein"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="ErhaltungszustandBlatt" type="KeinString"/>
+                <xs:element name="Steglinienanzahl" type="KeinInteger"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="Foliierung">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Blattnummer" minOccurs="1" maxOccurs="unbounded"> 
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="KeinString">
+                                <xs:attribute name="Zählung" type="xs:string" use="required"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+        </xs:element>
+
+
+    <xs:element name="WelchesZeichen">
+        <xs:complexType>
+            <xs:attribute name="Art" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Wasserzeichen"/>
+                        <xs:enumeration value="Gegenzeichen"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="Bemerkung" type="KeinString"/>
+
+    <xs:element name="Anbringungsweise">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="Art">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="geklebt"/>
+                            <xs:enumeration value="gesteckt"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Beschreibung" type="KeinString"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!-- Typen -->
+
+    <xs:complexType name="MaßXY">
+        <xs:sequence>
+            <xs:element name="Höhe" type="Maß"/>
+            <xs:element name="Breite" type="Maß"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Maß">
+        <xs:simpleContent>
+            <xs:extension base="KeinDecimal">
+                <xs:attribute name="Einheit" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="mm"/>
+                            <xs:enumeration value="Blatt"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+
+    <xs:simpleType name="KeinInteger">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:integer"/>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="kAType"/>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="KeinDecimal">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="kAType"/>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="KeinString">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="kAType"/>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="KeinURI">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:anyURI">
+                    <xs:minLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="kAType"/>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+    
+    <xs:simpleType name="kAType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="k.A."/>
+            <xs:enumeration value="w.o."/>
+            <xs:enumeration value="s.u."/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- 
+    <xs:element name="keinE">
+        <xs:complexType>
+            <xs:attribute name="Grund">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="nichtErhoben"/>
+                        <xs:enumeration value="keinAnlass"/>
+                        <xs:enumeration value="sonstiges"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+-->
+
+</xs:schema>
