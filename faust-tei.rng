@@ -7,7 +7,7 @@ Edition: 1.9.0. Last updated on February 25th 2011.
 Edition Location: http://www.tei-c.org/Vault/P5/1.9.0/
   
 -->
-   <!---->
+   <!----> 
    <div ns="http://www.w3.org/2000/svg" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
       <define name="Boolean.datatype">
          <choice>
