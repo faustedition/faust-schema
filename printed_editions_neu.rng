@@ -713,6 +713,7 @@ Edition Location: http://www.tei-c.org/Vault/P5/2.0.2/
       <ref name="att.global.change.attributes"/>
       <ref name="att.global.attribute.xmlid"/>
       <ref name="att.global.attribute.n"/>
+      <ref name="att.global.attribute.nx"></ref>
       <ref name="att.global.attribute.xmllang"/>
       <ref name="att.global.attribute.rend"/>
       <ref name="att.global.attribute.rendition"/>
@@ -741,6 +742,13 @@ Edition Location: http://www.tei-c.org/Vault/P5/2.0.2/
                   <ref name="data.word"/>
                </zeroOrMore>
             </list>
+         </attribute>
+      </optional>
+   </define>
+   <define name="att.global.attribute.nx">
+      <optional>
+         <attribute name="nx" ns="http://www.faustedition.net/ns">
+            
          </attribute>
       </optional>
    </define>
