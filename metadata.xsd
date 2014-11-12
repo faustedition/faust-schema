@@ -342,7 +342,7 @@
                     <xs:enumeration value="ul_yale"/>
                     <xs:enumeration value="tml_new_york"/>
                     <xs:enumeration value="ul_pennstate"/>
-                    <xs:enumeration value="mlm_paris"></xs:enumeration>
+                    <xs:enumeration value="mlm_paris"/>
                     <xs:enumeration value="location_unknown"/>
                 </xs:restriction>
             </xs:simpleType>
@@ -369,7 +369,7 @@
                                     <xs:enumeration value="wa_chines"/>
                                     <xs:enumeration value="wa_wesentrag"/>
                                     <!-- non WA -->
-                                    <xs:enumeration value="aa_wilhelmmeister"></xs:enumeration>
+                                    <xs:enumeration value="aa_wilhelmmeister"/>
                                     <xs:enumeration value="aa_duw"/>
                                     <xs:enumeration value="aa_ls_chines"/>
                                     <xs:enumeration value="aa_ls_aristpoet"/>
@@ -377,6 +377,7 @@
                                     <xs:enumeration value="aa_ls_kuaschemata"/>
                                     <xs:enumeration value="aa_ls_stoffgeh"/>
                                     <xs:enumeration value="aa_ls_wesentrag"/>
+                                    <xs:enumeration value="la_II_2_winderz"/>
                                     <xs:enumeration value="bohnenkamp"/>
                                     <xs:enumeration value="fa"/>
                                     <xs:enumeration value="fischer_lamberg"/>
@@ -409,7 +410,7 @@
                                     <xs:enumeration value="ul_yale"/>
                                     <xs:enumeration value="tml_new_york"/>
                                     <xs:enumeration value="ul_pennstate"/>
-                                    <xs:enumeration value="mlm_paris"></xs:enumeration>
+                                    <xs:enumeration value="mlm_paris"/>
                                 </xs:restriction>
                             </xs:simpleType>
                         </xs:union>
