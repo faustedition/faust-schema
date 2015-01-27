@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.w3.org/XML/1998/namespace" xmlns:f="http://www.faustedition.net/ns" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!-- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  -->
+  <start>
+    <element name="f:print">
+      <attribute>
+        <name>base</name>
+        <data type="anyURI"/>
+      </attribute>
+      <element name="f:revisionDesc">
+        <oneOrMore>
+          <element name="f:change">
+            <attribute name="when">
+              <data type="date"/>
+            </attribute>
+            <attribute name="who">
+              <data type="NCName"/>
+            </attribute>
+            <text/>
+          </element>
+        </oneOrMore>
+      </element>
+      <element name="f:metadata">
+        <zeroOrMore>
+          <ref name="idno"/>
+        </zeroOrMore>
+        <element name="f:bibl">
+          <text/>
+        </element>
+        <oneOrMore>
+          <choice>
+            <ref name="idno"/>
+            <ref name="repository"/>
+            <element name="f:note">
+              <text/>
+            </element>
+          </choice>
+        </oneOrMore>
+        <element name="f:copies">
+          <element name="f:referenceCopy">
+            <ref name="repository"/>
+            <ref name="idno"/>
+          </element>
+          <element name="f:copy">
+            <ref name="repository"/>
+            <ref name="idno"/>
+          </element>
+        </element>
+        <element name="f:format">
+          <data type="integer"/>
+        </element>
+        <element name="f:references">
+          <oneOrMore>
+            <element name="f:reference">
+              <attribute name="type">
+                <data type="NCName"/>
+              </attribute>
+              <attribute name="uri">
+                <data type="anyURI"/>
+              </attribute>
+              <text/>
+            </element>
+          </oneOrMore>
+        </element>
+      </element>
+    </element>
+  </start>
+  <define name="idno">
+    <element name="f:idno">
+      <attribute name="type">
+        <data type="NCName"/>
+      </attribute>
+      <text/>
+    </element>
+  </define>
+  <define name="repository">
+    <element name="f:repository">
+      <data type="NCName"/>
+    </element>
+  </define>
+</grammar>
