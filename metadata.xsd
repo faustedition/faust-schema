@@ -359,15 +359,20 @@
                                 <xs:restriction base="xs:string">
                                     <!-- WA -->
                                     <xs:enumeration value="wa_aristpoet"/>
+                                    <xs:enumeration value="wa_chines"/>
+                                    <xs:enumeration value="wa_div"/>
                                     <xs:enumeration value="wa_gedichte"/>
                                     <xs:enumeration value="wa_faust"/>
                                     <xs:enumeration value="wa_helenaank"/>
-                                    <xs:enumeration value="wa_mur"/>
                                     <xs:enumeration value="wa_kua"/>
-                                    <xs:enumeration value="wa_div"/>
+                                    <xs:enumeration value="wa_mur"/>
+                                    <xs:enumeration value="wa_naus"/>
+                                    <xs:enumeration value="wa_prologberltheat"/>
+                                    <xs:enumeration value="wa_rueckkgrossh"/>
+                                    <xs:enumeration value="wa_schlusspalneot"/>
                                     <xs:enumeration value="wa_tasso"/>
-                                    <xs:enumeration value="wa_chines"/>
                                     <xs:enumeration value="wa_wesentrag"/>
+                                    <xs:enumeration value="wa_zuwallenstlag"/>
                                     <!-- non WA -->
                                     <xs:enumeration value="aa_wilhelmmeister"/>
                                     <xs:enumeration value="aa_duw"/>
@@ -382,8 +387,6 @@
                                     <xs:enumeration value="fa"/>
                                     <xs:enumeration value="fischer_lamberg"/>
                                     <xs:enumeration value="gsa_findbuch"/>
-                                    <xs:enumeration value="hecker"/>
-                                    <xs:enumeration value="hecker_mur"/>
                                     <xs:enumeration value="kraeuter"/>
                                     <xs:enumeration value="landeck"/>
                                     <xs:enumeration value="ma"/>
