@@ -191,6 +191,7 @@
                                     <xs:enumeration value="hagen_nr"></xs:enumeration>
                                     <xs:enumeration value="bohnenkamp"/>
                                     <xs:enumeration value="fa"/>
+                                    <xs:enumeration value="faustedition"/>
                                     <xs:enumeration value="fischer_lamberg"/>
                                     <xs:enumeration value="gsa_findbuch"/>
                                     <xs:enumeration value="hecker"/>
