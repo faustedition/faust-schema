@@ -151,6 +151,7 @@
                     <xs:enumeration value="ul_pennstate"/>
                     <xs:enumeration value="mlm_paris"/>
                     <xs:enumeration value="location_unknown"/>
+                    <xs:enumeration value="bsb_muenchen"></xs:enumeration>
                 </xs:restriction>
             </xs:simpleType>
         </xs:union>
@@ -224,6 +225,7 @@
                                     <xs:enumeration value="tml_new_york"/>
                                     <xs:enumeration value="ul_pennstate"/>
                                     <xs:enumeration value="mlm_paris"/>
+                                    <xs:enumeration value="bsb_muenchen"></xs:enumeration>
                                 </xs:restriction>
                             </xs:simpleType>
                         </xs:union>
