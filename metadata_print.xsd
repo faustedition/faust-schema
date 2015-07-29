@@ -57,6 +57,10 @@
     <xs:group name="documentProperties">
 
         <xs:choice>
+            <xs:sequence minOccurs="0">
+                <xs:element name="headNote" type="noneString" minOccurs="1"/>
+                <xs:element ref="note" minOccurs="0"/>
+            </xs:sequence>
             <xs:sequence minOccurs="1">
                 <xs:element name="bibl" type="noneString" minOccurs="1"/>
                 <xs:element ref="note" minOccurs="0"/>
