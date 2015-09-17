@@ -707,6 +707,34 @@
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
+                <xs:attribute name="fragment">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="yes"/>
+                            <!-- halber Bogen -->
+                            <xs:enumeration value="a"/>
+                            <xs:enumeration value="b"/>
+                            <!-- linke Hälfte -->
+                            <xs:enumeration value="a_o"/>
+                            <xs:enumeration value="a_u"/>
+                            <xs:enumeration value="a_li"/>
+                            <xs:enumeration value="a_re"/>
+                            <xs:enumeration value="a_o_li"/>
+                            <xs:enumeration value="a_o_re"/>
+                            <xs:enumeration value="a_u_li"/>
+                            <xs:enumeration value="a_u_re"/>
+                            <!-- rechte Hälfte -->
+                            <xs:enumeration value="b_o"/>
+                            <xs:enumeration value="b_u"/>
+                            <xs:enumeration value="b_li"/>
+                            <xs:enumeration value="b_re"/>
+                            <xs:enumeration value="b_o_li"/>
+                            <xs:enumeration value="b_o_re"/>
+                            <xs:enumeration value="b_u_li"/>
+                            <xs:enumeration value="b_u_re"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
