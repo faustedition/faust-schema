@@ -357,6 +357,7 @@
                         <xs:union memberTypes="noneType">
                             <xs:simpleType>
                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="faustedition"/>
                                     <!-- WA -->
                                     <xs:enumeration value="wa_aristpoet"/>
                                     <xs:enumeration value="wa_chines"/>
