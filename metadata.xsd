@@ -394,6 +394,7 @@
                                     <!-- archives -->
                                     <xs:enumeration value="gsa_1"/>
                                     <xs:enumeration value="gsa_2"/>
+                                    <xs:enumeration value="gsa_ident"/>
                                     <xs:enumeration value="fdh_frankfurt"/>
                                     <xs:enumeration value="dla_marbach"/>
                                     <xs:enumeration value="sb_berlin"/>
