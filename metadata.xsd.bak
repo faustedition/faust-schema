@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.faustedition.net/ns"
+    targetNamespace="http://www.faustedition.net/ns" elementFormDefault="qualified">
+
+    <!-- structure -->
+
+    <xs:element name="archivalDocument">
+
+        <xs:complexType>
+            <xs:sequence>
+
+                <xs:element name="metadata">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:choice>
+                                <xs:element ref="note"/>
+                                <xs:group ref="documentProperties"/>
+                                <xs:group ref="paperProperties"/>
+                                <xs:group ref="leafProperties"/>
+                                <xs:group ref="pageProperties"/>
+                            </xs:choice>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:choice minOccurs="1" maxOccurs="unbounded">
+                    <xs:element ref="sheet"/>
+                    <xs:element ref="disjunctLeaf"/>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="sheet">
+        <xs:complexType>
+            <xs:sequence>
+
+                <xs:element name="metadata">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:choice>
+                                <xs:element ref="note"/>
+                                <xs:group ref="paperProperties"/>
+                                <xs:group ref="leafProperties"/>
+                                <xs:group ref="pageProperties"/>
+                            </xs:choice>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+
+                <xs:element ref="leaf"/>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="disjunctLeaf"/>
+                    <xs:element ref="sheet"/>
+                </xs:choice>
+                <xs:element ref="leaf"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="leaf">
+        <xs:complexType>
+            <xs:sequence>
+
+                <xs:element name="metadata">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:choice>
+                                <xs:element ref="note"/>
+                                <xs:group ref="leafProperties"/>
+                                <xs:group ref="pageProperties"/>
+                            </xs:choice>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+
+                <xs:element ref="page" minOccurs="2" maxOccurs="2"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="disjunctLeaf">
+        <xs:complexType>
+            <xs:sequence>
+
+                <xs:element name="metadata">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:choice>
+                                <xs:element ref="note"/>
+                                <xs:group ref="paperProperties"/>
+                                <xs:group ref="leafProperties"/>
+                                <xs:group ref="pageProperties"/>
+                            </xs:choice>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element ref="page" minOccurs="2" maxOccurs="2"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="page">
+        <xs:complexType>
+            <xs:sequence>
+
+                <xs:element name="metadata">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:choice>
+                                <xs:element ref="note"/>
+                                <xs:element ref="docTranscript"/>
+                                <xs:group ref="pageProperties"/>
+                            </xs:choice>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+
+                <xs:element ref="patch" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+
+            <xs:attribute name="Art" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="recto"/>
+                        <xs:enumeration value="verso"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="patch">
+        <xs:complexType>
+            <xs:sequence>
+
+                <xs:element name="metadata">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:choice>
+                                <xs:element ref="note"/>
+                                <xs:group ref="paperProperties"/>
+                                <xs:group ref="patchProperties"/>
+                            </xs:choice>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+
+                <xs:sequence>
+                    <xs:element ref="patchSurface" minOccurs="2" maxOccurs="2"/>
+                </xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="patchSurface">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="metadata">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:choice>
+                                <xs:element ref="note"/>
+                                <xs:group ref="pageProperties"/>
+                            </xs:choice>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!-- propertiy groups-->
+
+    <!-- document properties -->
+
+    <xs:group name="documentProperties">
+        <xs:choice>
+            <xs:element name="repository" type="repository" minOccurs="0"/>
+            <xs:element name="subRepository" type="noneString" minOccurs="0"/>
+            <xs:element name="collection" type="noneString" minOccurs="0"/>
+            <xs:element name="idno" type="idno" minOccurs="0"/>
+            <xs:element name="textTranscript" type="xs:anyURI" minOccurs="1"/>
+            <xs:element name="classification" type="classification" minOccurs="0"/>
+            <xs:element name="history" type="noneString" minOccurs="0"/>
+            <xs:element name="container" type="noneString" minOccurs="0"/>
+            <xs:element name="binding" type="noneString" minOccurs="0"/>
+            <xs:element name="numberingList" type="numberingList" minOccurs="0"/>
+            <xs:element name="condition" type="noneString" minOccurs="0"/>
+        </xs:choice>
+    </xs:group>
+
+    <xs:simpleType name="repository">
+        <xs:restriction base="noneString">
+            <xs:enumeration value="gsa"/>
+            <xs:enumeration value="fdh_frankfurt"/>
+            <xs:enumeration value="dla_marbach"/>
+            <xs:enumeration value="sb_berlin"/>
+            <xs:enumeration value="ub_leipzig"/>
+            <xs:enumeration value="ub_bonn"/>
+            <xs:enumeration value="veste_coburg"/>
+            <xs:enumeration value="gm_duesseldorf"/>
+            <xs:enumeration value="sa_hannover"/>
+            <xs:enumeration value="thlma_weimar"/>
+            <xs:enumeration value="bb_cologny"/>
+            <xs:enumeration value="ub_basel"/>
+            <xs:enumeration value="bj_krakow"/>
+            <xs:enumeration value="agad_warszawa"/>
+            <xs:enumeration value="bb_vicenza"/>
+            <xs:enumeration value="bl_oxford"/>
+            <xs:enumeration value="bl_london"/>
+            <xs:enumeration value="ul_edinburgh"/>
+            <xs:enumeration value="ul_yale"/>
+            <xs:enumeration value="tml_new_york"/>
+            <xs:enumeration value="ul_pennstate"/>
+            <xs:enumeration value="location_unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="idno">
+        <xs:simpleContent>
+            <xs:extension base="noneString">
+                <xs:attribute name="type" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <!-- WA -->
+                            <xs:enumeration value="wa_gedichte"/>
+                            <xs:enumeration value="wa_faust"/>
+                            <!-- non WA -->
+                            <xs:enumeration value="aa_duw"/>
+                            <xs:enumeration value="bohnenkamp"/>
+                            <xs:enumeration value="fa"/>
+                            <xs:enumeration value="landeck"/>
+                            <xs:enumeration value="loeper"/>
+                            <xs:enumeration value="fischer_lamberg"/>
+                            <!-- archives -->
+                            <xs:enumeration value="gsa_old"/>
+                            <xs:enumeration value="gsa_new"/>
+                            <xs:enumeration value="fdh_frankfurt"/>
+                            <xs:enumeration value="dla_marbach"/>
+                            <xs:enumeration value="sb_berlin"/>
+                            <xs:enumeration value="ub_leipzig"/>
+                            <xs:enumeration value="ub_bonn"/>
+                            <xs:enumeration value="veste_coburg"/>
+                            <xs:enumeration value="gm_duesseldorf"/>
+                            <xs:enumeration value="sa_hannover"/>
+                            <xs:enumeration value="thlma_weimar"/>
+                            <xs:enumeration value="bb_cologny"/>
+                            <xs:enumeration value="ub_basel"/>
+                            <xs:enumeration value="bj_krakow"/>
+                            <xs:enumeration value="agad_warszawa"/>
+                            <xs:enumeration value="bb_vicenza"/>
+                            <xs:enumeration value="bl_oxford"/>
+                            <xs:enumeration value="bl_london"/>
+                            <xs:enumeration value="ul_edinburgh"/>
+                            <xs:enumeration value="ul_yale"/>
+                            <xs:enumeration value="tml_new_york"/>
+                            <xs:enumeration value="ul_pennstate"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="classification">
+        <xs:restriction base="noneString">
+            <xs:enumeration value="Schema"/>
+            <xs:enumeration value="Notiz"/>
+            <xs:enumeration value="Konzept"/>
+            <xs:enumeration value="Arbeitsmundum"/>
+            <xs:enumeration value="Mundum"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="numberingList">
+        <xs:sequence>
+            <xs:element name="numbering" minOccurs="1" maxOccurs="unbounded" type="noneString"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- paper properties -->
+
+    <xs:group name="paperProperties">
+        <xs:choice>
+            <xs:element name="paperType" type="paperType" minOccurs="0"/>
+            <xs:element name="paperColour" type="noneString" minOccurs="0"/>
+            <xs:element name="chainLines" type="dimension" minOccurs="0"/>
+            <xs:element name="paperMill" type="noneString" minOccurs="0"/>
+            <xs:element name="watermarkID" type="noneString" minOccurs="0"/>
+            <xs:element name="countermarkID" type="noneString" minOccurs="0"/>
+        </xs:choice>
+    </xs:group>
+
+    <xs:simpleType name="paperType">
+        <xs:restriction base="noneString">
+            <xs:enumeration value="Konzeptpapier"/>
+            <xs:enumeration value="Velinpapier"/>
+            <xs:enumeration value="Briefpapier"/>
+            <xs:enumeration value="Schreibpapier"/>
+            <xs:enumeration value="Maschinenpapier"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- leaf properties -->
+
+    <xs:group name="leafProperties">
+        <xs:choice>
+            <xs:element name="dimensions" type="dimensionXY" minOccurs="0"/>
+            <xs:element name="format" type="format" minOccurs="0"/>
+            <xs:element name="bindingMaterial" type="noneString" minOccurs="0"/>
+            <xs:element name="stabMarks" type="stabMarks" minOccurs="0"/>
+            <xs:element name="leafCondition" type="noneString" minOccurs="0"/>
+            <xs:element name="edges" type="margin" minOccurs="0"/>
+        </xs:choice>
+    </xs:group>
+
+    <xs:simpleType name="format">
+        <xs:restriction base="noneString">
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="8"/>
+            <xs:enumeration value="12"/>
+            <xs:enumeration value="16"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="stabMarks">
+        <xs:sequence>
+            <xs:element name="stabMark" type="dimension" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="margin">
+        <xs:restriction base="noneString">
+            <xs:enumeration value="cut"/>
+            <xs:enumeration value="uncut"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="note" type="noneString"/>
+
+    <!-- page properties -->
+
+    <xs:group name="pageProperties">
+        <xs:choice>
+            <xs:element name="references" type="references" minOccurs="0"/>
+        </xs:choice>
+    </xs:group>
+
+    <xs:complexType name="references">
+        <xs:sequence>
+            <xs:element name="reference" type="xs:anyURI" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- docTranscript -->
+
+    <xs:element name="docTranscript" type="xs:anyURI"/>
+
+    <!-- patch properties -->
+
+    <xs:group name="patchProperties">
+        <xs:choice>
+            <xs:element name="patchDimensions" type="dimensionXY"/>
+            <xs:element name="patchType" type="patchType"/>
+            <xs:element name="patchPaperType" type="paperType"/>
+            <xs:element name="patchPaperColour" type="noneString"/>
+            <xs:element name="patchChainLines" type="dimension"/>
+            <xs:element name="patchPaperMill" type="noneString"/>
+            <xs:element name="patchWatermarkID" type="noneString"/>
+            <xs:element name="patchCountermarkID" type="noneString"/>
+        </xs:choice>
+    </xs:group>
+    
+    <xs:simpleType name="patchType">
+        <xs:restriction base="noneString">
+            <xs:enumeration value="glue"/>
+            <xs:enumeration value="pin"/>
+            <xs:enumeration value="loose"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- types -->
+
+    <xs:complexType name="dimensionXY">
+        <xs:sequence>
+            <xs:element name="width" type="dimension"/>
+            <xs:element name="height" type="dimension"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="dimension">
+        <xs:simpleContent>
+            <xs:extension base="noneDecimal">
+                <xs:attribute name="unit" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="mm"/>
+                            <xs:enumeration value="leaves"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+
+    <xs:simpleType name="noneInteger">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:integer"/>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="noneType"/>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="noneDecimal">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="noneType"/>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="noneString">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="noneType"/>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="noneURI">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:anyURI">
+                    <xs:minLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="noneType"/>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="noneType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="n.s."/>
+            <xs:enumeration value="none"/>
+            <!-- <xs:enumeration value="w.o."/>
+            <xs:enumeration value="s.u."/> -->
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><?oxygen RNGSchema="https://faustedition.uni-wuerzburg.de/schema/tei_all.rng"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title type="main">Kodierungsrichtlinien für die Digitalisierung gedruckter
+                    Faust-Editionen.</title>
+                <title type="sub">Textuelle Auszeichnung mit selektiver Berücksichtigung
+                    typographischer Merkmale</title>
+                <author>Digitale Faust-Edition</author>
+            </titleStmt>
+            <publicationStmt>
+                <ab/>
+            </publicationStmt>
+            <sourceDesc>
+                <ab/>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <head>Richtlinien der Transkription</head>
+            <div>
+                <head>Kodierung</head>
+                <list>
+                    <item>Wohlgeformtes XML.</item>
+                    <item>Valide gemäß vorgegebenem Schema.</item>
+                </list>
+            </div>
+            <div>
+                <head>Schriftzeichen</head>
+                <list>
+                    <item>Ae usw. werden kommentarlos als Ae usw. wiedergegeben.</item>
+                    <item>ä und a mit e-superscriptum (Unicode a&amp;#x0364;) usw. werden nicht
+                        unterschieden, sondern gleichermaßen als ä usw. wiedergegeben.</item>
+                    <item>I und J werden analog zu den Richtlinien des Deutschen Textarchivs
+                        unterschieden: „vor Vokal steht in der Regel J, vor Konsonant in der Regel
+                        I“ (<ref
+                            target="http://kaskade.dwds.de/dtaq/help/richtlinien#unterscheidung_von_i_vs._j"
+                            >Richtlinien des Deutschen Textarchivs, Abschn. 4.1</ref>).</item>
+                    <item>ſ und s werden unterschieden.</item>
+                    <item>Akzentzeichen werden mit dem entsprechendem Unicodezeichen
+                        wiedergegeben.</item>
+                    <item>Auslassungspunkte werden nicht mit der Horizontal Ellipsis (…, Unicode
+                        &amp;#8230;), sondern mit einzelnen Punkten wiedergegeben. Vier
+                        aufeinanderfolgende Punkte werden als vier Auslassungspunkte aufgefasst,
+                        nicht als ein Satzendpunkt und drei Auslassungspunkte (dies gilt auch dann,
+                        wenn fehlende Spationierung des ersten Punktes darauf hindeutet, dass dieser
+                        als Satzendpunkt interpretiert werden könnte). Leerzeichen zwischen Worten
+                        und Auslassungspunkten werden übernommen (wo allerdings keine Leerzeichen
+                        vorkommen, werden sie auch nicht hinzugefügt) und als ganze Leerzeichen
+                        wiedergegeben, die Spationierung zwischen den Auslassungspunkten hingegen
+                        wird mit schmalem und vor Umbruch geschütztem Leerzeichen (Unicode
+                        &amp;#8239;) festgehalten.</item>
+                    <item>Halbgeviertstriche (Unicode &amp;#8211;) werden von Geviertstrichen
+                        unterschieden.</item>
+                    <item>Trenn- und Bindestriche werden unterschieden. Der Trennstrich wird als
+                        „Soft Hyphen“ (Unicode &amp;#173;), der Bindestrich als „Hyphen Minus“
+                        (Unicode &amp;#45;) kodiert (vgl. <ref
+                            target="http://accesstei.apexcovantage.com/Content/documents/TEI-Tite_guidelines__1.2_.pdf"
+                            >Apex TEI-TITE Guidelines For TEI Access Project, Abschn. 1.2.2, S.
+                            6</ref>).</item>
+                    <item>Eckige Klammern werden von runden unterschieden.</item>
+                    <item>Anführungszeichen werden an öffnender Position als öffnende deutsche
+                        (Unicode &amp;#x0084;), an hinterer Position als schließende deutsche
+                        Anführungszeichen (Unicode &amp;#x0093;) transkribiert. Die Lage (oben oder
+                        unten) sowie die Form (66 oder 99) werden <emph>nicht</emph>
+                        festgehalten.</item>
+                </list>
+            </div>
+            <div>
+                <head>Druckfehler</head>
+                <div>
+                    <head>Satzfehler</head>
+                    <list>
+                        <item>Satzfehler sollen weder als solche kenntlich gemacht noch korrigiert
+                            werden.</item>
+                        <item>Ausnahme: Abdrücke von Lettern, die um 180° in der Längsachse verdreht
+                            waren, werden nicht etwa mithilfe von Sonderzeichen (Ə o.ä.)
+                            nachgebildet. Stattdessen wird der Buchstabe als verdreht gekennzeichnet
+                                (<code>&lt;seg rend="rotated"&gt;e&lt;/seg&gt;</code>).</item>
+                        <item>Wo der bibliographische Befund keinen Aufschluss darüber gibt, ob es
+                            sich um den Abdruck einer verdrehten Letter oder um einen falschen
+                            Buchstaben handelt („uud“ statt „und“ etc.), wird in der Transkription
+                            der scheinbare Buchstabe gebraucht („uud“). </item>
+                    </list>
+                </div>
+                <div>
+                    <head>Unleserliche und schwer entzifferbare Zeichen</head>
+                    <list>
+                        <item>Auf Zeichen, die infolge von Beschädigung oder Verschmutzung der
+                            Letter, Unreinheiten oder Faltungen des Papiers nicht entzifferbar sind,
+                            wird mit dem Element <gi>gap</gi> hingewiesen. Wenn möglich, wird dabei
+                            die Anzahl der betroffenen Zeichen angegeben.</item>
+                        <item>Zeichen, die aus den genannten Gründen nur schwer entzifferbar sind,
+                            werden als solche kenntlich gemacht (<gi>unclear</gi>).</item>
+                        <item>Scheinbare andere Buchstaben, die durch Beschädigung der Letter
+                            entstehen (z.B. „r“ statt n) sollen nicht nachgebildet werden.
+                            Stattdessen wird, je nach Sachlage, entweder eine Unlesbarkeit oder der
+                            Buchstabe (in diesem Fall das n) als schwer entzifferbar
+                            markiert.</item>
+                        <item>Wenn ganz geschwundene Lettern erkannt werden sollten, so kann der
+                            betreffende Buchstabe ergänzt werden; die Ergänzung ist aber in jedem
+                            Fall als solche kenntlich zu machen (<gi>supplied</gi>).</item>
+                        <item>Auf sonstige Vorkommnisse oder Probleme wird mit einem formlosen
+                            Kommentar hingewiesen (<code>&lt;!-- … --&gt;</code>).</item>
+                    </list>
+                </div>
+                <div>
+                    <head>Abdrücke von Blindmaterial </head>
+                    <list>
+                        <item>Abdrücke von Blindmaterial („Spieße“) werden nicht berücksichtigt.
+                            Zwischen Worten wird stattdessen ein Leerzeichen gesetzt (vgl. <ref
+                                target="http://www.deutschestextarchiv.de/goethe/faust01/1808/viewer/image/40/229/"
+                                > S. 223 des vom DTA digitalisierten Exemplars des <title>Faust
+                                    I</title></ref>).</item>
+                    </list>
+                </div>
+            </div>
+            <div>
+                <head>Eintragungen</head>
+                <p>Stempel, handschriftliche Signaturen, Besitzervermerke, Anstreichungen etc.
+                    werden nicht berücksichtigt.</p>
+            </div>
+            <div>
+                <head>Gliederung des Textes</head>
+                <list>
+                    <item>Textabschnitte werden mit dem Element <gi>div</gi> als solche kenntlich
+                        gemacht.</item>
+                    <item>Wenn möglich, werden sie durch Verschachtelung hierarchisiert.</item>
+                    <item>Wenn möglich, werden sie als Akt, Szene, Unterszene usw. typifiziert
+                            (<val>act</val>, <val>scene</val>, <val>subscene</val>).</item>
+                    <item>Titel und Überschriften werden als solche kenntlich gemacht.</item>
+                    <item>Folgen zwei Überschriften aufeinander, so wird zwischen Haupt- und
+                        Unterüberschrift unterschieden (<val>main</val>, <val>sub</val>).</item>
+                    <item>Prosa-Absätze werden als solche kenntlich gemacht.</item>
+                    <item>Anmerkungen werden als solche kenntlich gemacht. Handelt es sich bei der
+                        Anmerkung um eine Zitation, so wird dies zusätzlich vermerkt
+                            (<code>&lt;note&gt;(&lt;bibl&gt;Regum I.
+                            21.&lt;/bibl&gt;)&lt;/note&gt;</code>).</item>
+                    <item>Schlussschriften („Ist fortzusetzen“, „Finis“) werden als solche kenntlich
+                        gemacht (<gi>trailer</gi>).</item>
+                    <item>Im Falle mehrerer Texte in einem Band wird zunächst die Titelei des Bandes
+                        aufgenommen (<gi>front</gi>) und dann eine Gruppe von Texten
+                        (<gi>group</gi>) angesetzt. Geht dem Text eine eigene Titelseite voran, so
+                        wird diese wie die Titelseite des Bandes behandelt.</item>
+                </list>
+                <div>
+                    <head>Titelei u.ä.</head>
+                    <list>
+                        <item>Auf Frontispize wird hingewiesen (<tag>figure
+                                type="frontispiece"</tag>). Dazugehörige Signaturen werden als Teil
+                            des Frontispizes begriffen und nicht aufgenommen.</item>
+                        <item>Schmutztitel, die dem Haupttitelblatt vorausgehen, werden als solche
+                            gekennzeichnet (<tag>div type="half-title"</tag>).</item>
+                        <item>Motti werden mittels <gi>epigraph</gi> als solche kenntlich
+                            gemacht.</item>
+                        <item>Titelseiten werden als solche kenntlich gemacht.</item>
+                        <item>Aufeinanderfolgende gleichrangige Titelseiten („Goethe’s nachgelassene
+                            Werke“, Bd. 1, zugl. „Goethe’s Werke“, Bd. 41) werden jeweils als
+                            eigenständige Titelseite aufgefasst.</item>
+                        <item>Dasselbe gilt für einander untergeordnete Titelseiten (z.B. in der
+                            Quartausgabe).</item>
+                        <item>Der Titel wird von den anderen Bestandteilen abgegrenzt
+                                (<gi>docTitle</gi>).</item>
+                        <item>Titelteile werden voneinander unterschieden.</item>
+                        <item>Ober- und Untertitel werden voneinander unterschieden
+                                (<code>type="main"</code>, <code>type="sub"</code>).</item>
+                        <item>Bandzählungen (z.B. „Achter Band“) werden als eigener Titelteil
+                            aufgefasst (<code>type="volume"</code>, vgl. <ref
+                                target="http://accesstei.apexcovantage.com/Content/documents/TEI-Tite_guidelines__1.2_.pdf"
+                                >Apex TEI-TITE Guidelines For TEI Access Project, Abschn. 1.3.4, S.
+                                13</ref>).</item>
+                        <item>Autornennungen werden einschließlich der Präposition („von“) als
+                            solche kenntlich gemacht (<gi>byline</gi>).</item>
+                        <item>Der Autorname selbst wird eigens ausgezeichnet
+                            (<gi>docAuthor</gi>).</item>
+                        <item>Hinweise auf Druckprivilegien („Unter des durchlauchtigsten deutschen
+                            Bundes schützenden Privilegien.“) werden wie ein Titelteil
+                            behandelt.</item>
+                        <item>Auf Titelbilder wird hingewiesen (<tag>figure
+                                type="titlePagePicture"</tag>).</item>
+                        <item>Impressen werden als solche gekennzeichnet (<gi>docImprint</gi>).
+                            Innerhalb des Impressums werden Erscheinungsort (<gi>pubPlace</gi>),
+                            Verlag (<gi>publisher</gi>) und Erscheinungsjahr (<gi>docDate</gi>) als
+                            solche gekennzeichnet.</item>
+                        <item>Inhaltsverzeichnisse werden als solche kenntlich gemacht (<tag>div
+                                type="contents"</tag>, vgl. <ref
+                                target="http://www.tei-c.org/release/doc/tei-p5-exemplars/html/tei_tite.doc.html#frontback"
+                                >TEI Tite — A recommendation for off-site text encoding, Abschn.
+                                3.4</ref>). Sie werden als Listen behandelt, die Einträge enthalten.
+                            Finden sich untergeordnete Überschriften auch im Inhaltsverzeichnis,
+                            wird hierfür eine untergeordnete Liste angelegt. Die übergeordnete
+                            Überschrift steht am Beginn dieser Liste und wird als Überschrift
+                            gekennzeichnet.</item>
+                        <item>Auf Illustrationen wird hingewiesen (<tag>figure
+                                type="illustration"</tag>). Dazugehörige Bildunterschriften und
+                            Signaturen werden als Teil der Illustration begriffen und nicht
+                            aufgenommen. </item>
+                    </list>
+                </div>
+                <div>
+                    <head>Dramentypische Gliederung</head>
+                    <list>
+                        <item>Figurenreden werden als solche kenntlich gemacht.</item>
+                        <item>Sprecherbezeichnungen werden als solche kenntlich gemacht.</item>
+                        <item>Bühnenanweisungen werden als solche kenntlich gemacht. Bei
+                            Bühnenanweisungen am Ende von Figurenreden ist darauf zu achten, ob sie
+                            eine abschließende Handlung der gesprochen habenden Figur angeben (z.B.
+                            „ab“) und zur Figurenrede gehören oder auf die Figurenrede folgen („Der
+                            Himmel ſchließt“).</item>
+                        <item>Wenn unklar ist, ob es sich z.B. um die Überschrift einer neuen Szene
+                            oder um eine Bühnenanweisung, um einen Vers oder um Prosa handelt,
+                            sollte möglichst auch keine diesbezügliche Aussage gemacht werden
+                            (anstelle der klassifizierenden Elemente ist dann das Element
+                                <gi>ab</gi> zu verwenden).</item>
+                    </list>
+                </div>
+                <div>
+                    <head>Versrede</head>
+                    <list>
+                        <item>Verse werden als solche kenntlich gemacht.</item>
+                        <item>Wenn ein Vers auf mehrere Sprecher verteilt ist (Antilabe), werden die
+                            auf die einzelnen Sprecher entfallenden Teilverse als solche kenntlich
+                            gemacht und hinsichtlich ihrer Position im Gesamtvers bestimmt
+                                (<code>part="I"</code> für die erste Position, <code>part="M"</code>
+                            für die mittlere Position und <code>part="F"</code> für die letzte
+                            Position). Bei vierteiligen Antilaben erhalten alle zwischen dem ersten
+                            und letzten Teilvers befindlichen den Wert <val>M</val>.</item>
+                        <item>Versgruppen und Strophen werden markiert, soweit sie anhand von
+                            typographischen Merkmalen erkennbar sind. Dies können auch ganze
+                            Figurenreden sein.</item>
+                        <item>Werden innerhalb einer Figurenrede Versgruppen ausgemacht, so wird der
+                            gesamte Inhalt einer Figurenrede in Versgruppen unterteilt; Versgruppen
+                            können auch aus nur einem Vers bestehen.</item>
+                        <item>Versgruppen, Strophen und Refrains werden <emph>nicht</emph>
+                            unterschieden.</item>
+                    </list>
+                </div>
+            </div>
+            <div>
+                <head>Typographische Merkmale</head>
+                <div>
+                    <head>Schriftzeichen</head>
+                    <list>
+                        <item>Fraktur-Ligaturen (ſt, ch, ck usw.) werden nicht bewahrt.</item>
+                        <item>Vergrößerte Spatien werden nicht berücksichtigt.</item>
+                        <item>Die Spationierung von Satzzeichen wird nicht festgehalten.</item>
+                    </list>
+                </div>
+                <div>
+                    <head>Zeilen</head>
+                    <list>
+                        <item>Alle Zeilenumbrüche sollen kodiert sein, entweder implizit oder
+                            explizit. Implizit kodiert sind Zeilenumbrüche am Beginn und am Ende von
+                            Elementen, die als „chunks“ oder „paragraph-like elements“ bezeichnet
+                            werden (<ref
+                                target="http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STBTC"
+                                >s. Abschn. 1.3.2.1 der TEI Guidelines</ref>). Zeilenumbrüche am
+                            Beginn folgender Elemente werden, als regelhaft, <emph>nicht</emph>
+                            explizit festgehalten:<list>
+                                <item><gi>ab</gi>,</item>
+                                <item><gi>byline</gi></item>
+                                <item><gi>docImprint</gi></item>
+                                <item><gi>epigraph</gi></item>
+                                <item><gi>fw</gi></item>
+                                <item><gi>head</gi>,</item>
+                                <item><gi>item</gi>,</item>
+                                <item><gi>l</gi>,</item>
+                                <item><gi>note</gi>,</item>
+                                <item><gi>p</gi>,</item>
+                                <item><gi>speaker</gi>,</item>
+                                <item><gi>stage</gi>,</item>
+                                <item><gi>titlePart</gi>,</item>
+                                <item><gi>trailer</gi>.</item>
+                            </list> Wenn der Anfang eines dieser Elemente <emph>nicht</emph> mit dem
+                            Beginn einer neuen Druckzeile zusammenfällt, muss dies am Element
+                            vermerkt werden (<code>rend="inline"</code>). Bsp.: Wenn auf eine
+                            Sprecherbezeichnung eine Bühnenanweisung ohne Zeilenumbruch folgt, wird
+                            dies markiert (<tag>stage rend="inline"</tag>).</item>
+                        <item>Zeilenumbrüche <emph>innerhalb</emph> von Überschriften, Versen,
+                            Absätzen, Bühnenanweisungen, Titelteilen, Autornennungen usw. (d.h. auf
+                            der Ebene der „phrase-level elements“, <ref
+                                target="http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STBTC"
+                                >s. Abschn. 1.3.2.1 der TEI Guidelines</ref>) werden
+                            markiert.</item>
+                        <item>Wenn ein Zeilenumbruch mit einer Wortgrenze zusammenfällt, so wird
+                            kein Leerzeichen gesetzt.</item>
+                        <item>Wenn ein Zeilenumbruch innerhalb eines Worts auftritt, so wird
+                            das Element <gi>lb</gi> mit <code>break="no"</code> versehen.</item>
+                        <item>Zentrierte Zeilen werden als solche kenntlich gemacht (<code>rend="centered"</code>).</item>
+                        <item>Die Einrückung einzelner Zeilen am Anfang von Absätzen wird markiert
+                                (<tag>p rend="firstLineIndented"</tag>).</item>
+                        <item>Die Einrückung einzelner Zeilen am Anfang von Strophen und Versgruppen
+                            wird markiert (<tag>l rend="indented"</tag>).</item>
+                        <item>Die Einrückung ganzer Absätze oder Strophen wird markiert (<tag>p
+                                rend="indented"</tag>, <tag>lg rend="indented"</tag>). Ist eine
+                            ganze Figurenrede eingerückt (Lieder), so wird ihr Inhalt als Versgruppe
+                            aufgefasst und diese als eingerückt gekennnzeichnet (also ebenfalls
+                                <tag>lg rend="indented"</tag>, <emph>nicht</emph>
+                            <tag>sp rend="indented"</tag>).</item>
+                        <item>Ist eine ganze Strophe oder Versgruppe, zusätzlich aber der erste Vers
+                            eingerückt, so wird sowohl die Strophe oder Versgruppe als auch der Vers
+                            in der jeweils beschriebenen Weise als eingerückt gekennzeichnet.</item>
+                        <item>Hängende Absätze werden als solche kenntlich gemacht <tag>p
+                                rend="hanging"</tag>.</item>
+                        <item>Hängende Absätze mit Erstzeileneinzug werden als solche kenntlich
+                            gemacht (<val>firstLineIndented hanging</val>).</item>
+                        <item>Der Grad der Einrückung von Zeilen, Absätzen und Strophen wird nicht
+                            festgehalten.</item>
+                        <item>Einrückungen von Teilversen im Zusammenhang mit Antilaben
+                                (<ref>s.o.</ref>) werden nicht festgehalten.</item>
+                        <item><hi rend="italics">Vergrößerte Abstände zwischen Zeilen (Leerzeilen)
+                                werden nicht festgehalten.</hi></item>
+                    </list>
+                </div>
+                <div>
+                    <head>Auszeichnungsformen</head>
+                    <list>
+                        <item>Hervorhebungen <emph>innerhalb</emph> von Überschriften, Versen,
+                            Bühnenanweisungen, Absätzen usw. werden markiert (<gi>hi</gi>).</item>
+                        <item>Die <emph>Form</emph> der Hervorhebung wird festgehalten (Sperrsatz:
+                                <val>letter-spaced</val>, vergrößerte Schrift: <val>big</val>,
+                            Textura: <val>textualis</val>, Fettdruck: <val>bold</val>).</item>
+                        <item>Im Fall von Sperrsatz wird zwischen gesperrten, aufgelösten und nicht
+                            aufgelösten Ligaturen nicht differenziert.</item>
+                        <item><hi rend="italics">Ob Überschriften, Bühnenanweisungen etc. gesperrt
+                                oder im Vergleich zum normalen Schriftgrad vergrößert gesetzt sind,
+                                wird nicht berücksichtigt.</hi></item>
+                        <item>Schriftgrade können an alle Elemente mit <att>rend</att> angetragen
+                            werden und gelten für deren gesamten Inhalt, es sei denn auf tieferer
+                            Verschachtelungsebene wird etwas anderes festgelegt.</item>
+                        <item>Der vorübergehende Wechsel zur Antiqua wird mit
+                                <code>rend="antiqua"</code> markiert.</item>
+                        <item>Kursivierung wird mit <code>rend="italic"</code> markiert.</item>
+                    </list>
+                </div>
+                <div>
+                    <head>Paginierung, Kolumnentitel, Bogennorm und -signatur</head>
+                    <list>
+                        <item>Seitenumbrüche werden jeweils am Anfang einer Seite festgehalten (dies
+                            gilt auch für die Titelseite, obwohl diese bereits mit
+                                <gi>titlePage</gi> als Seite kenntlich gemacht ist.</item>
+                        <item>Die Markierung der Seitenumbrüche erfolgt jeweils
+                                <emph>innerhalb</emph> von <gi>front</gi>, <gi>body</gi> und
+                                <gi>back</gi>, jedoch <emph>vor</emph> dem betreffenden Element
+                                <gi>titlePage</gi> oder <gi>div</gi>.</item>
+                        <item>Der Bezug einer jeden Seite zum Digitalisat wird notiert (<tag>pb
+                                facs="[Dateiname]"</tag>).</item>
+                        <item>Die Seiten werden gemäß der Paginierung des Drucks gezählt (<tag>pb
+                                n="1"</tag>), unabhängig davon, ob auf die betreffende Seite eine
+                            Seitenzahl trägt. Dabei wird die vorgefundene Art der Zählung
+                            (arabische, römische Ziffern) übernommen.</item>
+                        <item><hi rend="italics">Paginierungen werden nur dann wie vorgefunden
+                                festgehalten, wenn sie von der Seitenzählung abweichen, d.h.
+                                fehlerhaft sind (<tag>fw type="pageNum"</tag>). Ausrichtung und
+                                begleitender Zierrat (umgebende Geviertstriche) werden nicht
+                                berücksichtigt.</hi></item>
+                        <item><hi rend="italics">Kolumnentitel werden nicht
+                            festgehalten.</hi></item>
+                        <item><hi rend="italics">Bogennormen und -signaturen werden nicht
+                                festgehalten.</hi></item>
+                        <item><hi rend="italics">Kustoden (Blatthüter) werden nicht
+                                festgehalten.</hi></item>
+                    </list>
+                </div>
+                <div>
+                    <head>Zierstücke</head>
+                    <list>
+                        <item><hi rend="italics">Zierstücke werden nicht berücksichtigt.</hi></item>
+                    </list>
+                </div>
+                <div>
+                    <head>Spaltensatz</head>
+                    <list>
+                        <item>Am Beginn des Spaltensatzes wird die Anzahl der Spalten angegeben
+                                (<tag>milestone unit="cols" n="2" für zweispaltigen
+                            Satz).</tag></item>
+                        <item>Der Beginn einer jeden Spalte wird mittels <gi>cb</gi>
+                            markiert.</item>
+                        <item>Unterbrechungen des Spaltensatzes werden markiert (<tag>milestone
+                                unit="cols" n="1"</tag>).</item>
+                    </list>
+                </div>
+            </div>
+        </body>
+    </text>
+</TEI>

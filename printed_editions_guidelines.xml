@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><?oxygen RNGSchema="https://faustedition.uni-wuerzburg.de/schema/1.3/faust-tei.rng" type="xml"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Kodierungsrichtlinien für die Digitalisierung gedruckter
+                    Faust-Editionen</title>
+                <author>Digitale Faust-Edition</author>
+            </titleStmt>
+        </fileDesc>
+        <revisionDesc>
+            <change when="2011-12-08" who="middell">Übernahme aus dem Wiki, Kodierungsvorgaben
+                ergänzt und mit Beispielen angereichert)</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div>
+                <head>Richtlinien</head>
+                <div>
+                    <head>Transkription</head>
+                    <div>
+                        <head>Zeichensystem</head>
+                        <list type="bulleted">
+                            <item>ſ und s werden unterschieden.</item>
+                            <item>I und J werden unterschieden (vgl. <ref target="http://kaskade.dwds.de/dtaq/help/richtlinien#Unterscheidung_von_I_vs._J">die Richtlinien des Deutschen Textarchivs, Kap.
+                                4.1)</ref>.</item>
+                            <item>Fraktur-Ligaturen (ſt, ch, ck) werden nicht bewahrt.</item>
+                            <item>Ae usw. werden als Ae usw. wiedergegeben.</item>
+                            <item>ä und ae usw. werden nicht unterschieden (Wiedergabe als ä
+                                usw.).</item>
+                        </list>
+                    </div>
+                    <div>
+                        <head>Satzzeichen</head>
+                        <list>
+                            <item>Auslassungspunkte werden nicht mit einem Sonderzeichen (…),
+                                sondern mit einzelnen Punkten wiedergegeben.</item>
+                            <item>Trenn- (Unicode &amp;#8208;) und Bindestriche (Unicode
+                                &amp;#8209;) werden unterschieden.</item>
+                            <item>Geviertstriche (Unicode &amp;#8212;) werden nicht hinsichtlich
+                                ihrer Funktion als Gedanken-, Zensur- und Auslassungstrich
+                                unterschieden.</item>
+                            <item>Halbgeviertstriche (Unicode &amp;#8211;) werden von
+                                Geviertstrichen unterschieden.</item>
+                            <item>Eckige Klammern werden von runden unterschieden.</item>
+                        </list>
+                    </div>
+                    <div>
+                        <head>Anführungszeichen</head>
+                        <list type="bulleted">
+                            <item>an vorderer Position als öffnende deutsche: – Unicode
+                                &amp;#x0084;</item>
+                            <item>an hinterer Position als schließende deutsche: schließend“ -
+                                Unicode &amp;#x0093;</item>
+                            <item>Lage (oben oder unten) und Form (66 oder 99) wird nicht
+                                festgehalten</item>
+                        </list>
+                    </div>
+                </div>
+                <div>
+                    <head>Markup</head>
+                    <div>
+                        <head>Gliederung des Textes</head>
+                        <list type="bulleted">
+                            <item>Figurenreden werden als solche kenntlich gemacht.</item>
+                            <item>Sprecherbezeichnungen werden als solche kenntlich gemacht.</item>
+                            <item>Bühnenanweisung werden als solche kenntlich gemacht.</item>
+                            <item>Titel/Überschriften werden als solche kenntlich gemacht.</item>
+                            <item>Textabschnitte werden als solche kenntlich gemacht und
+                                typisiert.</item>
+                        </list>
+                        <div>
+                            <head>Verse</head>
+                            <list type="bulleted">
+                                <item>Verse werden markiert.</item>
+                                <item>Antilaben und ihre Teile werden markiert.</item>
+                                <item>Versgruppen und Strophen werden markiert, soweit sie anhand
+                                    von typographischen Merkmalen erkennbar sind. Letzteres ist
+                                    mitunter nicht der Fall, wenn Lieder auf mehrere Sprecher
+                                    verteilt sind und die Strophengrenzen mit Sprecherwechseln
+                                    zusammenfallen.</item>
+                                <item>Versgruppen, Strophen und Refrains werden nicht
+                                    unterschieden.</item>
+                            </list>
+                        </div>
+                        <div>
+                            <head>Prosa</head>
+                            <list type="bulleted">
+                                <item>Prosa-Absätze werden als solche kenntlich gemacht.</item>
+                            </list>
+                        </div>
+                    </div>
+                    <div>
+                        <head>Typographische Merkmale</head>
+                        <list type="bulleted">
+                            <item>Seitenumbrüche werden jeweils am Anfang einer Seite
+                                festgehalten.</item>
+                            <item>Der Bezug einer jeden Seite zum Digitalisat wird notiert.</item>
+                            <item>Paginierungen werden einschließlich ihrer Ausrichtung und
+                                begleitender Zierelemente (Gedankenstriche etc.)
+                                festgehalten.</item>
+                            <item>Kolumnentitel werden einschließlich ihrer Ausrichtung
+                                festgehalten.</item>
+                            <item>Striche und andere Zierelemente zur Markierung von
+                                Abschnittsgrenzen werden festgehalten und nach Länge sowie Typ
+                                unterschieden.</item>
+                            <item>Bogensignaturen werden festgehalten.</item>
+                            <item>Kustoden (Blatthüter) werden festgehalten.</item>
+                            <item>Die Spationierung von Satzzeichen wird nicht festgehalten.</item>
+                        </list>
+                    </div>
+                    <div>
+                        <head>Auszeichnungsformen</head>
+                        <div>
+                            <head>Schriftgröße</head>
+                            <list type="bulleted">
+                                <item>Innerhalb eines Drucks werden bis zu 5 Schriftgrade
+                                    unterschieden (tiny, small, normal, big, huge).</item>
+                                <item>Schriftgrade können an alle Elemente mit @rend angetragen
+                                    werden und gelten für deren gesamten Inhalt, es sei denn auf
+                                    tieferer Verschachtelungsebene wird etwas anderes
+                                    definiert.</item>
+                                <item>Standardschriftgrad ist "font-size-normal".</item>
+                                <item>Das Antragen von Schriftgraden soll unter Ausnutzung der
+                                    Auszeichnungshierarchie und Beachtung des Standardgrads
+                                    möglichst sparsam erfolgen.</item>
+                            </list>
+                        </div>
+                        <div>
+                            <head>Schrifteffekte</head>
+                            <list type="bulleted">
+                                <item>Sperrsatz wird markiert.</item>
+                                <item>Kursivierung wird markiert.</item>
+                                <item>Der vorübergehende Wechsel zur Antiqua wird markiert.</item>
+                            </list>
+                        </div>
+                    </div>
+                    <div>
+                        <head>Zeilen</head>
+                        <list type="bulleted">
+                            <item>Die Einrückung einzelner Zeilen am Anfang von Absätzen, Strophen
+                                und Versgruppen wird von der Einrückung ganzer Strophen oder
+                                Figurenreden (Lieder) unterschieden.</item>
+                            <item>Abgesehen davon wird der genaue Grad der Einrückung von Zeilen
+                                nicht festgehalten. Dies gilt auch für Antilaben.</item>
+                            <item>Hängende Absätze werden als solche kenntlich gemacht.</item>
+                            <item>Zentrierte Zeilen werden als solche kenntlich gemacht.</item>
+                            <item>Nicht erfolgte Zeilenumbrüche zwischen Sprecherbezeichnungen und
+                                Bühnenanweisungen werden festgehalten.</item>
+                            <item>Zeilenumbrüche innerhalb von Versen, Bühnenanweisungen etc. werden
+                                festgehalten.</item>
+                            <item>Zeilenumbrüche vor und nach Überschriften werden, als regelhaft,
+                                nicht festgehalten.</item>
+                            <item>Zeilenumbrüche vor und nach Versen werden, als regelhaft, nicht
+                                festgehalten.</item>
+                            <item>Einzelne vergrößerte Abstände zwischen Zeilen (Leerzeilen) werden
+                                festgehalten. Dies gilt nicht für gleichmäßig vergrößerten
+                                Durchschuss.</item>
+                        </list>
+                    </div>
+                    <div>
+                        <head>Satzfehler</head>
+                        <list type="bulleted">
+                            <item>Satzfehler sollen nicht stillschweigend korrigiert werden.</item>
+                            <item>Dies gilt auch für die Abdrücke auf dem Kopf stehender Lettern
+                                (Fliegenköpfe) und für verdrehte Buchstaben und dabei evtl.
+                                entstehende scheinbare andere Buchstaben („uud“ statt „und“
+                                etc.).</item>
+                            <item>Alle derartigen Vorkommnisse werden annotiert.</item>
+                        </list>
+                    </div>
+                    <div>
+                        <head>Presskorruptelen</head>
+                        <div>
+                            <head>Lädierte und verschmutzte Lettern</head>
+                            <list type="bulleted">
+                                <item>Wenn Buchstaben nicht oder falsch entziffert wurden, weil die
+                                    Letter lädiert oder verschmutzt war, so soll dies nicht
+                                    stillschweigend korrigiert werden.</item>
+                                <item>Im Lauf des Druckvorgangs können Lettern lädiert werden,
+                                    sodass an diesen Stellen keine Druckerschwärze mehr aufgetragen
+                                    wird. Auf diesem Weg können Zeichen unlesbar werden, das
+                                    Aussehen eines anderen Schriftzeichens annehmen (v stapp p etc.)
+                                    und mitunter im Lauf des Druckvorgangs auch ganz
+                                    verschwinden.</item>
+                            </list>
+                        </div>
+                        <div>
+                            <head>Spieße</head>
+                            <list type="bulleted">
+                                <item>Abdrücke von Blindmaterial werden nicht markiert.</item>
+                            </list>
+                        </div>
+                    </div>
+                    <div>
+                        <head>Eintragungen</head>
+                        <list type="bulleted">
+                            <item>Auf Stempel, hs. Signaturen, Besitzervermerke, Anstreichungen etc.
+                                wird nicht hingewiesen.</item>
+                        </list>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <head>Kodierung</head>
+                <list type="bulleted">
+                    <item>wohlgeformtes XML</item>
+                    <item>valide gemäß vorgegebenem Schema</item>
+                </list>
+                <div>
+                    <head>Beispiel</head>
+                    <pb facs="druck_digitalisat_0001.tif"/>
+                    <!-- Seitenumbruch mit Digitalisatbezug -->
+                    <fw type="header">Kolumnentitel</fw>
+                    <div type="act">
+                        <fw type="adorn-type-1">Zierelement Typ #1</fw>
+                        <head>Aktüberschrift</head>
+                        <div type="scene">
+                            <head>Szenenüberschrift</head>
+                            <sp>
+                                <!-- Figurenrede -->
+                                <speaker>Sprecherangabe</speaker>
+                                <stage rend="inline">Bühnenanweisung ohne vorhergehenden
+                                    Zeilenumbruch<lb/> und mit anschließendem Umbruch in der
+                                    Anweisung</stage>
+                                <lg>
+                                    <!-- Versgruppe ohne Typisierung (@type) nach Strophe/Refrain etc. -->
+                                    <l rend="indent-small">Leicht eingerückter Vers</l>
+                                    <l>Vers</l>
+                                </lg>
+                                <fw type="sig">8*</fw>
+                                <!-- Bogensignatur -->
+                                <fw type="pageNum">-1-</fw>
+                                <!-- Seitenummer am Fuß der Seite-->
+                                <fw type="catch">Lorem</fw>
+                                <!-- Kustode -->
+                                <pb facs="druck_digitalisat_0002.tif"/>
+                                <!-- Seitenumbruch mit Digitalisatbezug -->
+                                <lg rend="indent-large">
+                                    <!-- Stark eingerückte Versgruppe -->
+                                    <l>Lorem ipsum dolor sit amet, <hi rend="font-type-latin">Einschub in Antiqua</hi> consectetuer adipiscing elit. </l>
+                                    <l>Lorem ipsum <hi rend="font-style-italics">kursivierter
+                                            Einschub</hi> dolor sit amet, consectetuer adipiscing
+                                        elit. </l>
+                                    <l>Lorem ipsum dolor sit amet, <lb/>consectetuer adipiscing
+                                        elit.</l>
+                                    <!-- Umgebrochener Vers -->
+                                    <l>Aenean vulputate <hi rend="font-style-spaced">gesperrt
+                                            gesetzter Einschub</hi>eleifend tellus</l>
+                                    <l rend="font-type-latin">In Antiqua gesetzter Vers</l>
+                                </lg>
+                                <l rend="align-centered">Zentriert gesetzter Vers</l>
+                            </sp>
+                            <div type="subscene">
+                                <head>Unterszenenüberschrift</head>
+                                <sp>
+                                    <speaker>Sprecher #1</speaker>
+                                    <stage>Bühnenanweisung mit vorhergehendem Zeilenumbruch</stage>
+                                    <l part="al-1">1. Teil einer Antilabe</l>
+                                </sp>
+                                <sp>
+                                    <speaker>Sprecher #2</speaker>
+                                    <l part="al-2">2. Teil einer Antilabe</l>
+                                </sp>
+                                <sp>
+                                    <speaker>Sprecher #1</speaker>
+                                    <l part="al-3">3. Teil einer Antilabe</l>
+                                </sp>
+                                <sp>
+                                    <speaker>Sprecher #2</speaker>
+                                    <l part="al-4">4. Teil einer Antilabe</l>
+                                </sp>
+                                <sp>
+                                    <speaker>Sprecher #3</speaker>
+                                    <l>Lorem ipsum dolor sit amet, <sic>uud</sic> consectetuer
+                                        adipiscing elit. </l>
+                                    <!-- Satzfehler -->
+                                    <lb/>
+                                    <lb/>
+                                    <!-- Zwei Leerzeilen zwischen Versen -->
+                                    <l>Lorem ipsum dolor sit amet, <damage>v</damage>asste
+                                        consectetuer adipiscing elit. </l>
+                                    <!-- Presskorruptelen, z. B. v statt p -->
+                                </sp>
+                            </div>
+                        </div>
+                        <div>
+                            <p>Prosaabsatz</p>
+                            <p rend="align-hanging">Noch ein Prosaabsatz, hängend</p>
+                        </div>
+                        <div rend="font-size-huge">
+                            <!-- Der gesamte Abschnitt in größter Schrift -->
+                            <lg>
+                                <l>Vers in größter Schrift mit <hi rend="font-size-normal">Einschub
+                                        in normaler Schriftgröße</hi> usw.</l>
+                                <l rend="font-size-tiny">Vers in kleinster Schrift</l>
+                                <l>Und wieder ein sehr groß gesetzter Vers</l>
+                            </lg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </text>
+</TEI>
