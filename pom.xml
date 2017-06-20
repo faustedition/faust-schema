@@ -19,65 +19,33 @@
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>xml-maven-plugin</artifactId>
-				<version>1.0.1</version>
-				<executions>
-					<execution>
-						<id>transform-odd</id>
-						<goals><goal>transform</goal></goals>
-						<phase>compile</phase>
-						<configuration>
-							<transformationSets>
-								<transformationSet>
-									<stylesheet>${teiStylesheetUrl}/odds/odd2relax.xsl</stylesheet>
-									<dir>src/main/odd</dir>
-									<parameters>
-										<parameter><name>verbose</name><value>false</value></parameter>
-										<parameter><name>TEIC</name><value>true</value></parameter>
-										<parameter><name>lang</name><value>en</value></parameter>
-										<parameter><name>doclang</name><value>en</value></parameter>
-										<parameter><name>parameterize</name><value>false</value></parameter>
-										<parameter><name>patternPrefix</name><value>_tei</value></parameter>					
-									</parameters>
-								    <fileMappers>
-										<fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
-										  <targetExtension>.rng</targetExtension>
-										</fileMapper>
-									</fileMappers>
-								</transformationSet>
-								<transformationSet>
-									<stylesheet>${teiStylesheetUrl}/odds/odd2odd.xsl</stylesheet>
-									<dir>src/main/odd</dir>
-									<parameters>
-										<parameter><name>selectedSchema</name><value>faust-tei</value></parameter>
-										<parameter><name>verbose</name><value>false</value></parameter>
-										<parameter><name>TEIC</name><value>true</value></parameter>
-										<parameter><name>lang</name><value>en</value></parameter>
-										<parameter><name>doclang</name><value>en</value></parameter>
-										<parameter><name>stripped</name><value>true</value></parameter>
-										<parameter><name>defaultSource</name><value>${p5subsetUrl}</value></parameter>
-										<parameter><name>useVersionFromTEI</name><value>true</value></parameter>
-									</parameters>
-								</transformationSet>
-							</transformationSets>
-						</configuration>						
-					</execution>			
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>net.sf.saxon</groupId>
-						<artifactId>Saxon-HE</artifactId>
-						<version>9.7.0-18</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.4.0</version>
 				
 				<executions>
+				
+					<execution>
+						<id>create-schema</id>
+						<phase>generate-sources</phase>
+						<goals><goal>java</goal></goals>
+						<configuration>
+							<mainClass>com.xmlcalabash.drivers.Main</mainClass>
+							<commandlineArgs>${project.basedir}/src/main/xproc/generate-schemas.xpl</commandlineArgs>
+						</configuration>
+					</execution>
+					
+					<execution>
+						<id>validate-xml</id>
+						<phase>integration-test</phase>
+						<goals><goal>java</goal></goals>
+						<configuration>
+							<mainClass>com.xmlcalabash.drivers.Main</mainClass>
+							<commandlineArgs>${project.basedir}/src/main/xproc/validate-xml.xpl</commandlineArgs>
+						</configuration>
+					</execution>
+					
+				
+				
 					<execution>
 						<id>deploy-rsync</id>
 						<phase>deploy</phase>
@@ -131,4 +99,11 @@
 			<url>scp://faustedition.uni-wuerzburg.de/mnt/data/htdocs/schema/${project.version}</url>
 		</site>
 	</distributionManagement>
+	<dependencies>
+		<dependency>
+			<groupId>com.xmlcalabash</groupId>
+			<artifactId>xmlcalabash</artifactId>
+			<version>1.1.16-97</version>
+		</dependency>
+	</dependencies>
 </project>
