@@ -64,7 +64,7 @@
 				
 				<cx:message message=" - odd2relax"/>
 				
-				<p:store>
+				<p:store indent="true">
 					<p:with-option name="href" select="$expanded-odd"/>
 				</p:store>
 				
@@ -81,7 +81,7 @@
 				
 				<cx:message message=" - saving rng"/>
 				
-				<p:store>
+				<p:store indent="true">
 					<p:with-option name="href" select="$rng"/>
 				</p:store>
 				
@@ -93,7 +93,7 @@
 				
 				<cx:message message=" - saving schematron"/>
 				
-				<p:store>
+				<p:store indent="true">
 					<p:with-option name="href" select="$sch"/>
 				</p:store>
 				
