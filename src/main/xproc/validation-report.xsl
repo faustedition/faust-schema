@@ -28,7 +28,7 @@
 		</table>
 	</xsl:template>
 	
-	<xsl:template name="rng-by-message">
+	<xsl:template name="rng-message-summary">
 		<table>
 			<tr>
 				<th>Message</th>
@@ -38,7 +38,7 @@
 			<xsl:for-each-group select="//c:error" group-by="c:message">
 				<xsl:sort select="current-grouping-key()"/>
 				<tr>
-					<td><xsl:value-of select="current-grouping-key()"/></td>
+					<td><a href="#{generate-id(current-group()[1])}"><xsl:value-of select="current-grouping-key()"/></a></td>
 					<td style="text-align:right;"><xsl:value-of select="count(current-group())"/></td>
 					<td style="text-align:right;"><xsl:value-of select="count(current-group()/ancestor::f:validation-error)"/></td>
 				</tr>
@@ -46,6 +46,8 @@
 		</table>
 	</xsl:template>
 	
+	
+
 	<xsl:template match="/">
 		<html>
 			<head>
@@ -61,14 +63,42 @@
 				<xsl:call-template name="overall-stats"/>
 				
 				<h2>Relax NG errors by message</h2>
-				<xsl:call-template name="rng-by-message"/>
+				<xsl:call-template name="rng-message-summary"/>
 				
-				<h2>Individual Errors by file</h2>
-				<dl class="individual-errors">
-					<xsl:apply-templates select="//f:validation-error"/>
-				</dl>
+				<h2>Individual Errors by message</h2>
+				<xsl:call-template name="rng-by-message"/>
 			</body>
 		</html>		
+	</xsl:template>
+	
+	<xsl:template name="rng-by-message">
+		<dl>
+			<xsl:for-each-group select="//c:error" group-by="c:message">
+				<xsl:sort select="current-grouping-key()" stable="yes"/>
+				<xsl:variable name="id" select="generate-id(current-group()[1])"/>
+				<dt xml:id="{$id}" id="{$id}">
+					<xsl:value-of select="current-grouping-key()"/>
+				</dt>
+				<dd>
+					<p class="resolution"><xsl:value-of select="c:resolution"/></p>
+					<ol>
+						<xsl:for-each-group select="current-group()" group-by="ancestor::f:validation-error/@filename">
+							<li>
+								<a href="{current-grouping-key()}"><xsl:value-of select="current-grouping-key()"/></a>:
+								<span class="locations">
+									<xsl:value-of select="concat(count(current-group()), '×: ')"/>
+									<xsl:for-each select="current-group()">
+										<xsl:sort select="number(@line)"/>
+										<xsl:sort select="number(@column)"/>
+										<xsl:value-of select="concat(@line, ':', @column, ' ')"/>
+									</xsl:for-each>									
+								</span>
+							</li>
+						</xsl:for-each-group>
+					</ol>
+				</dd>
+			</xsl:for-each-group>			
+		</dl>
 	</xsl:template>
 	
 	<xsl:template match="f:validation-error[c:errors]">
