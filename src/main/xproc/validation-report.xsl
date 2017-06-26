@@ -10,6 +10,28 @@
 	
 	<xsl:output method="xhtml"/>
 	
+	<xsl:param name="report-title">Validation Errors</xsl:param>
+	<xsl:param name="_xmlroot"/>
+	<xsl:param name="linkroot"/>
+	<xsl:param name="rng"/>
+	<xsl:param name="schematron"/>
+	
+	
+	
+	
+	
+	
+	<xsl:function name="f:linkxml" as="element()">
+		<xsl:param name="uri"/>
+		<xsl:variable name="relpath" 
+			select="if (starts-with($uri, $_xmlroot))
+						then substring($uri, string-length($_xmlroot) + 
+								(if (ends-with('/', $_xmlroot)) then 1 else 2))
+						else $uri"/>
+		<xsl:variable name="link" select="if ($linkroot != '') then resolve-uri($relpath, $linkroot) else $uri"/>
+		<a href="{$link}"><xsl:value-of select="$relpath"/></a>
+	</xsl:function>
+	
 	
 	<xsl:template name="overall-stats">
 		<table class="overall-stats">
@@ -51,7 +73,7 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-				<title>Validation Report</title>
+				<title><xsl:value-of select="$report-title"/></title>
 				<style>
 					dt { font-weight: bold; }
 					.resolution { margin: 0; color: gray; }
@@ -59,6 +81,14 @@
 				</style>
 			</head>
 			<body>
+				<h1><xsl:value-of select="$report-title"/></h1>
+				<table>
+					<tr><td>XML Root</td><td><xsl:value-of select="$_xmlroot"/></td></tr>
+					<tr><td>Relax NG schema</td><td><xsl:value-of select="$rng"/></td></tr>
+					<tr><td>Schematron document</td><td><xsl:value-of select="$schematron"/></td></tr>
+					<tr><td>Validation date</td><td><xsl:value-of select="current-dateTime()"/></td></tr>
+				</table>
+				
 				<h2>Overall Summary</h2>
 				<xsl:call-template name="overall-stats"/>
 				
@@ -79,25 +109,27 @@
 				<dt xml:id="{$id}" id="{$id}">
 					<xsl:value-of select="current-grouping-key()"/>
 				</dt>
-				<dd>
-					<p class="resolution"><xsl:value-of select="c:resolution"/></p>
-					<ol>
-						<xsl:for-each-group select="current-group()" group-by="ancestor::f:validation-error/@filename">
-							<li>
-								<a href="{current-grouping-key()}"><xsl:value-of select="current-grouping-key()"/></a>:
-								<span class="locations">
-									<xsl:value-of select="concat(count(current-group()), '×: ')"/>
-									<xsl:for-each select="current-group()">
-										<xsl:sort select="number(@line)"/>
-										<xsl:sort select="number(@column)"/>
-										<xsl:value-of select="concat(@line, ':', @column, ' ')"/>
-									</xsl:for-each>									
-								</span>
-							</li>
-						</xsl:for-each-group>
-					</ol>
-				</dd>
-			</xsl:for-each-group>			
+				<xsl:for-each-group select="current-group()" group-by="c:resolution">
+					<dd>
+						<p class="resolution"><xsl:value-of select="current-grouping-key()"/></p>
+						<ol>
+							<xsl:for-each-group select="current-group()" group-by="ancestor::f:validation-error/@filename">
+								<li>
+									<xsl:sequence select="f:linkxml(current-grouping-key())"/>:
+									<span class="locations">
+										<xsl:value-of select="concat(count(current-group()), '×: ')"/>
+										<xsl:for-each select="current-group()">
+											<xsl:sort select="number(@line)"/>
+											<xsl:sort select="number(@column)"/>
+											<xsl:value-of select="concat(@line, ':', @column, ' ')"/>
+										</xsl:for-each>									
+									</span>
+								</li>
+							</xsl:for-each-group>
+						</ol>
+					</dd>
+				</xsl:for-each-group>
+			</xsl:for-each-group>
 		</dl>
 	</xsl:template>
 	

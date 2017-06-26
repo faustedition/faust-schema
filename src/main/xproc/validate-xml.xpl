@@ -5,6 +5,15 @@
 	xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
 	xmlns:l="http://xproc.org/library" type="f:list-transcripts" name="main" version="1.0">
 	
+	<p:option name="target" select="'../../../target/'"/>
+	<p:option name="_target" select="resolve-uri($target)"/>
+	<p:option name="xmlroot" select="'../../../data/xml/transcript'"></p:option>
+	<p:option name="_xmlroot" select="resolve-uri($xmlroot)"/>
+	<p:option name="rng" select="resolve-uri('schema/faust-tei.rng', $_target)"/>
+	<p:option name="schematron" select="resolve-uri('schema/faust-tei.sch', $_target)"/>
+	<p:option name="report-name" select="'faust-tei'"/>
+	<p:option name="report-title" select="concat('Validation Errors ', $report-name)"/>
+	
 	<p:input port="source"><p:empty/></p:input>
 	<p:input port="parameters" kind="parameter"/>
 	<p:output port="result" primary="true" sequence="true"><p:empty/></p:output>
@@ -13,10 +22,29 @@
 	<p:import href="http://xproc.org/library/recursive-directory-list.xpl"/>
 	<p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
 
-	<p:variable name="errors-xml" select="resolve-uri('../../../target/validation-errors.xml')"></p:variable>
+	<p:variable name="errors-xml" select="resolve-uri(concat('report/', $report-name, '.xml'), $_target)"/>
+	<p:variable name="report" select="resolve-uri(concat('report/', $report-name, '.html'), $_target)"/>
+	
+	<cx:message>
+		<p:with-option name="message" select="concat(
+			'&#10;target=', $target, '; resolved to ', $_target,
+			'&#10;xmlroot=', $xmlroot, '; resolved to ', $_xmlroot,
+			'&#10;rng=', $rng,
+			'&#10;schematron=', $schematron,
+			'&#10;report=', $report			
+			)"></p:with-option>
+	</cx:message>
+	
+	<p:load name="load-rng">
+		<p:with-option name="href" select="$rng"/>
+	</p:load>
+	
+	<p:load name="load-schematron">
+		<p:with-option name="href" select="$schematron"/>
+	</p:load>
 
 	<l:recursive-directory-list>
-		<p:with-option name="path" select="'file:/home/tv/git/faust-schema/data/xml/transcript'"/>
+		<p:with-option name="path" select="$_xmlroot"/>
 	</l:recursive-directory-list>
 	
 	
@@ -36,12 +64,12 @@
 			<p:group>
 				<p:validate-with-relax-ng assert-valid="true">
 					<p:input port="schema">
-						<p:document href="../../../target/schema/faust-tei.rng"/>
+						<p:pipe port="result" step="load-rng"/>
 					</p:input>			
 				</p:validate-with-relax-ng>
 
-				<p:validate-with-schematron name="schematron">
-					<p:input port="schema"><p:document href="../../../target/schema/faust-tei.sch"/></p:input>
+				<p:validate-with-schematron name="schematron" assert-valid="false">
+					<p:input port="schema"><p:pipe port="result" step="load-schematron"/></p:input>
 				</p:validate-with-schematron>
 				
 				<!-- We don't need the original XML -> work with report -->
@@ -68,8 +96,10 @@
 					<p:input port="source"><p:pipe port="error" step="validate-catch"/></p:input>
 				</p:identity>
 				
+								
 				<!-- Markup the (plain-text) jing error message  -->
 				<p:xslt>
+					<p:with-param name="filename" select="$filename"/>
 					<p:input port="stylesheet"><p:inline>
 						<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 							
@@ -121,10 +151,21 @@
 		<p:with-option name="href" select="$errors-xml"/>
 	</p:store>
 	
-	<cx:message message="Saved errors.">
-		<p:input port="source"><p:pipe port="result" step="store-errors"/></p:input>
+	<p:in-scope-names name="in-scope-names"/>
+	
+	<p:xslt>
+		<p:input port="source"><p:pipe port="result" step="wrap-errors"/></p:input>
+		<p:input port="stylesheet"><p:document href="validation-report.xsl"/></p:input>
+		<p:input port="parameters"><p:pipe port="result" step="in-scope-names"/></p:input>
+	</p:xslt>
+	
+	<cx:message>
+		<p:with-option name="message" select="concat('Storing report to ', $report)"/>
 	</cx:message>
+	<p:store method="xhtml" indent="true">
+		<p:with-option name="href" select="$report"/>
+	</p:store>
 		
-	<p:sink/>
+	
 	
 </p:declare-step>
