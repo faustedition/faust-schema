@@ -103,7 +103,19 @@
 					<p:input port="stylesheet"><p:inline>
 						<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 							
-							<xsl:template match="c:error" >
+							<xsl:param name="filename"/>
+							
+							<xsl:template match="/">
+								<xsl:variable name="all-errors">
+									<xsl:apply-templates select="//c:error"/>
+								</xsl:variable>
+								
+								<f:validation-error filename="{$filename}">
+									<xsl:sequence select="$all-errors//c:error[@systemId = $filename]"/>
+								</f:validation-error>
+							</xsl:template>
+														
+							<xsl:template match="c:error">
 								<xsl:copy>
 									<xsl:copy-of select="@*"/>
 									<xsl:analyze-string select="." regex="[^;]+; systemId: ([^;]+); lineNumber: \d+; columnNumber: \d+; ([^;]+); (.*)">
