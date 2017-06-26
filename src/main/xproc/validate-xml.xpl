@@ -142,10 +142,10 @@
 				</p:xslt>
 				
 				
-				<cx:message>
+<!--				<cx:message>
 					<p:with-option name="message" select="concat('VALIDATION ERROR:', $filename, ':', string-join(distinct-values(//c:message), '; '))"/>
 				</cx:message>		
-				<p:wrap wrapper="f:validation-error" match="/"/>
+-->				<p:wrap wrapper="f:validation-error" match="/"/>
 			</p:catch>
 		</p:try>
 		<p:add-attribute attribute-name="filename" match="/*">
@@ -153,7 +153,29 @@
 		</p:add-attribute>				
 	</p:for-each>
 	
-	<p:wrap-sequence wrapper="validation-errors" name="wrap-errors"/>
+	<p:wrap-sequence wrapper="validation-errors" name="wrap-errors-0"/>
+	
+	<!-- drag ns decl up so serialization gets MUCH smaller -->
+	<p:xslt name="wrap-errors">
+		<p:input port="stylesheet">
+			<p:inline>
+				<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+					<xsl:template match="/*">
+						<xsl:copy>
+							<xsl:namespace name="f">http://www.faustedition.net/ns</xsl:namespace>
+							<xsl:namespace name="c">http://www.w3.org/ns/xproc-step</xsl:namespace>
+							<xsl:namespace name="err">http://www.w3.org/ns/xproc-error</xsl:namespace>
+							<xsl:namespace name="cx">http://xmlcalabash.com/ns/extensions</xsl:namespace>
+							<xsl:namespace name="pxf">http://exproc.org/proposed/steps/file</xsl:namespace>
+							<xsl:namespace name="svrl">http://purl.oclc.org/dsdl/svrl</xsl:namespace>
+							<xsl:namespace name="l">http://xproc.org/library</xsl:namespace>							
+							<xsl:copy-of select="@*, node()"/>
+						</xsl:copy>
+					</xsl:template>
+				</xsl:stylesheet>
+			</p:inline>
+		</p:input>
+	</p:xslt>
 	
 	<cx:message>
 		<p:with-option name="message" select="concat('Saving errors to ', $errors-xml)"/>
