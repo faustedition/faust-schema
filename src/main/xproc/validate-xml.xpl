@@ -13,6 +13,7 @@
 	<p:option name="schematron" select="resolve-uri('schema/faust-tei.sch', $_target)"/>
 	<p:option name="report-name" select="'faust-tei'"/>
 	<p:option name="report-title" select="concat('Validation Errors ', $report-name)"/>
+	<p:option name="linkroot"/>
 	
 	<p:input port="source"><p:empty/></p:input>
 	<p:input port="parameters" kind="parameter"/>
@@ -174,7 +175,7 @@
 					</xsl:template>
 				</xsl:stylesheet>
 			</p:inline>
-		</p:input>
+		</p:input>		
 	</p:xslt>
 	
 	<cx:message>

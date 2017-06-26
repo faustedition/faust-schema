@@ -15,10 +15,7 @@
 	<xsl:param name="linkroot"/>
 	<xsl:param name="rng"/>
 	<xsl:param name="schematron"/>
-	
-	
-	
-	
+		
 	
 	
 	<xsl:function name="f:linkxml" as="element()">
@@ -37,11 +34,11 @@
 		<table class="overall-stats">
 			<tr style="background:#f88;">
 				<td style="text-align:right;"><xsl:value-of select="count(//f:validation-error[.//c:error])"/></td>
-				<td>documents are invalid by the Relax NG schema</td>
+				<td><a href="#rng-summary">documents are invalid by the Relax NG schema</a></td>
 			</tr>
 			<tr style="background:#ff8;"> 
 				<td style="text-align:right;"><xsl:value-of select="count(//f:validation-error[.//svrl:failed-assert])"/></td>
-				<td>documents pass Relax NG validation, but fail one or more Schematron assertions</td>
+				<td><a href="#schematron">documents pass Relax NG validation, but fail one or more Schematron assertions</a></td>
 			</tr>
 			<tr style="background:#8f8;">
 				<td style="text-align:right;"><xsl:value-of select="count(//f:valid-document)"/></td>
@@ -78,6 +75,7 @@
 					dt { font-weight: bold; }
 					.resolution { margin: 0; color: gray; }
 					.locations { margin: 0; font-family: monospace}
+					small.xpath { color: gray; }
 				</style>
 			</head>
 			<body>
@@ -92,11 +90,14 @@
 				<h2>Overall Summary</h2>
 				<xsl:call-template name="overall-stats"/>
 				
-				<h2>Relax NG errors by message</h2>
+				<h2 id="rng-summary">Relax NG errors by message</h2>
 				<xsl:call-template name="rng-message-summary"/>
 				
-				<h2>Individual Errors by message</h2>
+				<h2 id="rng-details">Individual Errors by message</h2>
 				<xsl:call-template name="rng-by-message"/>
+				
+				<h2 id="schematron">Individual Schematron Errors by message</h2>
+				<xsl:call-template name="schematron-details"/>
 			</body>
 		</html>		
 	</xsl:template>
@@ -130,6 +131,24 @@
 					</dd>
 				</xsl:for-each-group>
 			</xsl:for-each-group>
+		</dl>
+	</xsl:template>
+	
+	<xsl:template name="schematron-details">
+		<dl>
+			<xsl:for-each-group select="//svrl:failed-assert" group-by="normalize-space(svrl:text)">
+				<dt><xsl:value-of select="current-grouping-key()"/></dt>
+				<dd><ol>
+					<xsl:for-each select="current-group()">
+						<li>
+							<xsl:sequence select="f:linkxml(ancestor::f:validation-error/@filename)"/><xsl:text>: </xsl:text>
+							<xsl:value-of select="preceding-sibling::svrl:fired-rule[1]/@context"/><xsl:text> </xsl:text>
+							<small class="xpath"><xsl:value-of select="
+								replace(@location, &quot;\*:([a-zA-Z]+)\[namespace-uri\(\)='http://www.tei-c.org/ns/1.0'\]&quot;, 'tei:$1')"/></small>							
+						</li>
+					</xsl:for-each>					
+				</ol></dd>
+			</xsl:for-each-group>			
 		</dl>
 	</xsl:template>
 	
