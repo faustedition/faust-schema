@@ -3,7 +3,7 @@
 	xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:f="http://www.faustedition.net/ns"
 	xmlns:pxf="http://exproc.org/proposed/steps/file"
 	xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-	xmlns:l="http://xproc.org/library" type="f:list-transcripts" name="main" version="1.0">
+	xmlns:l="http://xproc.org/library" type="f:validate-xmls" name="main" version="1.0">
 	
 	<p:option name="target" select="'../../../target/'"/>
 	<p:option name="_target" select="resolve-uri($target)"/>
