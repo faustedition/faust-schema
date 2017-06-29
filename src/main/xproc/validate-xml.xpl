@@ -9,8 +9,9 @@
 	<p:option name="_target" select="resolve-uri($target)"/>
 	<p:option name="xmlroot" select="'../../../data/xml/transcript'"></p:option>
 	<p:option name="_xmlroot" select="resolve-uri($xmlroot)"/>
-	<p:option name="rng" select="resolve-uri('schema/faust-tei.rng', $_target)"/>
-	<p:option name="schematron" select="resolve-uri('schema/faust-tei.sch', $_target)"/>
+	<p:option name="rng" select="''"/>
+	<p:option name="schematron" select="''"/>
+	<p:option name="xsd" select="''"/>
 	<p:option name="report-name" select="'faust-tei'"/>
 	<p:option name="report-title" select="concat('Validation Errors ', $report-name)"/>
 	<p:option name="linkroot"/>
@@ -36,13 +37,22 @@
 			)"></p:with-option>
 	</cx:message>
 	
-	<p:load name="load-rng">
-		<p:with-option name="href" select="$rng"/>
+	<p:load name="load-schema">
+		<p:with-option name="href" select="resolve-uri(if ($rng) then $rng else $xsd)"/>
 	</p:load>
 	
-	<p:load name="load-schematron">
-		<p:with-option name="href" select="$schematron"/>
-	</p:load>
+	<p:choose name="load-schematron">
+		<p:when test="$schematron != ''">
+			<p:output port="result"/>
+			<p:load>
+				<p:with-option name="href" select="resolve-uri($schematron)"/>
+			</p:load>			
+		</p:when>
+		<p:otherwise>
+			<p:output port="result"/>
+			<p:identity><p:input port="source"><p:empty/></p:input></p:identity>
+		</p:otherwise>
+	</p:choose>
 
 	<l:recursive-directory-list>
 		<p:with-option name="path" select="$_xmlroot"/>
@@ -63,31 +73,50 @@
 		
 		<p:try>
 			<p:group>
-				<p:validate-with-relax-ng assert-valid="true">
-					<p:input port="schema">
-						<p:pipe port="result" step="load-rng"/>
-					</p:input>			
-				</p:validate-with-relax-ng>
-
-				<p:validate-with-schematron name="schematron" assert-valid="false">
-					<p:input port="schema"><p:pipe port="result" step="load-schematron"/></p:input>
-				</p:validate-with-schematron>
-				
-				<!-- We don't need the original XML -> work with report -->
-				<p:identity>
-					<p:input port="source"><p:pipe port="report" step="schematron"/></p:input>					
-				</p:identity>
-				
 				<p:choose>
-					<p:when test="//svrl:failed-assert">
-						<p:wrap wrapper="f:validation-error" match="/"/>
+					<p:when test="$rng != ''">
+						<p:validate-with-relax-ng assert-valid="true">
+							<p:input port="schema">
+								<p:pipe port="result" step="load-schema"/>
+							</p:input>			
+						</p:validate-with-relax-ng>						
+					</p:when>
+					<p:otherwise>
+						<cx:message>
+							<p:with-option name="message" select="concat('Validating ', $filename, ' with ', $xsd)"/>
+						</cx:message>
+						<p:validate-with-xml-schema assert-valid="true">
+							<p:input port="schema">
+								<p:pipe port="result" step="load-schema"></p:pipe>
+							</p:input>
+						</p:validate-with-xml-schema>
+					</p:otherwise>
+				</p:choose>
+
+				<p:choose>
+					<p:when test="$schematron != ''">
+						<p:validate-with-schematron name="schematron" assert-valid="false">
+							<p:input port="schema"><p:pipe port="result" step="load-schematron"/></p:input>
+						</p:validate-with-schematron>						
+						<!-- We don't need the original XML -> work with report -->
+						<p:identity>
+							<p:input port="source"><p:pipe port="report" step="schematron"/></p:input>					
+						</p:identity>
+						
+						<p:choose>
+							<p:when test="//svrl:failed-assert">
+								<p:wrap wrapper="f:validation-error" match="/"/>
+							</p:when>
+							<p:otherwise>
+								<p:identity><p:input port="source"><p:inline><f:valid-document/></p:inline></p:input></p:identity>
+							</p:otherwise>
+						</p:choose>
 					</p:when>
 					<p:otherwise>
 						<p:identity><p:input port="source"><p:inline><f:valid-document/></p:inline></p:input></p:identity>
 					</p:otherwise>
 				</p:choose>
-
-
+				
 			</p:group>
 			
 			<p:catch name="validate-catch">
@@ -112,18 +141,18 @@
 								</xsl:variable>
 								
 								<f:validation-error filename="{$filename}">
-									<xsl:sequence select="$all-errors//c:error[@systemId = $filename]"/>
+									<xsl:sequence select="$all-errors//c:error[not(@systemId) or @systemId = $filename]"/>
 								</f:validation-error>
 							</xsl:template>
 														
 							<xsl:template match="c:error">
 								<xsl:copy>
 									<xsl:copy-of select="@*"/>
-									<xsl:analyze-string select="." regex="[^;]+; systemId: ([^;]+); lineNumber: \d+; columnNumber: \d+; ([^;]+); (.*)">
+									<xsl:analyze-string select="." regex="[^;]+; systemId: ([^;]+); lineNumber: \d+; columnNumber: \d+; ([^;]+?)([;.] (.+))?$">
 										<xsl:matching-substring>
 											<xsl:attribute name="systemId" select="regex-group(1)"/>
 											<c:message><xsl:value-of select="regex-group(2)"/></c:message>
-											<c:resolution><xsl:value-of select="regex-group(3)"/></c:resolution>					
+											<c:resolution><xsl:value-of select="regex-group(4)"/></c:resolution>					
 										</xsl:matching-substring>
 										<xsl:non-matching-substring>
 											<xsl:value-of select="."/>

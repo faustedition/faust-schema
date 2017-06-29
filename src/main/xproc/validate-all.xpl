@@ -17,6 +17,12 @@
 	
 	<p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
 	<p:import href="validate-xml.xpl"/>
+	
+	<f:validate-xmls report-name="metadata" report-title="Metadata">
+		<p:with-option name="target" select="$_target"/>
+		<p:with-option name="xmlroot" select="resolve-uri('document', $_xml)"/>
+		<p:with-option name="xsd" select="resolve-uri('../src/main/xsd/metadata.xsd', $_target)"/> <!-- TODO -->
+	</f:validate-xmls>
 
 	<f:validate-xmls report-name="faust-tei" report-title="Transcripts (faust-tei)">
 		<p:with-option name="target" select="$_target"/>
@@ -38,6 +44,7 @@
 		<p:with-option name="rng" select="resolve-uri('schema/printed_editions_neu.rng', $_target)"/>
 		<p:with-option name="schematron" select="resolve-uri('schema/printed_editions_neu.sch', $_target)"/>
 	</f:validate-xmls>
+		
 	
 	<p:sink/>
 
