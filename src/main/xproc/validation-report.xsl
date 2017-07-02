@@ -11,6 +11,7 @@
 	<xsl:output method="xhtml"/>
 	
 	<xsl:param name="report-title">Validation Errors</xsl:param>
+	<xsl:param name="report-name"/>
 	<xsl:param name="_xmlroot"/>
 	<xsl:param name="linkroot"/>
 	<xsl:param name="rng"/>
@@ -32,16 +33,16 @@
 	
 	<xsl:template name="overall-stats">
 		<table class="overall-stats">
-			<tr style="background:#f88;">
-				<td style="text-align:right;"><xsl:value-of select="count(//f:validation-error[.//c:error])"/></td>
-				<td><a href="#rng-summary">documents are invalid by the Relax NG schema</a></td>
+			<tr class="error-bg">
+				<td xml:id="main-schema-error-count" class="right"><xsl:value-of select="count(//f:validation-error[.//c:error])"/></td>
+				<td><a href="#rng-summary">documents are invalid by the main schema</a></td>
 			</tr>
-			<tr style="background:#ff8;"> 
-				<td style="text-align:right;"><xsl:value-of select="count(//f:validation-error[.//svrl:failed-assert])"/></td>
-				<td><a href="#schematron">documents pass Relax NG validation, but fail one or more Schematron assertions</a></td>
+			<tr class="warning-bg"> 
+				<td xml:id="schematron-error-count" style="text-align:right;"><xsl:value-of select="count(//f:validation-error[.//svrl:failed-assert])"/></td>
+				<td><a href="#schematron">documents pass main schema validation, but fail one or more Schematron assertions</a></td>
 			</tr>
-			<tr style="background:#8f8;">
-				<td style="text-align:right;"><xsl:value-of select="count(//f:valid-document)"/></td>
+			<tr class="ok-bg">
+				<td xml:id="valid-document-count" class="right"><xsl:value-of select="count(//f:valid-document)"/></td>
 				<td>documents are valid</td>
 			</tr>
 		</table>
@@ -70,9 +71,13 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-				<title><xsl:value-of select="$report-title"/></title>
+				<title data-report-name="{$report-name}"><xsl:value-of select="$report-title"/></title>
 				<style>
 					dt { font-weight: bold; }
+					.right { text-align: right; }
+					.error-bg { background: #f88; }
+					.warning-bg { background: #ff8; }
+					.ok-bg { background: #8f8; } 
 					.resolution { margin: 0; color: gray; }
 					.locations { margin: 0; font-family: monospace}
 					small.xpath { color: gray; }
