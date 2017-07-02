@@ -64,8 +64,6 @@
 							<arguments>
 								<argument>-a</argument>
 								<argument>-u</argument>
-								<argument>--chmod=ug+rwX,o+rX,Dg+s</argument>
-								<argument>--omit-dir-times</argument>
 								<argument>${project.build.directory}/schema/</argument>
 								<argument>${upload.url}</argument>
 							</arguments>
