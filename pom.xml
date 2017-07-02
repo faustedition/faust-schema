@@ -10,7 +10,7 @@
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	    <upload.url>faustedition.uni-wuerzburg.de:/mnt/data/htdocs/schema/${project.version}</upload.url>
+	    <upload.url>wrzh074.rzhousing.uni-wuerzburg.de:/mnt/data/htdocs/schema/${project.version}</upload.url>
 	</properties>
 	
 	<build>
