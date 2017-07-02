@@ -92,47 +92,7 @@
 	
 	<p:xslt template-name="start" name="index-html">
 		<p:input port="stylesheet">
-			<p:inline>
-				<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" 
-					xmlns="http://www.w3.org/1999/xhtml" xpath-default-namespace="http://www.w3.org/1999/xhtml">
-					<xsl:template name="start">
-						<html>
-							<head>
-								<title>Validation Reports</title>
-								<style>
-									.r { text-align: right; background: #f88; }
-									.g { text-align: right; background: #8f8; }
-									.y { text-align: right; background: #ff8; }
-								</style>								
-							</head>
-							<body>
-								<h1>Validation Reports</h1>
-								<table>
-									<tbody>
-										<xsl:message select="concat(count(collection()), ' reports ...')"/>
-										<xsl:for-each select="collection()">
-											<xsl:choose>
-												<xsl:when test="//title[@data-report-name]">
-													<tr>
-														<td><a href="{//title/@data-report-name}.html"><xsl:value-of select="//title"/></a></td>
-														<td class="r"><xsl:value-of select="id('main-schema-error-count')"/></td>
-														<td class="y"><xsl:value-of select="id('schematron-error-count')"/></td>
-														<td class="g"><xsl:value-of select="id('valid-document-count')"/></td>
-														<td><xsl:value-of select="id('timestamp')"/></td>
-													</tr>													
-												</xsl:when>
-												<xsl:otherwise>
-													<xsl:message select="concat('Skipping ', //title)"/>													
-												</xsl:otherwise>
-											</xsl:choose>
-										</xsl:for-each>
-									</tbody>									
-								</table>
-							</body>							
-						</html>
-					</xsl:template>
-				</xsl:stylesheet>
-			</p:inline>
+			<p:document href="validation-summary.xsl"/>
 		</p:input>
 	</p:xslt>
 	

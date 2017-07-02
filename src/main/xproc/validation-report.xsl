@@ -33,20 +33,27 @@
 	
 	
 	<xsl:template name="overall-stats">
+		<xsl:variable name="validationErrors" select="count(//f:validation-error[.//c:error])"/>
+		<xsl:variable name="schematronErrors" select="count(//f:validation-error[.//svrl:failed-assert])"/>
+		<xsl:variable name="valid" select="count(//f:valid-document)"/>
 		<table class="overall-stats">
 			<tr class="error-bg">
-				<td xml:id="main-schema-error-count" class="right"><xsl:value-of select="count(//f:validation-error[.//c:error])"/></td>
+				<td xml:id="main-schema-error-count" class="right">
+					<xsl:value-of select="$validationErrors"/></td>
 				<td><a href="#rng-summary">documents are invalid by the main schema</a></td>
 			</tr>
 			<tr class="warning-bg"> 
-				<td xml:id="schematron-error-count" style="text-align:right;"><xsl:value-of select="count(//f:validation-error[.//svrl:failed-assert])"/></td>
+				<td xml:id="schematron-error-count" style="text-align:right;">
+					<xsl:value-of select="$schematronErrors"/></td>
 				<td><a href="#schematron">documents pass main schema validation, but fail one or more Schematron assertions</a></td>
 			</tr>
 			<tr class="ok-bg">
-				<td xml:id="valid-document-count" class="right"><xsl:value-of select="count(//f:valid-document)"/></td>
+				<td xml:id="valid-document-count" class="right">
+					<xsl:value-of select="$valid"/></td>
 				<td>documents are valid</td>
 			</tr>
 		</table>
+		<xsl:message select="concat('Valid documents: ', $valid, ', invalid by main schema: ', $validationErrors, ', invalid by schematron: ', $schematronErrors)"/>
 	</xsl:template>
 	
 	<xsl:template name="rng-message-summary">
