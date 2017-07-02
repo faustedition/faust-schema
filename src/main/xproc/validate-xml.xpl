@@ -13,8 +13,9 @@
 	<p:option name="schematron" select="''"/>
 	<p:option name="xsd" select="''"/>
 	<p:option name="report-name" select="'faust-tei'"/>
-	<p:option name="report-title" select="concat('Validation Errors ', $report-name)"/>
+	<p:option name="report-title" select="concat('Validation ', $report-name)"/>
 	<p:option name="linkroot"/>
+	<p:option name="exclude-filter" select="''"/>
 	
 	<p:input port="source"><p:empty/></p:input>
 	<p:input port="parameters" kind="parameter"/>
@@ -28,10 +29,11 @@
 	<p:variable name="report" select="resolve-uri(concat('report/', $report-name, '.html'), $_target)"/>
 	
 	<cx:message>
-		<p:with-option name="message" select="concat(
+		<p:with-option name="message" select="concat('=== ', $report-title, ' ===',
 			'&#10;target=', $target, '; resolved to ', $_target,
 			'&#10;xmlroot=', $xmlroot, '; resolved to ', $_xmlroot,
 			'&#10;rng=', $rng,
+			'&#10;xsd=', $xsd,
 			'&#10;schematron=', $schematron,
 			'&#10;report=', $report			
 			)"></p:with-option>
@@ -56,7 +58,12 @@
 
 	<l:recursive-directory-list>
 		<p:with-option name="path" select="$_xmlroot"/>
+		<p:with-option name="exclude-filter" select="$exclude-filter"/>
 	</l:recursive-directory-list>
+	
+	<cx:message>
+		<p:with-option name="message" select="concat('Validating ', count(//c:file), ' files, this may take a while ...')"/>
+	</cx:message>
 	
 	
 	<p:for-each>
@@ -82,10 +89,10 @@
 						</p:validate-with-relax-ng>						
 					</p:when>
 					<p:otherwise>
-						<cx:message>
+<!--						<cx:message>
 							<p:with-option name="message" select="concat('Validating ', $filename, ' with ', $xsd)"/>
 						</cx:message>
-						<p:validate-with-xml-schema assert-valid="true">
+-->						<p:validate-with-xml-schema assert-valid="true">
 							<p:input port="schema">
 								<p:pipe port="result" step="load-schema"></p:pipe>
 							</p:input>
@@ -175,13 +182,15 @@
 <!--				<cx:message>
 					<p:with-option name="message" select="concat('VALIDATION ERROR:', $filename, ':', string-join(distinct-values(//c:message), '; '))"/>
 				</cx:message>		
--->				<p:wrap wrapper="f:validation-error" match="/"/>
+-->
 			</p:catch>
 		</p:try>
 		<p:add-attribute attribute-name="filename" match="/*">
 			<p:with-option name="attribute-value" select="$filename"/>
 		</p:add-attribute>				
 	</p:for-each>
+	
+	<cx:message message="Writing aggregate report ..."/>
 	
 	<p:wrap-sequence wrapper="validation-errors" name="wrap-errors-0"/>
 	

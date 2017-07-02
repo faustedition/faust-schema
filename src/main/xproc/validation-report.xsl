@@ -16,6 +16,7 @@
 	<xsl:param name="linkroot"/>
 	<xsl:param name="rng"/>
 	<xsl:param name="schematron"/>
+	<xsl:param name="xsd"/>
 		
 	
 	
@@ -87,21 +88,28 @@
 				<h1><xsl:value-of select="$report-title"/></h1>
 				<table>
 					<tr><td>XML Root</td><td><xsl:value-of select="$_xmlroot"/></td></tr>
-					<tr><td>Relax NG schema</td><td><xsl:value-of select="$rng"/></td></tr>
+					<xsl:choose>
+						<xsl:when test="$rng">
+							<tr><td>Main schema (Relax NG)</td><td><xsl:value-of select="$rng"/></td></tr>							
+						</xsl:when>
+						<xsl:otherwise>
+							<tr><td>Main schema (XML Schema)</td><td><xsl:value-of select="$xsd"/></td></tr>
+						</xsl:otherwise>
+					</xsl:choose>
 					<tr><td>Schematron document</td><td><xsl:value-of select="$schematron"/></td></tr>
-					<tr><td>Validation date</td><td><xsl:value-of select="current-dateTime()"/></td></tr>
+					<tr><td>Validation date</td><td xml:id="timestamp"><xsl:value-of select="current-dateTime()"/></td></tr>
 				</table>
 				
 				<h2>Overall Summary</h2>
 				<xsl:call-template name="overall-stats"/>
 				
-				<h2 id="rng-summary">Relax NG errors by message</h2>
+				<h2 id="rng-summary">Main schema errors by message</h2>
 				<xsl:call-template name="rng-message-summary"/>
 				
-				<h2 id="rng-details">Individual Errors by message</h2>
+				<h2 id="rng-details">Individual schema errors by message</h2>
 				<xsl:call-template name="rng-by-message"/>
 				
-				<h2 id="schematron">Individual Schematron Errors by message</h2>
+				<h2 id="schematron">Individual Schematron errors by message</h2>
 				<xsl:call-template name="schematron-details"/>
 			</body>
 		</html>		
