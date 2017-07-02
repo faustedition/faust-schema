@@ -26,6 +26,11 @@
 		<p:with-option name="href" select="p:resolve-uri('odds/extract-isosch.xsl', $stylesheetsUrl)"/>
 	</p:load>
 	
+	<p:load name="load-odd2html">
+		<p:with-option name="href" select="p:resolve-uri('odds/odd2html.xsl', $stylesheetsUrl)"/>
+	</p:load>
+	
+	
 	
 	<p:directory-list>
 		<p:with-option name="path" select="'../odd'"/>
@@ -38,6 +43,7 @@
 		<p:variable name="expanded-odd" select="p:resolve-uri(concat('full-odd/', $name), $target)"/>
 		<p:variable name="rng" select="p:resolve-uri(concat('schema/', replace($name, '\.xml$', '.rng')), $target)"/>
 		<p:variable name="sch" select="p:resolve-uri(concat('schema/', replace($name, '\.xml$', '.sch')), $target)"/>
+		<p:variable name="html" select="p:resolve-uri(concat('schema/', replace($name, '\.xml$', '.html')), $target)"/>
 		
 		<cx:message>
 			<p:with-option name="message" select="concat('Converting ', $name, ' (', $odd, ') -> ', $expanded-odd, ' / ', $rng)"/>
@@ -96,6 +102,20 @@
 				<p:store indent="true">
 					<p:with-option name="href" select="$sch"/>
 				</p:store>
+				
+				
+				<p:xslt name="build-doc">
+					<p:input port="stylesheet"><p:pipe port="result" step="load-odd2html"/></p:input>
+					<p:input port="source"><p:pipe port="result" step="odd2odd"/></p:input>
+					<p:with-param name="lang" select="'en'"/>					
+				</p:xslt>
+				
+				<cx:message message=" - saving documentation"/>
+				
+				<p:store indent="false" method="xhtml" include-content-type="true">
+					<p:with-option name="href" select="$html"/>
+				</p:store>
+				
 				
 				
 			</p:group>
