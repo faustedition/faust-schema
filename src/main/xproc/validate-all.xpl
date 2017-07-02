@@ -23,7 +23,7 @@
 		<f:validate-xmls report-name="metadata" report-title="Metadata (Transcripts)">
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="resolve-uri('document', $_xml)"/>
-			<p:with-option name="xsd" select="resolve-uri('../src/main/xsd/metadata.xsd', $_target)"/> <!-- TODO -->
+			<p:with-option name="xsd" select="resolve-uri('schema/metadata.xsd', $_target)"/>
 			<p:with-option name="exclude-filter" select="'print'"/>
 			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/document/'"/>
 		</f:validate-xmls>
@@ -31,7 +31,7 @@
 		<f:validate-xmls report-name="metadata_print" report-title="Metadata (Prints)">
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="resolve-uri('document/print', $_xml)"/>
-			<p:with-option name="xsd" select="resolve-uri('../src/main/xsd/metadata_print.xsd', $_target)"/> <!-- TODO -->
+			<p:with-option name="xsd" select="resolve-uri('schema/metadata_print.xsd', $_target)"/>
 			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/document/print/'"/>
 		</f:validate-xmls>
 		

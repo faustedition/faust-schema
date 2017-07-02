@@ -49,7 +49,7 @@
 						<configuration>
 							<mainClass>com.xmlcalabash.drivers.Main</mainClass>
 							<arguments>
-								<argument>target=${project.build.directory}</argument>
+								<argument>target=${project.build.directory}/</argument>
 								<argument>${project.basedir}/src/main/xproc/validate-all.xpl</argument>
 							</arguments>							
 						</configuration>
