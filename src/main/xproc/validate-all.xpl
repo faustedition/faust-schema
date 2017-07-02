@@ -35,6 +35,13 @@
 			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/document/print/'"/>
 		</f:validate-xmls>
 		
+		<f:validate-xmls report-name="macrogenesis" report-title="Macrogenesis Data">
+			<p:with-option name="target" select="$_target"/>
+			<p:with-option name="xmlroot" select="resolve-uri('macrogenesis', $_xml)"/>
+			<p:with-option name="xsd" select="resolve-uri('schema/macrogenesis.xsd', $_target)"/> <!-- TODO -->
+			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/macrogenesis/'"/>
+		</f:validate-xmls>
+				
 		<f:validate-xmls report-name="faust-tei" report-title="Transcripts (faust-tei)">
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="p:resolve-uri('transcript', $_xml)"/>
