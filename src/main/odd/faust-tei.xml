@@ -1233,6 +1233,19 @@
 							</alternate>
 						</content>
 					</elementSpec>
+					
+					<elementSpec ident="wit" mode="change">
+						<attList>
+							<attDef ident="is-base" ns="http://www.faustedition.net/ns" mode="add" usage="opt">
+								<datatype>
+									<rng:ref name="xs:bool"/>									
+								</datatype>
+								<remarks>
+									<ab>If present and true, this witness is the base for the text at the corresponding place</ab>
+								</remarks>
+							</attDef>
+						</attList>
+					</elementSpec>
 				</schemaSpec>
 			</div>
 		</body>
