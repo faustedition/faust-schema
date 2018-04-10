@@ -1208,12 +1208,10 @@
 					<classSpec type="atts" ident="att.divLike" mode="change">
 						<attList>
 							<attDef ident="label" ns="http://www.faustedition.net/ns" mode="add" usage="opt">
+								<desc>The normalized label for a section, intended to be used in running heads or breadcrumbs.</desc>
 								<datatype>
 									<rng:ref name="xs:string"/>
-								</datatype>
-								<remarks>
-									<p>The normalized label for a section, intended to be used in running heads or breadcrumbs.</p>
-								</remarks>
+								</datatype>								
 							</attDef>
 						</attList>
 					</classSpec>
@@ -1237,12 +1235,10 @@
 					<elementSpec ident="wit" mode="change">
 						<attList>
 							<attDef ident="is-base" ns="http://www.faustedition.net/ns" mode="add" usage="opt">
+								<desc>If present and true, this witness is the base for the text at the corresponding place</desc>
 								<datatype>
 									<rng:ref name="xs:bool"/>									
 								</datatype>
-								<remarks>
-									<ab>If present and true, this witness is the base for the text at the corresponding place</ab>
-								</remarks>
 							</attDef>
 						</attList>
 					</elementSpec>
