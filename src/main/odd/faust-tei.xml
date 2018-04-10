@@ -1157,7 +1157,7 @@
 					<classSpec ident="att.segLike" type="atts" mode="change">
 						<attList>
 							<attDef ident="questionedBy" ns="http://www.faustedition.net/ns"
-								usage="rwa" mode="add">
+								usage="rec" mode="add">
 								<desc> Beschreibt eine Monierung; anzugeben ist die monierende Hand. </desc>
 								<datatype>
 									<rng:ref name="data.pointer"/>
