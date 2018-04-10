@@ -1217,6 +1217,22 @@
 							</attDef>
 						</attList>
 					</classSpec>
+					
+					<elementSpec ident="note" mode="change">
+						<content>
+							<alternate minOccurs="0" maxOccurs="unbounded">
+								<!--<macroRef key="macro.specialPara"/>-->
+								<textNode/>
+								<classRef key="model.gLike"/>
+								<classRef key="model.phrase"/>
+								<classRef key="model.inter"/>
+								<classRef key="model.divPart"/>
+								<classRef key="model.global"/>
+								<classRef key="model.ptrLike"/> <!-- for ref -->
+								<elementRef key="wit"/>
+							</alternate>
+						</content>
+					</elementSpec>
 				</schemaSpec>
 			</div>
 		</body>
