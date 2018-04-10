@@ -285,8 +285,9 @@
 
 					<classSpec type="atts" ident="att.global" mode="change" module="tei">
 						<classes>
-							<!-- 
+							
 								<memberOf key="att.global.linking" />
+							<!-- 
 								<memberOf key="att.global.analytic" />
 								<memberOf key="att.global.facs" />
 							-->
@@ -1168,11 +1169,11 @@
 
 					<!-- modified for faust; milestones for paralipomena -->
 
-					<elementSpec ident="milestone" module="core" mode="change">
+					<!--elementSpec ident="milestone" module="core" mode="change">
 						<classes mode="change">
 							<memberOf key="att.global.linking" mode="add"/>
 						</classes>
-					</elementSpec>
+					</elementSpec-->
 
 					<classSpec ident="att.milestoneUnit" type="atts" mode="change">
 						<attList>
