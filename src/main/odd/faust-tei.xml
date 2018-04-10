@@ -1203,6 +1203,20 @@
 							</attDef>
 						</attList>
 					</classSpec>
+					
+					<!-- Extra stuff for the reading text -->
+					<classSpec type="atts" ident="att.divLike" mode="change">
+						<attList>
+							<attDef ident="label" ns="http://www.faustedition.net/ns" mode="add" usage="opt">
+								<datatype>
+									<rng:ref name="xs:string"/>
+								</datatype>
+								<remarks>
+									<p>The normalized label for a section, intended to be used in running heads or breadcrumbs.</p>
+								</remarks>
+							</attDef>
+						</attList>
+					</classSpec>
 				</schemaSpec>
 			</div>
 		</body>
