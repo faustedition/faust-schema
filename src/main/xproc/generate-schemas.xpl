@@ -6,7 +6,7 @@
 	<p:output port="result" sequence="true"><p:empty/></p:output>
 	
 	
-	<p:option name="stylesheetsUrl" select="'http://www.tei-c.org/release/xml/tei/stylesheet/'"/>
+	<p:option name="stylesheetsUrl" select="'https://cdn.rawgit.com/TEIC/Stylesheets/v7.44.0/'"/>
 	<p:option name="p5subsetUrl" select="'http://www.tei-c.org/Vault/P5/1.9.1/xml/tei/odd/p5subset.xml'"/>
 	<p:option name="builddir" select="'target/'"></p:option>	
 		
