@@ -28,7 +28,7 @@
 		<body>
 			<div>
 				<p>TEI Extension for Faust&#xD; &#xD; preliminary version</p>
-				<schemaSpec ident="faust-tei" docLang="en" prefix="tei_" start="TEI teiCorpus"
+				<schemaSpec ident="faust-tei" docLang="en" prefix="tei_" start="TEI teiCorpus" source="http://www.tei-c.org/Vault/P5/1.9.1/xml/tei/odd/p5subset.xml"
 					xml:lang="en" targetLang="en">
 					<moduleRef key="core"/>
 					<moduleRef key="tei"/>
