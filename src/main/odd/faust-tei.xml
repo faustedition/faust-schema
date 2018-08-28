@@ -28,7 +28,7 @@
 		<body>
 			<div>
 				<p>TEI Extension for Faust&#xD; &#xD; preliminary version</p>
-				<schemaSpec ident="faust-tei" docLang="en" prefix="tei_" start="TEI teiCorpus"
+				<schemaSpec ident="faust-tei" docLang="en" prefix="tei_" start="TEI teiCorpus" source="http://www.tei-c.org/Vault/P5/1.9.1/xml/tei/odd/p5subset.xml"
 					xml:lang="en" targetLang="en">
 					<moduleRef key="core"/>
 					<moduleRef key="tei"/>
@@ -285,8 +285,9 @@
 
 					<classSpec type="atts" ident="att.global" mode="change" module="tei">
 						<classes>
-							<!-- 
+							
 								<memberOf key="att.global.linking" />
+							<!-- 
 								<memberOf key="att.global.analytic" />
 								<memberOf key="att.global.facs" />
 							-->
@@ -1157,7 +1158,7 @@
 					<classSpec ident="att.segLike" type="atts" mode="change">
 						<attList>
 							<attDef ident="questionedBy" ns="http://www.faustedition.net/ns"
-								usage="rwa" mode="add">
+								usage="rec" mode="add">
 								<desc> Beschreibt eine Monierung; anzugeben ist die monierende Hand. </desc>
 								<datatype>
 									<rng:ref name="data.pointer"/>
@@ -1168,11 +1169,11 @@
 
 					<!-- modified for faust; milestones for paralipomena -->
 
-					<elementSpec ident="milestone" module="core" mode="change">
+					<!--elementSpec ident="milestone" module="core" mode="change">
 						<classes mode="change">
 							<memberOf key="att.global.linking" mode="add"/>
 						</classes>
-					</elementSpec>
+					</elementSpec-->
 
 					<classSpec ident="att.milestoneUnit" type="atts" mode="change">
 						<attList>
@@ -1202,6 +1203,113 @@
 							</attDef>
 						</attList>
 					</classSpec>
+					
+					<!-- Extra stuff for the reading text -->
+					<classSpec type="atts" ident="att.divLike" mode="change">
+						<attList>
+							<attDef ident="label" ns="http://www.faustedition.net/ns" mode="add" usage="opt">
+								<desc>The normalized label for a section, intended to be used in running heads or breadcrumbs.</desc>
+								<datatype>
+									<rng:ref name="xs:string"/>
+								</datatype>								
+							</attDef>
+						</attList>
+					</classSpec>
+					
+					<elementSpec ident="note" mode="change">
+						<content>
+							<alternate minOccurs="0" maxOccurs="unbounded">
+								<!--<macroRef key="macro.specialPara"/>-->
+								<textNode/>
+								<classRef key="model.gLike"/>
+								<classRef key="model.phrase"/>
+								<classRef key="model.inter"/>
+								<classRef key="model.divPart"/>
+								<classRef key="model.global"/>
+								<classRef key="model.ptrLike"/> <!-- for ref -->
+								<elementRef key="wit"/>
+							</alternate>
+						</content>
+					</elementSpec>
+					
+					<elementSpec ident="wit" mode="change">
+						<attList>
+							<attDef ident="is-base" ns="http://www.faustedition.net/ns" mode="add" usage="opt">
+								<desc>If present and true, this witness is the base for the text at the corresponding place</desc>
+								<datatype>
+									<rng:ref name="xs:bool"/>									
+								</datatype>
+							</attDef>
+						</attList>
+					</elementSpec>
+					
+					<classSpec type="atts" ident="att.textCritical" mode="change">
+						<attList>
+							<attDef ident="type" mode="replace">
+								<datatype maxOccurs="unbounded">
+									<dataRef name="token" restriction="substantive|ortographic|(type_[1-8][a-z]{0,2}\*?)"/>
+								</datatype>
+							</attDef>
+						</attList>
+					</classSpec>
+					
+					<!-- These can probably be removed once we migrate to a current TEI version: -->
+					
+					<!-- allow stage inside lg -->
+					<elementSpec ident="lg" mode="change"><!-- copied from TEI 3.4.0 -->
+						<content>
+							<sequence>
+								<alternate minOccurs="0" maxOccurs="unbounded">
+									<classRef key="model.divTop"/>
+									<classRef key="model.global"/>
+								</alternate>
+								<alternate>
+									<classRef key="model.lLike"/>
+									<classRef key="model.stageLike"/>
+									<classRef key="model.labelLike"/>
+									<elementRef key="lg"/>
+								</alternate>
+								<alternate minOccurs="0" maxOccurs="unbounded">
+									<classRef key="model.lLike"/>
+									<classRef key="model.stageLike"/>
+									<classRef key="model.labelLike"/>
+									<classRef key="model.global"/>
+									<elementRef key="lg"/>
+								</alternate>
+								<sequence minOccurs="0" maxOccurs="unbounded">
+									<classRef key="model.divBottom"/>
+									<classRef key="model.global" minOccurs="0" maxOccurs="unbounded"/>									
+								</sequence>
+							</sequence>
+						</content>
+					</elementSpec>
+					
+					<!-- allow sp and speaker inside rdg -->
+					<classSpec type="model" module="tei" ident="model.divPart" mode="change">
+						<classes>
+							<memberOf key="model.rdgPart"/>
+							<memberOf key="model.common"/>
+						</classes>					
+					</classSpec>
+					
+					<elementSpec ident="speaker" module="core" mode="change">
+						<classes>
+							<memberOf key="model.rdgPart"/>
+							<memberOf key="att.global"/>							
+						</classes>						
+					</elementSpec>
+					
+					<!-- app from may refer to multiple places -->
+					<elementSpec ident="app" mode="change">
+						<attList>
+							<attDef ident="from" mode="replace">
+								<datatype maxOccurs="unbounded">
+									<dataRef key="data.pointer"></dataRef>
+								</datatype>
+							</attDef>
+						</attList>
+					</elementSpec>
+					
 				</schemaSpec>
 			</div>
 		</body>
