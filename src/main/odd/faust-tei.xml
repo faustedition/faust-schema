@@ -1243,6 +1243,16 @@
 						</attList>
 					</elementSpec>
 					
+					<classSpec type="atts" ident="att.textCritical" mode="change">
+						<attList>
+							<attDef ident="type" mode="replace">
+								<datatype maxOccurs="unbounded">
+									<dataRef name="token" restriction="(type_[1-8][a-z]{0,2}\*?)"/>
+								</datatype>
+							</attDef>
+						</attList>
+					</classSpec>
+					
 					<!-- These can probably be removed once we migrate to a current TEI version: -->
 					
 					<!-- allow stage inside lg -->
