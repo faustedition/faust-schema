@@ -1299,6 +1299,17 @@
 						</classes>						
 					</elementSpec>
 					
+					<!-- app from may refer to multiple places -->
+					<elementSpec ident="app" mode="change">
+						<attList>
+							<attDef ident="from" mode="replace">
+								<datatype maxOccurs="unbounded">
+									<dataRef key="data.pointer"></dataRef>
+								</datatype>
+							</attDef>
+						</attList>
+					</elementSpec>
+					
 				</schemaSpec>
 			</div>
 		</body>
