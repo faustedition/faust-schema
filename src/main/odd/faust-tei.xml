@@ -1284,6 +1284,21 @@
 						</content>
 					</elementSpec>
 					
+					<!-- allow sp and speaker inside rdg -->
+					<classSpec type="model" module="tei" ident="model.divPart" mode="change">
+						<classes>
+							<memberOf key="model.rdgPart"/>
+							<memberOf key="model.common"/>
+						</classes>					
+					</classSpec>
+					
+					<elementSpec ident="speaker" module="core" mode="change">
+						<classes>
+							<memberOf key="model.rdgPart"/>
+							<memberOf key="att.global"/>							
+						</classes>						
+					</elementSpec>
+					
 				</schemaSpec>
 			</div>
 		</body>
