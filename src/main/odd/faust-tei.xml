@@ -1242,6 +1242,38 @@
 							</attDef>
 						</attList>
 					</elementSpec>
+					
+					<!-- These can probably be removed once we migrate to a current TEI version: -->
+					
+					<!-- allow stage inside lg -->
+					<elementSpec ident="lg" mode="change"><!-- copied from TEI 3.4.0 -->
+						<content>
+							<sequence>
+								<alternate minOccurs="0" maxOccurs="unbounded">
+									<classRef key="model.divTop"/>
+									<classRef key="model.global"/>
+								</alternate>
+								<alternate>
+									<classRef key="model.lLike"/>
+									<classRef key="model.stageLike"/>
+									<classRef key="model.labelLike"/>
+									<elementRef key="lg"/>
+								</alternate>
+								<alternate minOccurs="0" maxOccurs="unbounded">
+									<classRef key="model.lLike"/>
+									<classRef key="model.stageLike"/>
+									<classRef key="model.labelLike"/>
+									<classRef key="model.global"/>
+									<elementRef key="lg"/>
+								</alternate>
+								<sequence minOccurs="0" maxOccurs="unbounded">
+									<classRef key="model.divBottom"/>
+									<classRef key="model.global" minOccurs="0" maxOccurs="unbounded"/>									
+								</sequence>
+							</sequence>
+						</content>
+					</elementSpec>
+					
 				</schemaSpec>
 			</div>
 		</body>
