@@ -43,6 +43,16 @@
 					</execution>
 					
 					<execution>
+						<id>convert-transcripts</id>
+						<phase>generate-sources</phase>
+						<goals><goal>java</goal></goals>
+						<configuration>
+							<mainClass>com.xmlcalabash.drivers.Main</mainClass>
+							<commandlineArgs>${project.basedir}/src/main/xproc/convert-transcripts.xpl</commandlineArgs>
+						</configuration>						
+					</execution>
+					
+					<execution>
 						<id>validate-xml</id>
 						<phase>integration-test</phase>
 						<goals><goal>java</goal></goals>

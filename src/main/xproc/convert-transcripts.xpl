@@ -27,10 +27,10 @@
     <p:variable name="filename" select="p:resolve-uri(/c:file/@name)"/>
     <p:variable name="out" select="p:resolve-uri(replace($filename, $_xmlroot, 'converted'), $_target)"/>
     
-    <cx:message>
+<!--    <cx:message>
 			<p:with-option name="message" select="concat($filename, ' → ', $out)"></p:with-option>
 		</cx:message>
-		
+-->		
     <p:load>
       <p:with-option name="href" select="$filename"/>
     </p:load>

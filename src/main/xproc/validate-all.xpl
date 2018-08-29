@@ -42,9 +42,9 @@
 			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/macrogenesis/'"/>
 		</f:validate-xmls>
 				
-		<f:validate-xmls report-name="faust-tei" report-title="Transcripts (faust-tei)">
+		<f:validate-xmls report-name="faust-tei" report-title="Converted Transcripts (faust-tei)">
 			<p:with-option name="target" select="$_target"/>
-			<p:with-option name="xmlroot" select="p:resolve-uri('transcript', $_xml)"/>
+			<p:with-option name="xmlroot" select="p:resolve-uri('converted', $_target)"/>
 			<p:with-option name="rng" select="resolve-uri('schema/faust-tei.rng', $_target)"/>
 			<p:with-option name="schematron" select="resolve-uri('schema/faust-tei.sch', $_target)"/>
 			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/transcript/'"/>
