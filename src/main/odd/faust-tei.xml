@@ -28,7 +28,7 @@
 		<body>
 			<div>
 				<p>TEI Extension for Faust&#xD; &#xD; preliminary version</p>
-				<schemaSpec ident="faust-tei" docLang="en" prefix="tei_" start="TEI teiCorpus" source="http://www.tei-c.org/Vault/P5/1.9.1/xml/tei/odd/p5subset.xml"
+				<schemaSpec ident="faust-tei" docLang="en" prefix="tei_" start="TEI teiCorpus" source="http://www.tei-c.org/Vault/P5/3.4.0/xml/tei/odd/p5subset.xml"
 					xml:lang="en" targetLang="en">
 					<moduleRef key="core"/>
 					<moduleRef key="tei"/>
@@ -264,6 +264,7 @@
 					
 					<!-- ================== TEI-SIG Genetic Editions: START ================== -->
 
+					<!--
 					<classSpec ident="att.staged" type="atts" mode="add" module="tei">
 						<desc>groups elements which can be assigned to a specific text stage by
 							means of the attributes it provides.</desc>
@@ -280,6 +281,7 @@
 							</attDef>
 						</attList>
 					</classSpec>
+					--> <!-- will be att.gloval.change -->
 
 					<!--  ================================ MODIFIED for Faust ================== -->
 
@@ -291,7 +293,7 @@
 								<memberOf key="att.global.analytic" />
 								<memberOf key="att.global.facs" />
 							-->
-							<memberOf key="att.staged"/>
+							<memberOf key="att.global.change"/>
 							<memberOf key="att.layoutAlignment"/>
 						</classes>
 						<attList>
@@ -375,9 +377,10 @@
 
 					<!-- =============== Content models for the documentary view =============== -->
 
-					<classSpec ident="model.zonePart" type="model" mode="add">
+					<!-- TEI doesn't have this, they seem to be unifying this with linePart -->
+					<!--<classSpec ident="model.zonePart" type="model" mode="add">
 						<desc>elements which can form part of a zone</desc>
-					</classSpec>
+					</classSpec>-->
 
 					<classSpec ident="model.linePart" type="model" mode="add">
 						<desc>elements which can form part of a line</desc>
@@ -402,7 +405,7 @@
 					<elementSpec ident="grLine" ns="http://www.faustedition.net/ns" mode="add">
 						<desc>Kodiert eine Linie auf Dokumentebene</desc>
 						<classes>
-							<memberOf key="model.zonePart"/>
+							<!--<memberOf key="model.zonePart"/>-->
 							<memberOf key="model.linePart"/>
 							<memberOf key="model.pPart.transcriptional"/>
 							<memberOf key="att.global"/>
@@ -425,6 +428,7 @@
 						</classes>
 					</elementSpec>
 
+					<!--
 					<elementSpec ident="hspace" ns="http://www.faustedition.net/ns" mode="add">
 						<desc>Kodiert horizontales Spatium</desc>
 						<classes>
@@ -446,11 +450,12 @@
 							<memberOf key="att.dimensions"/>
 						</classes>
 					</elementSpec>
+					-->
 
 					<elementSpec ident="ins" ns="http://www.faustedition.net/ns" mode="add">
 						<desc>Kodiert Einfügungszeichen auf Dokumentebene.</desc>
 						<classes>
-							<memberOf key="model.zonePart"/>
+							<!--<memberOf key="model.zonePart"/>-->
 							<memberOf key="model.linePart"/>
 							<memberOf key="model.pPart.transcriptional"/>
 							<memberOf key="att.global"/>
@@ -483,7 +488,7 @@
 						</attList>
 					</elementSpec>
 
-					<elementSpec ident="st" ns="http://www.faustedition.net/ns" mode="add">
+					<!--<elementSpec ident="st" ns="http://www.faustedition.net/ns" mode="add">
 						<desc>Beschreibt eine Durchstreichung („strikethrough”) auf
 							Dokumentebene.</desc>
 						<classes>
@@ -497,8 +502,11 @@
 						<content>
 							<rng:ref name="macro.lineContent"/>
 						</content>
-					</elementSpec>
+					</elementSpec>-->
 
+					<!--
+					XXX we're losing both semantics and constraints / expressibility here. Maybe we can introduce additional schematron rules? 
+					
 					<classSpec ident="model.linePart.overwritten" type="model"/>
 
 					<elementSpec ident="under" ns="http://www.faustedition.net/ns" mode="add">
@@ -541,9 +549,11 @@
 							</rng:group>
 						</content>
 					</elementSpec>
+					-->
 
 					<!-- =============== Topographical document structure =============== -->
 
+					<!-- 
 					<elementSpec ident="document" ns="http://www.tei-c.org/ns/geneticEditions"
 						mode="add">
 						<desc>contains a document-centric transcription of a primary source,
@@ -640,10 +650,11 @@
 							</attDef>
 						</attList>
 					</elementSpec>
+					 
 					<elementSpec ident="zone" module="physdesc" mode="change">
 						<classes mode="change">
 							<memberOf key="att.coordinated" mode="add"/>
-							<!--  modification of SIG schema: allow @type in zones -->
+							<!- -  modification of SIG schema: allow @type in zones - ->
 							<memberOf key="att.typed" mode="add"/>
 							<memberOf key="model.zonePart" mode="add"/>
 						</classes>
@@ -683,9 +694,10 @@
 						<content>
 							<rng:ref name="macro.lineContent"/>
 						</content>
-					</elementSpec>
+					</elementSpec> -->
 					<!-- =============== Text stages =============== -->
 
+					<!--
 					<elementSpec ident="creation" mode="change">
 						<content>
 							<rng:ref name="macro.phraseSeq.limited"/>
@@ -749,7 +761,10 @@
 							</attDef>
 						</attList>
 					</elementSpec>
+					-->
 					<!-- =============== Textual alterations =============== -->
+					<!-- not used: -->
+					<!-- 
 					<elementSpec ident="mod" ns="http://www.tei-c.org/ns/geneticEditions" mode="add">
 						<desc>represents any kind of modification identified within a text at a
 							documentary level.</desc>
@@ -781,6 +796,9 @@
 							<rng:empty/>
 						</content>
 					</elementSpec>
+					-->
+					
+					<!-- TODO listTranspose, but we need to include undo -->
 					<elementSpec ident="transposeGrp" ns="http://www.tei-c.org/ns/geneticEditions"
 						mode="add">
 						<desc>supplies a list of transpositions indicated at some point in the text,
@@ -800,6 +818,7 @@
 							</rng:oneOrMore>
 						</content>
 					</elementSpec>
+					<!-- 
 					<elementSpec ident="transpose" ns="http://www.tei-c.org/ns/geneticEditions"
 						mode="add">
 						<desc> describes a single textual transposition as an ordered list of at
@@ -807,7 +826,7 @@
 							should be re-combined. </desc>
 						<classes>
 							<memberOf key="att.global"/>
-							<!-- MODIFIED for Faust -->
+							<!- - MODIFIED for Faust - ->
 							<memberOf key="att.changeRelated"/>
 						</classes>
 						<content>
@@ -819,7 +838,9 @@
 							</rng:group>
 						</content>
 					</elementSpec>
+					-->
 					<!-- =============== Undo/Redo/Rewrite =============== -->
+					<!-- 
 					<elementSpec ident="undo" ns="http://www.tei-c.org/ns/geneticEditions"
 						mode="add">
 						<desc>points to any marked-up intervention in a text which has subsequently
@@ -845,8 +866,10 @@
 							</attDef>
 						</attList>
 					</elementSpec>
+					 -->			
 
-
+					<!--
+						ATTN: ge:rewrite/@cause has the following, while retrace/@cause has just an open enumerated list
 					<classSpec type="atts" ident="att.repeatable">
 						<attList>
 							<attDef ident="cause">
@@ -867,7 +890,9 @@
 							</attDef>
 						</attList>
 					</classSpec>
+					 -->
 
+					<!-- unused
 					<elementSpec ident="redo" ns="http://www.tei-c.org/ns/geneticEditions"
 						mode="add">
 						<desc>points to a marked-up intervention in a text which has subsequently
@@ -895,6 +920,8 @@
 						</attList>
 					</elementSpec>
 
+					-->
+					<!-- 
 					<elementSpec ident="rewrite" ns="http://www.tei-c.org/ns/geneticEditions"
 						mode="add">
 						<desc>contains a sequence of text which has been rewritten by the author,
@@ -922,7 +949,10 @@
 								for the <att>stage</att> attribute. </p>
 						</remarks>
 					</elementSpec>
+					 -->
 					<!-- =============== Authorial changes =============== -->
+					<!-- unused 
+						
 					<elementSpec ident="metaMark" ns="http://www.tei-c.org/ns/geneticEditions"
 						mode="add">
 						<desc>contains any textual or graphical mark in a written text intended to
@@ -936,9 +966,9 @@
 							<memberOf key="att.placement"/>
 							<memberOf key="att.global"/>
 						</classes>
-						<!--, for example some which 
+						<!- -, for example some which 
                      functional but not part of the text. Could transform the text, like a
-                     strikethrough, or provide meta-information, like a date-->
+                     strikethrough, or provide meta-information, like a date- ->
 						<content>
 							<rng:ref name="macro.specialPara"/>
 						</content>
@@ -979,7 +1009,9 @@
 								mark.</p>
 						</remarks>
 					</elementSpec>
+					-->
 					<!-- =============== Genetic Groups =============== -->
+					<!-- unused
 					<elementSpec ident="geneticGrp" mode="add"
 						ns="http://www.tei-c.org/ns/geneticEditions">
 						<desc>Group texts and document which are somehow related in a genetic
@@ -1012,8 +1044,10 @@
 							</rng:oneOrMore>
 						</content>
 					</elementSpec>
+					 -->
 					<!-- =============== Adjust existing classes to new schema =============== -->
-					<elementSpec ident="arc" module="nets" mode="change">
+					<!-- ATTN: this is probably integrated in TEI proper: -->
+<!--					<elementSpec ident="arc" module="nets" mode="change">
 						<attList>
 							<attDef ident="value" usage="opt" mode="add">
 								<equiv/>
@@ -1041,7 +1075,7 @@
 							</attDef>
 						</attList>
 					</classSpec>
-					<!-- TODO: We are note sure, whether it is wise to add so much to the documentary markup -->
+					<!-\- TODO: We are note sure, whether it is wise to add so much to the documentary markup -\->
 					<classSpec type="model" ident="model.gLike" mode="change">
 						<classes mode="change">
 							<memberOf key="model.zonePart" mode="add"/>
@@ -1089,11 +1123,11 @@
 							<memberOf key="model.zonePart" mode="add"/>
 						</classes>
 					</elementSpec>
-
+-->
 					<!-- ================== TEI-SIG Genetic Editions: END ================== -->
 
 
-					<elementSpec ident="line" ns="http://www.tei-c.org/ns/geneticEditions"
+					<elementSpec ident="line" 
 						mode="change">
 						<attList>
 							<attDef ident="type" mode="change">
@@ -1109,7 +1143,7 @@
 						</attList>
 					</elementSpec>
 
-					<elementSpec ident="add" mode="change">
+<!--					<elementSpec ident="add" mode="change">
 						<classes mode="change">
 							<memberOf key="att.changeRelated"/>
 						</classes>
@@ -1139,7 +1173,7 @@
 							<memberOf key="att.changeRelated"/>
 						</classes>
 					</elementSpec>
-
+-->
 					<elementSpec ident="space" module="transcr" mode="change">
 						<classes mode="change">
 							<memberOf key="att.typed"/>
