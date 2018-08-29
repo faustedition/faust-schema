@@ -1301,6 +1301,12 @@
 					
 					<!-- app from may refer to multiple places -->
 					<elementSpec ident="app" mode="change">
+						<classes>
+							<memberOf key="att.global"/>
+							<memberOf key="model.pPart.transcriptional"/>
+							<memberOf key="model.global.edit"/>
+						</classes>
+						
 						<attList>
 							<attDef ident="from" mode="replace">
 								<datatype maxOccurs="unbounded">
