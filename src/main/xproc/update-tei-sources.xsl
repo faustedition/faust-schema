@@ -121,8 +121,6 @@
         <retrace>
             <xsl:apply-templates select="@*, node()"/>
         </retrace>
-    </xsl:template>
-    
-    <xsl:t
+    </xsl:template>    
     
 </xsl:stylesheet>
