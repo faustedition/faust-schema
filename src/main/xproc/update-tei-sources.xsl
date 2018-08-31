@@ -15,6 +15,12 @@
             <xsl:apply-templates select="@*, node()"/>
         </xsl:copy>
     </xsl:template>
+    
+    <xsl:template match="TEI">
+        <xsl:copy>
+            <xsl:apply-templates select="@*, node()"/>
+        </xsl:copy>
+    </xsl:template>
             
     <xsl:template match="f:hspace">
         <space dim="horizontal">
