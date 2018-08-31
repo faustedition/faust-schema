@@ -10,15 +10,133 @@
                         <Boolean>true</Boolean>
                     </entry>
                     <entry>
+                        <String>external.tool.cmds</String>
+                        <xsltCustomEngines-array>
+                            <xsltCustomEngines>
+                                <field name="outEncoding">
+                                    <null/>
+                                </field>
+                                <field name="outContentType">
+                                    <String>text/plain</String>
+                                </field>
+                                <field name="errEncoding">
+                                    <null/>
+                                </field>
+                                <field name="cmd">
+                                    <String>mvn -B package</String>
+                                </field>
+                                <field name="description">
+                                    <String></String>
+                                </field>
+                                <field name="name">
+                                    <String>mvn package</String>
+                                </field>
+                                <field name="workingDirectory">
+                                    <String>${pd}</String>
+                                </field>
+                                <field name="keyStroke">
+                                    <null/>
+                                </field>
+                                <field name="isBuiltin">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showConsole">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </xsltCustomEngines>
+                            <xsltCustomEngines>
+                                <field name="outEncoding">
+                                    <null/>
+                                </field>
+                                <field name="outContentType">
+                                    <String>text/plain</String>
+                                </field>
+                                <field name="errEncoding">
+                                    <null/>
+                                </field>
+                                <field name="cmd">
+                                    <String>mvn -B verify</String>
+                                </field>
+                                <field name="description">
+                                    <String></String>
+                                </field>
+                                <field name="name">
+                                    <String>mvn verify</String>
+                                </field>
+                                <field name="workingDirectory">
+                                    <String>${pd}</String>
+                                </field>
+                                <field name="keyStroke">
+                                    <null/>
+                                </field>
+                                <field name="isBuiltin">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showConsole">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </xsltCustomEngines>
+                        </xsltCustomEngines-array>
+                    </entry>
+                    <entry>
+                        <String>key.external.tools.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
                         <String>validation.scenario.associations</String>
                         <scenarioAssociation-array>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>target/converted/bb_cologny/G-30_17/verso.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>faust-tei</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>target/converted/dla_marbach/Cotta_Ms_Goethe_AlH_C-1-12_Faust_I/Cotta_Ms_Goethe_AlH_C-1-12_Faust_I.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>faust-tei</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>target/converted/bb_cologny/G-30_08/G-30_08.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>faust-tei</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>target/converted/gsa/391098/391098.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>tei_faust</String>
+                                        <String>faust-tei</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -311,6 +429,7 @@
     </meta>
     <projectTree name="faust-schema.xpr">
         <folder path="."/>
+        <file name="src/main/odd/faust-tei.xml"/>
         <file name="../faust-gen/target/lesetext/faust.xml"/>
     </projectTree>
 </project>
