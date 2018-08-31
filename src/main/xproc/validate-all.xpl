@@ -19,7 +19,7 @@
 	<p:import href="validate-xml.xpl"/>
 	
 	<p:group name="validations">		
-	
+				
 		<f:validate-xmls report-name="metadata" report-title="Metadata (Transcripts)">
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="resolve-uri('document', $_xml)"/>

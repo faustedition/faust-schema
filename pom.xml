@@ -44,7 +44,7 @@
 					
 					<execution>
 						<id>convert-transcripts</id>
-						<phase>generate-sources</phase>
+						<phase>pre-integration-test</phase>
 						<goals><goal>java</goal></goals>
 						<configuration>
 							<mainClass>com.xmlcalabash.drivers.Main</mainClass>

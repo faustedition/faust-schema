@@ -127,6 +127,12 @@
         <retrace>
             <xsl:apply-templates select="@*, node()"/>
         </retrace>
-    </xsl:template>    
+    </xsl:template>
+
+    <xsl:template match="ge:used">
+        <mod type="used">
+            <xsl:apply-templates select="@* except @type, node()"/>
+        </mod>
+    </xsl:template>
     
 </xsl:stylesheet>
