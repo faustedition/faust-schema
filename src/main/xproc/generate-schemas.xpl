@@ -60,7 +60,7 @@
 					<p:input port="stylesheet"><p:pipe port="result" step="load-odd2odd"/></p:input>
 					<!--<p:with-param name="selectedSchema" select="'faust-tei'"/>-->
 					<p:with-param name="verbose" select="'false'"/>
-					<p:with-param name="stripped" select="'true'"/>
+					<!--<p:with-param name="stripped" select="'true'"/>-->
 					<p:with-param name="defaultSource" select="$p5subsetUrl"/>
 					<p:with-param name="TEIC" select="'true'"/>
 					<p:with-param name="lang" select="'en'"/>
