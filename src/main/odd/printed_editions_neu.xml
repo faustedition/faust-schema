@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><?oxygen RNGSchema="https://faustedition.uni-wuerzburg.de/schema/tei_all.rng"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0"
+    xml:lang="de">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>TEI-P5-Schema für die Digitalisierung gedruckter Faust-Editionen</title>
+                <author>Digitale Faust-Edition</author>
+            </titleStmt>
+            <publicationStmt>
+                <ab/>
+            </publicationStmt>
+            <notesStmt>
+                <note type="ns">http://www.faustedition.net/ns</note>
+            </notesStmt>
+            <sourceDesc>
+                <ab/>
+            </sourceDesc>
+        </fileDesc>
+        <revisionDesc>
+            <change when="2011-12-08" who="middell">Erste Version</change>
+            <change when="2012-04-25" who="henzel">aktualisiert</change>
+            <change when="2012-05-02" who="bruening">versuchsweise fertiggestellt</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <schemaSpec ident="printed_editions" prefix="" start="TEI teiCorpus">
+                <moduleRef key="core"/>
+                <moduleRef key="drama"/>
+                <moduleRef key="figures"></moduleRef>
+                <moduleRef key="header"/>
+                <moduleRef key="linking"/>
+                <moduleRef key="tei"/>
+                <moduleRef key="textstructure"/>
+                <moduleRef key="transcr"/>
+                <elementSpec ident="div" mode="change" module="textstructure">
+                    <classes mode="replace">
+                        <memberOf key="att.global"/>
+                        <memberOf key="att.divLike"/>
+                        <memberOf key="att.declaring"/>
+                        <memberOf key="model.divLike"/>
+                    </classes>
+                    <attList>
+                        <attDef ident="type" mode="add" usage="rec">
+                            <desc>Abschnittstyp</desc>
+                            <datatype>
+                                <ref xmlns="http://relaxng.org/ns/structure/1.0"
+                                    name="data.enumerated"/>
+                            </datatype>
+                            <valList type="closed">
+                                <valItem ident="act">
+                                    <desc>Akt</desc>
+                                </valItem>
+                                <valItem ident="contents">
+                                    <desc>Inhaltsverzeichnis</desc>
+                                </valItem>
+                                <valItem ident="half-title">
+                                    <desc>Schmutztitel</desc>
+                                </valItem>
+                                <valItem ident="scene">
+                                    <desc>Szene</desc>
+                                </valItem>
+                                <valItem ident="subscene">
+                                    <desc>Unterszene</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="figure" mode="change" module="figures">
+                    <attList>
+                        <attDef ident="type" mode="change">
+                            <valList mode="replace" type="closed">
+                                <valItem ident="illustration">
+                                    <desc>Illustration</desc>
+                                </valItem>
+                                <valItem ident="line">
+                                    <desc>Waagerechte Linie (typographisches Zierelement)</desc>
+                                </valItem>
+                                <valItem ident="frontispiece">
+                                    <desc>Frontispiz</desc>
+                                </valItem>
+                                <valItem ident="swelledRule">
+                                    <desc>Langgezogene Raute (typographisches Zierelement)</desc>
+                                </valItem>
+                                <valItem ident="titlePagePicture">
+                                    <desc>Titelbild</desc>
+                                </valItem>
+                                <valItem ident="vignette">
+                                    <desc>Vignette (typographisches Zierelement)</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="fw" mode="change" module="transcr">
+                    <attList>
+                        <attDef ident="type" mode="change">
+                            <valList mode="replace" type="closed">
+                                <valItem ident="header">
+                                    <desc>Kolumnentitel</desc>
+                                </valItem>
+                                <valItem ident="pageNum">
+                                    <desc>Paginierung</desc>
+                                </valItem>
+                                <valItem ident="catch">
+                                    <desc>Kustode</desc>
+                                </valItem>
+                                <valItem ident="sig">
+                                    <desc>Bogennorm bzw. -signatur</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="head" mode="change" module="core">
+                    <attList>
+                        <attDef ident="type" mode="change">
+                            <valList mode="replace" type="closed">
+                                <valItem ident="main">
+                                    <desc>Hauptüberschrift</desc>
+                                </valItem>
+                                <valItem ident="sub">
+                                    <desc>Unterüberschrift</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="seg" mode="change" module="linking">
+                    <attList>
+                        <attDef ident="rend" mode="change">
+                            <valList mode="replace" type="closed">
+                                <valItem ident="rotated">
+                                    <desc>Verdrehte Buchstaben</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="titlePart" mode="change" module="textstructure">
+                    <attList>
+                        <attDef ident="type" mode="change">
+                            <valList mode="replace" type="closed">
+                                <valItem ident="main">
+                                    <desc>Haupttitel</desc>
+                                </valItem>
+                                <valItem ident="sub">
+                                    <desc>Untertitel</desc>
+                                </valItem>
+                                <valItem ident="volume">
+                                    <desc>Bandangabe</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <classSpec ident="att.global" mode="change" type="atts">
+                    <attList>
+                        <attDef ident="rend" mode="change">
+                            <valList mode="add" type="closed">
+                                <valItem ident="antiqua">
+                                    <desc>Antiqua</desc>
+                                </valItem>
+                                <valItem ident="big">
+                                    <desc>Vergrößerter Schriftgrad</desc>
+                                </valItem>
+                                <valItem ident="bold">
+                                    <desc>Fettdruck</desc>
+                                </valItem>
+                                <valItem ident="centered">
+                                    <desc>Zentrierung</desc>
+                                </valItem>
+                                <valItem ident="firstLineIndented">
+                                    <desc>Einrückung der ersten Zeile am Anfang eines
+                                        Absatzes</desc>
+                                </valItem>
+                                <valItem ident="hanging">
+                                    <desc>Hängender Absatz</desc>
+                                </valItem>
+                                <valItem ident="inline">
+                                    <desc>„chunk“ oder „paragraph-like element“, das ohne
+                                        Zeilenumbruch an das vorhergehende Element anschließt</desc>
+                                </valItem>
+                                <valItem ident="indented">
+                                    <desc>Einrückung von Zeilen, Absätzen, Strophen und
+                                        Versgruppen</desc>
+                                </valItem>
+                                <valItem ident="italic">
+                                    <desc>Kursivierung</desc>
+                                </valItem>
+                                <valItem ident="letter-spaced">
+                                    <desc>Sperrsatz</desc>
+                                </valItem>
+                                <valItem ident="normal">
+                                    <desc>Normaler Schriftgrad</desc>
+                                </valItem>
+                                <valItem ident="small">
+                                    <desc>Verkleinerter Schriftgrad</desc>
+                                </valItem>
+                                <valItem ident="textualis">
+                                    <desc>Textura</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </classSpec>
+            </schemaSpec>
+        </body>
+    </text>
+</TEI>

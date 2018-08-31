@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><?oxygen RNGSchema="https://faustedition.uni-wuerzburg.de/schema/tei_all.rng"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0"
+    xml:lang="de">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>TEI-P5-Schema für die Digitalisierung gedruckter Faust-Editionen</title>
+                <author>Digitale Faust-Edition</author>
+            </titleStmt>
+            <notesStmt>
+                <note type="ns">http://www.faustedition.net/ns</note>
+            </notesStmt>
+        </fileDesc>
+        <revisionDesc>
+            <change when="2011-12-08" who="middell">Erste Version</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <schemaSpec ident="printed_editions" prefix="" start="TEI teiCorpus">
+                <moduleRef key="header"/>
+                <moduleRef key="core"/>
+                <moduleRef key="tei"/>
+                <moduleRef key="textstructure"/>
+                <moduleRef key="linking"/>
+                <moduleRef key="drama"/>
+                <moduleRef key="transcr"/>
+                <elementSpec ident="div" mode="change" module="textstructure">
+                    <classes mode="replace">
+                        <memberOf key="att.global"/>
+                        <memberOf key="att.divLike"/>
+                        <memberOf key="att.declaring"/>
+                        <memberOf key="model.divLike"/>
+                    </classes>
+                    <attList>
+                        <attDef ident="type" mode="add" usage="rec">
+                            <desc>Abschnittstyp</desc>
+                            <datatype>
+                                <ref xmlns="http://relaxng.org/ns/structure/1.0"
+                                    name="data.enumerated"/>
+                            </datatype>
+                            <valList type="closed">
+                                <valItem ident="act">
+                                    <desc>Akt</desc>
+                                </valItem>
+                                <valItem ident="scene">
+                                    <desc>Szene</desc>
+                                </valItem>
+                                <valItem ident="subscene">
+                                    <desc>Unterszene</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="l" mode="change" module="drama">
+                    <attList>
+                        <attDef ident="part" mode="change">
+                            <valList mode="replace" type="closed">
+                                <valItem ident="al-1">
+                                    <desc>1. Teil einer Antilabe</desc>
+                                </valItem>
+                                <valItem ident="al-2">
+                                    <desc>2. Teil einer Antilabe</desc>
+                                </valItem>
+                                <valItem ident="al-3">
+                                    <desc>3. Teil einer Antilabe</desc>
+                                </valItem>
+                                <valItem ident="al-4">
+                                    <desc>4. Teil einer Antilabe</desc>
+                                </valItem>
+                                <valItem ident="al-5">
+                                    <desc>5. Teil einer Antilabe</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="fw" mode="change" module="transcr">
+                    <attList>
+                        <attDef ident="type" mode="change">
+                            <valList mode="replace" type="closed">
+                                <valItem ident="header">
+                                    <desc>a running title at the top of the page</desc>
+                                </valItem>
+                                <valItem ident="pageNum">
+                                    <desc>(page number) a page number or foliation symbol</desc>
+                                </valItem>
+                                <valItem ident="catch">
+                                    <desc>(catchword) a catch-word (aka. Kustoden/
+                                        Blatthüter)</desc>
+                                </valItem>
+                                <valItem ident="sig">
+                                    <desc>(signature) a signature or gathering symbol (z. B.
+                                        Bogensignatur)</desc>
+                                </valItem>
+                                <valItem ident="adorn-type-1">
+                                    <desc>(adornment) Strich-/Zierelement (Typ #1)</desc>
+                                </valItem>
+                                <valItem ident="adorn-type-2">
+                                    <desc>(adornment) Strich-/Zierelement (Typ #2)</desc>
+                                </valItem>
+                                <valItem ident="adorn-type-3">
+                                    <desc>(adornment) Strich-/Zierelement (Typ #3)</desc>
+                                </valItem>
+                                <valItem ident="adorn-type-4">
+                                    <desc>(adornment) Strich-/Zierelement (Typ #4)</desc>
+                                </valItem>
+                                <valItem ident="adorn-type-5">
+                                    <desc>(adornment) Strich-/Zierelement (Typ #5)</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <classSpec ident="att.global" mode="change" type="atts">
+                    <attList>
+                        <attDef ident="rend" mode="change">
+                            <valList mode="add" type="closed">
+                                <valItem ident="font-size-tiny">
+                                    <desc>Kleinste Schriftgröße (#1)</desc>
+                                </valItem>
+                                <valItem ident="font-size-small">
+                                    <desc>Kleine Schriftgröße (#2)</desc>
+                                </valItem>
+                                <valItem ident="font-size-normal">
+                                    <desc>Normale Schriftgröße (#3)</desc>
+                                </valItem>
+                                <valItem ident="font-size-big">
+                                    <desc>Große Schriftgröße (#4)</desc>
+                                </valItem>
+                                <valItem ident="font-size-huge">
+                                    <desc>Größte Schriftgröße (#5)</desc>
+                                </valItem>
+                                <valItem ident="font-style-spaced">
+                                    <desc>Sperrsatz</desc>
+                                </valItem>
+                                <valItem ident="font-style-italics">
+                                    <desc>Kursivierung</desc>
+                                </valItem>
+                                <valItem ident="font-type-latin">
+                                    <desc>Antiqua</desc>
+                                </valItem>
+                                <valItem ident="align-hanging">
+                                    <desc>Hängender Absatz</desc>
+                                </valItem>
+                                <valItem ident="align-centered">
+                                    <desc>Zentrierung</desc>
+                                </valItem>
+                                <valItem ident="indent-small">
+                                    <desc>Kleinere Einrückung, z. B. einzelner Zeilen am Anfang von
+                                        Absätzen, Strophen und Versgruppen</desc>
+                                </valItem>
+                                <valItem ident="indent-large">
+                                    <desc>Größere Einrückung, z. B. ganzer Strophen oder
+                                        Figurenreden (Lieder)</desc>
+                                </valItem>
+                                <valItem ident="inline">
+                                    <desc>Blockelement schließt an Vorgänger ohne Zeilenumbruch
+                                        an</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </classSpec>
+            </schemaSpec>
+
+        </body>
+    </text>
+</TEI>
