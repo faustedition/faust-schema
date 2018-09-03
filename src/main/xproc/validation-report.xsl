@@ -65,7 +65,7 @@
 				<th>Files</th>
 			</tr>
 			<xsl:for-each-group select="//c:error" group-by="c:message">
-				<xsl:sort select="current-grouping-key()"/>
+				<xsl:sort select="count(current-group())" order="descending"/>
 				<tr>
 					<td><a href="#{generate-id(current-group()[1])}"><xsl:value-of select="current-grouping-key()"/></a></td>
 					<td style="text-align:right;"><xsl:value-of select="count(current-group())"/></td>
@@ -139,7 +139,7 @@
 								<li>
 									<xsl:sequence select="f:linkxml(current-grouping-key())"/>:
 									<xsl:variable name="href" select="f:linkxml(current-grouping-key())/@href"/>
-									<xsl:message select="concat('filename=', current-grouping-key(), 'href=', $href, ' xmlroot=', $_xmlroot, ' linkroot=', $linkroot)"/>
+									<!--<xsl:message select="concat('filename=', current-grouping-key(), 'href=', $href, ' xmlroot=', $_xmlroot, ' linkroot=', $linkroot)"/>-->
 									<span class="locations">
 										<xsl:value-of select="concat(count(current-group()), '×: ')"/>
 										<xsl:for-each select="current-group()">
