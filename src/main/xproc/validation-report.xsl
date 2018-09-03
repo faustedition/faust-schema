@@ -27,7 +27,7 @@
 						then substring($uri, string-length($_xmlroot) + 
 								(if (ends-with('/', $_xmlroot)) then 1 else 2))
 						else $uri"/>
-		<xsl:variable name="link" select="if ($linkroot != '') then resolve-uri($relpath, $linkroot) else $uri"/>
+		<xsl:variable name="link" select="replace(if ($linkroot != '') then resolve-uri($relpath, $linkroot) else $uri, '\.xml$', '.html')"/>
 		<a href="{$link}"><xsl:value-of select="$relpath"/></a>
 	</xsl:function>
 	
@@ -137,12 +137,16 @@
 							<xsl:for-each-group select="current-group()" group-by="ancestor::f:validation-error/@filename">
 								<li>
 									<xsl:sequence select="f:linkxml(current-grouping-key())"/>:
+									<xsl:variable name="href" select="f:linkxml(current-grouping-key())/@href"/>
 									<span class="locations">
 										<xsl:value-of select="concat(count(current-group()), '×: ')"/>
 										<xsl:for-each select="current-group()">
 											<xsl:sort select="number(@line)"/>
 											<xsl:sort select="number(@column)"/>
-											<xsl:value-of select="concat(@line, ':', @column, ' ')"/>
+											<a href="{$href}#l{@line}">
+												<xsl:value-of select="concat(@line, ':', @column, ' ')"/>
+											</a>
+											
 										</xsl:for-each>									
 									</span>
 								</li>
@@ -173,9 +177,10 @@
 	</xsl:template>
 	
 	<xsl:template match="f:validation-error[c:errors]">
+		<xsl:variable name="href" select="f:linkxml(@filename)/@href"/>
 		<dt><a href="{@filename}"><xsl:value-of select="@filename"/></a></dt>
 		<dd>
-			<dl class="individual-errors">
+			<dl class="individual-errors">				
 				<xsl:for-each-group select=".//c:error" group-by="string-join((c:message, c:resolution), '|')">
 					<xsl:sort select="number(current-group()[1]/@line)"/>
 					<dt><xsl:value-of select="c:message"/></dt>
@@ -186,7 +191,9 @@
 							<xsl:for-each select="current-group()">
 								<xsl:sort select="number(@line)"/>
 								<xsl:sort select="number(@column)"/>
-								<xsl:value-of select="concat(@line, ':', @column, ' ')"/>
+								<a href="{$href}#l{@line}">
+									<xsl:value-of select="concat(@line, ':', @column, ' ')"/>
+								</a>
 							</xsl:for-each>
 						</p>		
 					</dd>

@@ -230,6 +230,7 @@
 		<p:input port="source"><p:pipe port="result" step="wrap-errors"/></p:input>
 		<p:input port="stylesheet"><p:document href="validation-report.xsl"/></p:input>
 		<p:input port="parameters"><p:pipe port="result" step="in-scope-names"/></p:input>
+		<p:with-param name="linkroot" select="resolve-uri('report/xml', $_target)"/>
 	</p:xslt>
 	
 	<cx:message>
@@ -237,8 +238,6 @@
 	</cx:message>
 	<p:store method="xhtml" indent="true">
 		<p:with-option name="href" select="$report"/>
-	</p:store>
-		
-	
+	</p:store>	
 	
 </p:declare-step>

@@ -25,7 +25,7 @@
   <p:for-each>
     <p:iteration-source select="//c:file"/>
     <p:variable name="filename" select="p:resolve-uri(/c:file/@name)"/>
-    <p:variable name="out" select="p:resolve-uri(replace($filename, $_xmlroot, 'converted'), $_target)"/>
+    <p:variable name="out" select="p:resolve-uri(replace($filename, $_xmlroot, 'converted/transcript'), $_target)"/>
     
 <!--    <cx:message>
 			<p:with-option name="message" select="concat($filename, ' → ', $out)"></p:with-option>

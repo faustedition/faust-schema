@@ -99,6 +99,34 @@
 	<p:store method="xhtml" indent="true">
 		<p:with-option name="href" select="resolve-uri('report/index.html', $_target)"/>
 	</p:store>
+	
+	<p:directory-list include-filter=".*\.xml$">
+		<p:with-option name="path" select="resolve-uri('report', $_target)"/>
+	</p:directory-list>
+	<p:for-each>
+		<p:iteration-source select="//c:file"/>
+		<p:variable name="report-uri" select="resolve-uri(/c:file/@name, resolve-uri('report/', $_target))"/>
+		<cx:message>
+			<p:with-option name="message" select="concat('Annotating XMLs for ', $report-uri)"/>
+		</cx:message>
+		<p:try>
+			<p:group>
+				<p:exec command="src/main/tools/highlight-errors.py" source-is-xml="true" errors-is-xml="false" result-is-xml="false">
+					<p:with-option name="args" select="string-join(('-s1', '-o', resolve-uri('report/', $_target), $report-uri), ' ')"/>
+					<p:input port="source"><p:empty/></p:input>		
+				</p:exec>				
+			</p:group>
+			<p:catch name="catch-ann-xml">
+				<cx:message>
+					<p:with-option name="message" select="concat('Failed to load ', $report-uri, ': ', .)"/>
+					<p:input port="source"><p:pipe port="error" step="catch-ann-xml"/></p:input>
+				</cx:message>
+				<p:identity><p:input port="source"><p:empty/></p:input></p:identity>
+			</p:catch>
+		</p:try>
+		
+	</p:for-each>
 
+	<p:sink/>
 
 </p:declare-step>
