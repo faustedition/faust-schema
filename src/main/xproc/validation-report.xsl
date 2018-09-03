@@ -54,7 +54,7 @@
 				<td>documents are valid</td>
 			</tr>
 		</table>
-		<xsl:message select="concat('Valid documents: ', $valid, ', invalid by main schema: ', $validationErrors, ', invalid by schematron: ', $schematronErrors)"/>
+		<!--<xsl:message select="concat('Valid documents: ', $valid, ', invalid by main schema: ', $validationErrors, ', invalid by schematron: ', $schematronErrors)"/>-->
 	</xsl:template>
 	
 	<xsl:template name="rng-message-summary">
