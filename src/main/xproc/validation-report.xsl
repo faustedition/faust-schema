@@ -12,8 +12,8 @@
 	
 	<xsl:param name="report-title">Validation Errors</xsl:param>
 	<xsl:param name="report-name"/>
-	<xsl:param name="_xmlroot"/>
-	<xsl:param name="linkroot"/>
+	<xsl:param name="_xmlroot" select="static-base-uri()"/>
+	<xsl:variable name="linkroot" select="/*/@linkroot"/>
 	<xsl:param name="rng"/>
 	<xsl:param name="schematron"/>
 	<xsl:param name="xsd"/>
@@ -27,8 +27,9 @@
 						then substring($uri, string-length($_xmlroot) + 
 								(if (ends-with('/', $_xmlroot)) then 1 else 2))
 						else $uri"/>
-		<xsl:variable name="link" select="replace(if ($linkroot != '') then resolve-uri($relpath, $linkroot) else $uri, '\.xml$', '.html')"/>
+		<xsl:variable name="link" select="replace(if ($linkroot != '') then string-join(($linkroot, $relpath), '/') else $uri, '\.xml$', '.html')"/>
 		<a href="{$link}"><xsl:value-of select="$relpath"/></a>
+		
 	</xsl:function>
 	
 	
@@ -138,6 +139,7 @@
 								<li>
 									<xsl:sequence select="f:linkxml(current-grouping-key())"/>:
 									<xsl:variable name="href" select="f:linkxml(current-grouping-key())/@href"/>
+									<xsl:message select="concat('filename=', current-grouping-key(), 'href=', $href, ' xmlroot=', $_xmlroot, ' linkroot=', $linkroot)"/>
 									<span class="locations">
 										<xsl:value-of select="concat(count(current-group()), '×: ')"/>
 										<xsl:for-each select="current-group()">

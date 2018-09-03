@@ -20,42 +20,42 @@
 	
 	<p:group name="validations">		
 				
-		<f:validate-xmls report-name="metadata" report-title="Metadata (Transcripts)">
+		<f:validate-xmls report-name="metadata" report-title="Metadata (Transcripts)" linkroot='xml/document'>
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="resolve-uri('document', $_xml)"/>
 			<p:with-option name="xsd" select="resolve-uri('schema/metadata.xsd', $_target)"/>
 			<p:with-option name="exclude-filter" select="'print'"/>
-			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/document/'"/>
+			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/document/'"/>-->
 		</f:validate-xmls>
 		
-		<f:validate-xmls report-name="metadata_print" report-title="Metadata (Prints)">
+		<f:validate-xmls report-name="metadata_print" report-title="Metadata (Prints)" linkroot='xml/document'>
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="resolve-uri('document/print', $_xml)"/>
 			<p:with-option name="xsd" select="resolve-uri('schema/metadata_print.xsd', $_target)"/>
-			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/document/print/'"/>
+			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/document/print/'"/>-->
 		</f:validate-xmls>
 		
-		<f:validate-xmls report-name="macrogenesis" report-title="Macrogenesis Data">
+		<f:validate-xmls report-name="macrogenesis" report-title="Macrogenesis Data" linkroot='xml/macrogenesis'>
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="resolve-uri('macrogenesis', $_xml)"/>
 			<p:with-option name="xsd" select="resolve-uri('schema/macrogenesis.xsd', $_target)"/> <!-- TODO -->
-			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/macrogenesis/'"/>
+			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/macrogenesis/'"/>-->
 		</f:validate-xmls>
 				
-		<f:validate-xmls report-name="faust-tei" report-title="Converted Transcripts (faust-tei)">
+		<f:validate-xmls report-name="faust-tei" report-title="Converted Transcripts (faust-tei)" linkroot=''>
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="p:resolve-uri('converted', $_target)"/>
 			<p:with-option name="rng" select="resolve-uri('schema/faust-tei.rng', $_target)"/>
 			<p:with-option name="schematron" select="resolve-uri('schema/faust-tei.sch', $_target)"/>
-			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/transcript/'"/>
+			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/transcript/'"/>-->
 		</f:validate-xmls>
 	
-		<f:validate-xmls report-name="printed_editions_neu" report-title="Printed Editions Neu (printed_editions_neu)">
+		<f:validate-xmls report-name="printed_editions_neu" report-title="Printed Editions Neu (printed_editions_neu)" linkroot='prints'>
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="concat($xml, 'print')"/>
 			<p:with-option name="rng" select="resolve-uri('schema/printed_editions_neu.rng', $_target)"/>
 			<p:with-option name="schematron" select="resolve-uri('schema/printed_editions_neu.sch', $_target)"/>
-			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/print/'"/>
+			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/print/'"/>-->
 		</f:validate-xmls>
 			
 	</p:group>

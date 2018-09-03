@@ -199,6 +199,7 @@
 		<p:input port="stylesheet">
 			<p:inline>
 				<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+					<xsl:param name="linkroot"/>
 					<xsl:template match="/*">
 						<xsl:copy>
 							<xsl:namespace name="f">http://www.faustedition.net/ns</xsl:namespace>
@@ -207,13 +208,15 @@
 							<xsl:namespace name="cx">http://xmlcalabash.com/ns/extensions</xsl:namespace>
 							<xsl:namespace name="pxf">http://exproc.org/proposed/steps/file</xsl:namespace>
 							<xsl:namespace name="svrl">http://purl.oclc.org/dsdl/svrl</xsl:namespace>
-							<xsl:namespace name="l">http://xproc.org/library</xsl:namespace>							
+							<xsl:namespace name="l">http://xproc.org/library</xsl:namespace>
+							<xsl:attribute name="linkroot" select="$linkroot"></xsl:attribute>							
 							<xsl:copy-of select="@*, node()"/>
 						</xsl:copy>
 					</xsl:template>
 				</xsl:stylesheet>
 			</p:inline>
-		</p:input>		
+		</p:input>
+		<p:with-param name="linkroot" select="$linkroot"/>		
 	</p:xslt>
 	
 	<cx:message>
