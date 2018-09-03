@@ -27,7 +27,7 @@
 						then substring($uri, string-length($_xmlroot) + 
 								(if (ends-with('/', $_xmlroot)) then 1 else 2))
 						else $uri"/>
-		<xsl:variable name="link" select="replace(if ($linkroot != '') then string-join(($linkroot, $relpath), '/') else $uri, '\.xml$', '.html')"/>
+		<xsl:variable name="link" select="replace(if ($linkroot != '') then string-join(($linkroot, $relpath), '/') else $relpath, '\.xml$', '.html')"/>
 		<a href="{$link}"><xsl:value-of select="$relpath"/></a>
 		
 	</xsl:function>
