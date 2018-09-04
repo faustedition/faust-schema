@@ -505,6 +505,7 @@
 					<elementSpec ident="supplied" mode="change">
 						<classes mode="change">
 							<memberOf key="model.linePart" mode="add"/>
+							<memberOf key="att.global.source" mode="add"/>
 						</classes>
 					</elementSpec>
 					<elementSpec ident="orig" mode="change">
