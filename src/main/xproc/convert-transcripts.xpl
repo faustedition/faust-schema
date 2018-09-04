@@ -17,19 +17,24 @@
   <p:import href="http://xproc.org/library/recursive-directory-list.xpl"/>
   <p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
   
+  <p:load href="http://dev.digital-humanities.de/ci/job/faust-gen-fast/lastSuccessfulBuild/artifact/target/lesetext/faust.xml"/>
+  <p:store name="save-text"> <!-- does not need conversion -->
+    <p:with-option name="href" select="concat($_target, '/converted/faust.xml')"/>
+  </p:store>
+  
   <l:recursive-directory-list name="transcript"> 
     <p:with-option name="path" select="concat($_xmlroot, '/transcript')"/>
   </l:recursive-directory-list>
+  
   <l:recursive-directory-list name="print"> 
     <p:with-option name="path" select="concat($_xmlroot, '/print')"/>
   </l:recursive-directory-list>
   
-  
   <p:for-each>
     <p:iteration-source select="//c:file">
       <p:pipe port="result" step="transcript"/>
-      <p:pipe port="result" step="print"/>  
-    </p:iteration-source>
+      <p:pipe port="result" step="print"/>      
+    </p:iteration-source>    
     <p:variable name="filename" select="p:resolve-uri(/c:file/@name)"/>
     <p:variable name="out" select="p:resolve-uri(replace($filename, $_xmlroot, 'converted/'), $_target)"/>
     
