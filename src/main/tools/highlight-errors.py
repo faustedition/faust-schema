@@ -56,7 +56,7 @@ def marker_string(columns):
     last_column = 0
     for column in columns:
         c = str(column)
-        result += ' ' * (column - len(c) - last_column) + f'<marked>{c}</marked>'
+        result += ' ' * (column - len(c) - last_column) + '<marked>' + c + '</marked>'
         last_column = column
     return result
 
@@ -76,11 +76,11 @@ def annotate_file(invalid_file, errors, out_path=None, strip_components=0):
             out.write(PREFIX)
             for lineno, raw_line in enumerate(xml, start=1):
                 line = escape(raw_line[:-1])
-                out.write(f'<span id="l{lineno}" class="l">{lineno}</span>{line}\n')
+                out.write('<span id="l{0}" class="l">{0}</span>{1}\n'.format(lineno, line))
                 if lineno in errors:
                     current_errors = errors[lineno]
                     markers = marker_string(error['column'] for error in current_errors)
-                    out.write(f'<span class="l"> </span><span class="markers">{markers}</span></pre>\n<div class="errors">')
+                    out.write('<span class="l"> </span><span class="markers">{}</span></pre>\n<div class="errors">'.format(markers))
                     for error in current_errors:
                         out.write(('<p id="l{line}c{column}" class="message"><span class="pos">{line}:{column}</span> {message}</p>\n' +
                                    '<p class="resolution">{resolution}</p>\n').format_map(error))
@@ -122,5 +122,5 @@ def _main():
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO,filename='target/highlight-errors.log')
+    logging.basicConfig(level=logging.INFO)
     _main()
