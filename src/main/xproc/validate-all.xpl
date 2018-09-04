@@ -42,7 +42,7 @@
 			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/macrogenesis/'"/>-->
 		</f:validate-xmls>
 				
-		<f:validate-xmls report-name="faust-tei" report-title="Converted Transcripts (faust-tei)" linkroot=''>
+		<f:validate-xmls report-name="faust-tei" report-title="Converted Transcripts and Prints (faust-tei)" linkroot=''>
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="p:resolve-uri('converted', $_target)"/>
 			<p:with-option name="rng" select="resolve-uri('schema/faust-tei.rng', $_target)"/>
@@ -50,14 +50,14 @@
 			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/transcript/'"/>-->
 		</f:validate-xmls>
 	
-		<f:validate-xmls report-name="printed_editions_neu" report-title="Printed Editions Neu (printed_editions_neu)" linkroot='prints'>
+<!--		<f:validate-xmls report-name="printed_editions_neu" report-title="Converted Prints (faust-tei)" linkroot='prints'>
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="concat($xml, 'print')"/>
 			<p:with-option name="rng" select="resolve-uri('schema/printed_editions_neu.rng', $_target)"/>
 			<p:with-option name="schematron" select="resolve-uri('schema/printed_editions_neu.sch', $_target)"/>
-			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/print/'"/>-->
+			<!-\-<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/print/'"/>-\->
 		</f:validate-xmls>
-			
+-->			
 	</p:group>
 	
 	<cx:message>

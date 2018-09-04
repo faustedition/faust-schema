@@ -6,7 +6,7 @@
   
   <p:option name="target" select="'../../../target/'"/>
   <p:option name="_target" select="resolve-uri($target)"/>
-  <p:option name="xmlroot" select="'../../../data/xml/transcript'"></p:option>
+  <p:option name="xmlroot" select="'../../../data/xml'"></p:option>
   <p:option name="_xmlroot" select="resolve-uri($xmlroot)"/>
   
   <p:input port="source"><p:empty/></p:input>
@@ -17,15 +17,21 @@
   <p:import href="http://xproc.org/library/recursive-directory-list.xpl"/>
   <p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
   
-  <l:recursive-directory-list>
-    <p:with-option name="path" select="$_xmlroot"/>
-    <!--<p:with-option name="exclude-filter" select="$exclude-filter"/>-->
+  <l:recursive-directory-list name="transcript"> 
+    <p:with-option name="path" select="concat($_xmlroot, '/transcript')"/>
+  </l:recursive-directory-list>
+  <l:recursive-directory-list name="print"> 
+    <p:with-option name="path" select="concat($_xmlroot, '/print')"/>
   </l:recursive-directory-list>
   
+  
   <p:for-each>
-    <p:iteration-source select="//c:file"/>
+    <p:iteration-source select="//c:file">
+      <p:pipe port="result" step="transcript"/>
+      <p:pipe port="result" step="print"/>  
+    </p:iteration-source>
     <p:variable name="filename" select="p:resolve-uri(/c:file/@name)"/>
-    <p:variable name="out" select="p:resolve-uri(replace($filename, $_xmlroot, 'converted/transcript'), $_target)"/>
+    <p:variable name="out" select="p:resolve-uri(replace($filename, $_xmlroot, 'converted/'), $_target)"/>
     
 <!--    <cx:message>
 			<p:with-option name="message" select="concat($filename, ' → ', $out)"></p:with-option>
