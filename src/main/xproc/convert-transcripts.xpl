@@ -46,9 +46,15 @@
       <p:with-option name="href" select="$filename"/>
     </p:load>
     
-    <p:xslt name="convert">
+    <p:xslt name="convert">      
       <p:input port="parameters"><p:empty/></p:input>
       <p:input port="stylesheet"><p:document href="update-tei-sources.xsl"/></p:input>
+    </p:xslt>
+    
+    <p:xslt>   
+      <p:input port="parameters"><p:empty/></p:input>
+      <p:input port="stylesheet"><p:document href="xml-source-issues.xsl"/></p:input>
+      <p:with-param name="filename" select="$filename"/>      
     </p:xslt>
     
     <p:store>
