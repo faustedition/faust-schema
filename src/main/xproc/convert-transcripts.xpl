@@ -22,7 +22,7 @@
     <p:with-option name="href" select="concat($_target, '/converted/faust.xml')"/>
   </p:store>
   
-  <l:recursive-directory-list name="transcript"> 
+  <l:recursive-directory-list name="transcript" exclude-filter="test"> 
     <p:with-option name="path" select="concat($_xmlroot, '/transcript')"/>
   </l:recursive-directory-list>
   
