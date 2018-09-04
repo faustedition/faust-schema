@@ -113,7 +113,20 @@
             </xsl:if>
         </change>
     </xsl:template>
+   
+   
+    <xsl:template match="profileDesc[creation/ge:transposeGrp]">
+        <xsl:copy>
+            <xsl:apply-templates select="@*, text()[1], creation/ge:transposeGrp, node()"/>
+        </xsl:copy>
+    </xsl:template>
     
+    <xsl:template match="profileDesc/creation">
+        <xsl:copy>
+            <xsl:apply-templates select="@*, node() except ge:transposeGrp"/>
+        </xsl:copy>
+    </xsl:template>
+       
     <xsl:template match="ge:transposeGrp">
         <listTranspose>
             <xsl:apply-templates select="@*, node()"/>
@@ -125,7 +138,8 @@
             <xsl:apply-templates select="@*, node()"/>
         </transpose>
     </xsl:template>
-    
+
+
     <xsl:template match="ge:undo">
         <undo>
             <xsl:apply-templates select="@*, node()"/>
