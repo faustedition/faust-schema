@@ -88,6 +88,10 @@
         </line>
     </xsl:template>
     
+    <xsl:template match="alt/@targets">
+        <xsl:attribute name="target" select="."/>
+    </xsl:template>
+    
     
     <xsl:template match="@ge:stage">
         <xsl:attribute name="change" select="."/>
