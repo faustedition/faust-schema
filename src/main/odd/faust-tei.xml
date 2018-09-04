@@ -443,6 +443,7 @@
 							<memberOf key="att.transcriptional"/>
 							<memberOf key="att.graphicOrientation"/>
 							<memberOf key="att.graphicStyle"/>
+							<memberOf key="att.measurement"></memberOf>
 						</classes>
 					</elementSpec>
 
@@ -456,6 +457,7 @@
 							<memberOf key="att.transcriptional"/>
 							<memberOf key="att.graphicOrientation"/>
 							<memberOf key="att.graphicStyle"/>
+							<memberOf key="att.measurement"></memberOf>
 						</classes>
 					</elementSpec>
 					<elementSpec ident="ins" ns="http://www.faustedition.net/ns" mode="add">
