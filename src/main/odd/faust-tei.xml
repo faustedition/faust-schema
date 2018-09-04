@@ -513,6 +513,17 @@
 							<memberOf key="model.linePart" mode="add"/>
 						</classes>
 					</elementSpec>
+					
+					<elementSpec ident="date" mode="change">
+						<classes mode="change">
+							<memberOf key="model.linePart" mode="add"/>
+						</classes>						
+					</elementSpec>
+					<elementSpec ident="num" mode="change">
+						<classes mode="change">
+							<memberOf key="model.linePart" mode="add"/>
+						</classes>
+					</elementSpec>
 			
 
 					<elementSpec ident="line" 
@@ -530,6 +541,7 @@
 							</attDef>
 						</attList>
 					</elementSpec>
+					
 
 					<elementSpec ident="space" module="transcr" mode="change">
 						<classes mode="change">
