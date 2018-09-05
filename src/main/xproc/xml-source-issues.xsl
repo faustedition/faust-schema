@@ -46,14 +46,6 @@
                                       parent::p|parent::head|parent::stage|parent::sp|parent::mod[@type=('erase', 'strikethrough')]]"/>
     
     
-    <!-- https://github.com/faustedition/faust-gen-html/issues/47
-         Replace //stage/emph by //hi in XML sources
-     -->
-    <xsl:template match="stage/emph">
-        <hi>
-            <xsl:apply-templates select="@*, node()"/>
-        </hi>
-    </xsl:template>
     
     <!-- https://github.com/faustedition/faust-gen-html/issues/46
          Replace <name> by <hi> in XML sources 
