@@ -640,6 +640,12 @@
 						</attList>
 					</classSpec>
 					
+					<elementSpec ident="speaker" mode="change">
+						<classes mode="change">
+							<memberOf key="model.rdgPart" mode="add"/>
+						</classes>
+					</elementSpec>
+					
 				</schemaSpec>
 			</div>
 		</body>
