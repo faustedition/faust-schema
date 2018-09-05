@@ -54,9 +54,8 @@
         <xsl:element name="hi">
             <xsl:apply-templates select="@*, node()"/>
         </xsl:element>
-    </xsl:template>
-    
-    
+    </xsl:template>    
+    <xsl:template match="stage//hi/@status[. = 'name']"/>
     
     
 </xsl:stylesheet>
