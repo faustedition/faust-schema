@@ -68,4 +68,26 @@
         <xsl:apply-templates/>
     </xsl:template>
     
+    
+    
+    <!-- Following two rules try to implement https://github.com/faustedition/faust-gen-html/issues/27 -->
+    <xsl:template match="restore[del and (normalize-space(string-join(text(), '')) eq '') and (count(*) eq 1)]">
+        <del>
+            <xsl:apply-templates select="del/@*"/>
+            <xsl:copy>
+                <xsl:apply-templates select="@*"/>
+                <xsl:apply-templates select="del/node()"/>
+            </xsl:copy>
+        </del>
+    </xsl:template>
+        
+    <xsl:template match="subst/del[add][preceding-sibling::restore[del]][not(following-sibling::add[text()])]">
+        <add>
+            <xsl:apply-templates select="add/@*"/>
+            <del>
+                <xsl:apply-templates select="@*, add/node()"/>
+            </del>
+        </add>
+    </xsl:template>
+    
 </xsl:stylesheet>
