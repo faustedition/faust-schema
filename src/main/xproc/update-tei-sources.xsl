@@ -153,9 +153,9 @@
     </xsl:template>
 
     <xsl:template match="ge:used">
-        <modSpan type="used">
+        <metamark function="used">
             <xsl:apply-templates select="@* except @type, node()"/>
-        </modSpan>
+        </metamark>
     </xsl:template>
         
     <xsl:template match="processing-instruction('oxygen')">

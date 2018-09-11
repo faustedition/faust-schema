@@ -646,6 +646,12 @@
 						</classes>
 					</elementSpec>
 					
+					<elementSpec ident="metamark" mode="change">
+						<classes mode="change">
+							<memberOf key="att.written" mode="add"/>
+						</classes>
+					</elementSpec>
+					
 				</schemaSpec>
 			</div>
 		</body>
