@@ -64,7 +64,7 @@
         </xsl:if>
     </xsl:template>
     
-    <xsl:template match="sourceDoc//(sic|corr)[not(parent::choice)]">
+    <xsl:template match="sourceDoc//*[self::sic or self::corr][not(parent::choice)]">
         <xsl:apply-templates/>
     </xsl:template>
     
