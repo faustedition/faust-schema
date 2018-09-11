@@ -58,4 +58,14 @@
     <xsl:template match="stage//hi/@status[. = 'name']"/>
     
     
+    <xsl:template match="gap/@hand">
+        <xsl:if test="data(.) != preceding::handShift[1]/@hand">
+            <xsl:message>WARNING: gap/@hand=<xsl:value-of select="."/> != preceding handShift in <xsl:value-of select="document-uri(/)"/></xsl:message>
+        </xsl:if>
+    </xsl:template>
+    
+    <xsl:template match="sourceDoc//(sic|corr)[not(parent::choice)]">
+        <xsl:apply-templates/>
+    </xsl:template>
+    
 </xsl:stylesheet>
