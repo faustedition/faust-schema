@@ -10,9 +10,9 @@
     
     <xsl:param name="filename" select="document-uri(/)"/>
     
-    <xsl:template match="node()|@*">
+    <xsl:template match="node()|@*" mode="#all">
         <xsl:copy copy-namespaces="no">
-            <xsl:apply-templates select="@*, node()"/>
+            <xsl:apply-templates select="@*, node()" mode="#current"/>
         </xsl:copy>
     </xsl:template>
     
@@ -67,8 +67,7 @@
     <xsl:template match="sourceDoc//*[self::sic or self::corr][not(parent::choice)]">
         <xsl:apply-templates/>
     </xsl:template>
-    
-    
+       
     
     <!-- Following two rules try to implement https://github.com/faustedition/faust-gen-html/issues/27 -->
     <xsl:template match="restore[del and (normalize-space(string-join(text(), '')) eq '') and (count(*) eq 1)]">
@@ -88,6 +87,24 @@
                 <xsl:apply-templates select="@*, add/node()"/>
             </del>
         </add>
+    </xsl:template>
+    
+    
+    <!-- https://github.com/faustedition/xml/issues/607: Speech act  -->
+    <xsl:template match="sp[not(descendant::l | descendant::p)]">
+        <stage>
+            <xsl:apply-templates select="@*, stage[1]/@*"/>
+            <xsl:apply-templates mode="sp-to-stage" select="node()"/>
+        </stage>
+    </xsl:template>
+    
+    <xsl:template mode="sp-to-stage" match="speaker">
+        <hi>
+            <xsl:apply-templates select="@*, node()"/>            
+        </hi>        
+    </xsl:template>
+    <xsl:template mode="sp-to-stage" match="stage">
+        <xsl:apply-templates select="node()"/>
     </xsl:template>
     
 </xsl:stylesheet>
