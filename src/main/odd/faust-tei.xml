@@ -652,6 +652,15 @@
 						</classes>
 					</elementSpec>
 					
+					<elementSpec ident="change" mode="change">
+						<content>
+							<alternate minOccurs="0" maxOccurs="unbounded" >
+								<macroRef key="macro.specialPara"/>
+								<elementRef key="listChangey"/>
+							</alternate>
+						</content>
+					</elementSpec>
+					
 				</schemaSpec>
 			</div>
 		</body>
