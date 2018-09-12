@@ -42,7 +42,7 @@
 			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/macrogenesis/'"/>-->
 		</f:validate-xmls>
 				
-		<f:validate-xmls report-name="faust-tei" report-title="Converted Transcripts and Prints (faust-tei)" linkroot=''>
+		<f:validate-xmls report-name="faust-tei" report-title="Converted Transcripts and Prints (faust-tei)" linkroot='' exclude-filter="test">
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="p:resolve-uri('converted', $_target)"/>
 			<p:with-option name="rng" select="resolve-uri('schema/faust-tei.rng', $_target)"/>
