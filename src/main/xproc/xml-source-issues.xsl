@@ -5,7 +5,7 @@
     xpath-default-namespace="http://www.tei-c.org/ns/1.0"    
     xmlns:ge="http://www.tei-c.org/ns/geneticEditions"    
     xmlns:f="http://www.faustedition.net/ns"
-    exclude-result-prefixes="xs ge"
+    exclude-result-prefixes="xs ge f"
     version="2.0">
     
     <xsl:param name="filename" select="document-uri(/)"/>
@@ -90,21 +90,19 @@
     </xsl:template>
     
     
-    <!-- https://github.com/faustedition/xml/issues/607: Speech act  -->
+    <!-- https://´github.com/faustedition/xml/issues/607: Speech act  -->
     <xsl:template match="sp[not(descendant::l | descendant::p)]">
-        <stage>
-            <xsl:apply-templates select="@*, stage[1]/@*"/>
-            <xsl:apply-templates mode="sp-to-stage" select="node()"/>
-        </stage>
+        <xsl:if test="@*">
+            <xsl:comment>sp <xsl:copy-of select="@*"/></xsl:comment>
+        </xsl:if>
+        <xsl:apply-templates mode="#current"/>
     </xsl:template>
     
-    <xsl:template mode="sp-to-stage" match="speaker">
-        <hi>
-            <xsl:apply-templates select="@*, node()"/>            
-        </hi>        
-    </xsl:template>
-    <xsl:template mode="sp-to-stage" match="stage">
-        <xsl:apply-templates select="node()"/>
+    <xsl:template match="sp[not(descendant::l | descendant::p)]/speaker">
+        <stage>
+            <xsl:apply-templates select="@*"/>
+            <hi><xsl:apply-templates/></hi>
+        </stage>
     </xsl:template>
     
 </xsl:stylesheet>
