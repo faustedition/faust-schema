@@ -25,7 +25,7 @@
     
     <!-- https://github.com/faustedition/faust-gen-html/issues/175
         move stage at end of sp outside sp -->
-    <xsl:template match="sp[stage[not(following-sibling::*)]]">
+    <xsl:template match="sp[stage[not(following-sibling::*)]]" priority="1">
         <xsl:next-match/>
         <xsl:for-each select="stage[not(following-sibling::*)]">
             <xsl:copy>
