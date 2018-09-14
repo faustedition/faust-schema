@@ -36,7 +36,8 @@
     
     <xsl:template match="f:st">
         <mod>
-            <xsl:attribute name="rend" select="if (@rend = 'erase') then 'erase' else 'strikethrough'"/>
+            <xsl:variable name="rend-tokens" select="tokenize(@rend, '\s+')" as="xs:string*"/>
+            <xsl:attribute name="rend" select="string-join(($rend-tokens, if (not($rend-tokens = 'erase')) then 'strikethrough' else ()), ' ')"/>
             <xsl:apply-templates select="@* except @rend, node()"/>
         </mod>
     </xsl:template>
