@@ -90,7 +90,7 @@
     </xsl:template>
     
     
-    <!-- https://´github.com/faustedition/xml/issues/607: Speech act  -->
+    <!-- https://github.com/faustedition/xml/issues/607: Speech act 
     <xsl:template match="sp[not(descendant::l | descendant::p)]">
         <xsl:if test="@*">
             <xsl:comment>sp <xsl:copy-of select="@*"/></xsl:comment>
@@ -103,6 +103,6 @@
             <xsl:apply-templates select="@*"/>
             <hi><xsl:apply-templates/></hi>
         </stage>
-    </xsl:template>
+    </xsl:template> -->
     
 </xsl:stylesheet>
