@@ -64,9 +64,10 @@
         </xsl:if>
     </xsl:template>
     
-    <xsl:template match="sourceDoc//*[self::sic or self::corr][not(parent::choice)]">
+    <xsl:template match="sourceDoc//*[self::sic][not(parent::choice)]">
         <xsl:apply-templates/>
     </xsl:template>
+    <xsl:template match="sourceDoc//*[self::choice][not(parent::choice)]"/>
        
     
     <!-- Following two rules try to implement https://github.com/faustedition/faust-gen-html/issues/27 -->
