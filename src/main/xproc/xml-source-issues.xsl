@@ -25,15 +25,15 @@
     
     <!-- https://github.com/faustedition/faust-gen-html/issues/175
         move stage at end of sp outside sp -->
-    <xsl:template match="sp[stage[not(following-sibling::*)]]" priority="1">
+    <xsl:template match="sp[stage[not(following-sibling::* except following-sibling::stage)]]" priority="1">
         <xsl:next-match/>
-        <xsl:for-each select="stage[not(following-sibling::*)]">
+        <xsl:for-each select="stage[not(following-sibling::* except following-sibling::stage)]">
             <xsl:copy>
                 <xsl:apply-templates select="@*, node()"/>
             </xsl:copy>
         </xsl:for-each>
     </xsl:template>
-    <xsl:template match="sp/stage[not(following-sibling::*)]"/>
+    <xsl:template match="sp/stage[not(following-sibling::* except following-sibling::stage)]"/>
 
 
     <!-- https://github.com/faustedition/faust-gen-html/issues/53
