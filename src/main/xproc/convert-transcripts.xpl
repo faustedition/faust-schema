@@ -57,6 +57,13 @@
       <p:with-param name="filename" select="$filename"/>      
     </p:xslt>
     
+    <p:xslt>
+      <p:input port="stylesheet"><p:document href="changenote.xsl"/></p:input>
+      <p:with-param name="changenote" select="'Zu neuem Schema auf Basis von TEI P5 3.4.0 konvertiert'"/>
+      <p:with-param name="changenote-who" select="'thvitt'"/>
+      <p:with-param name="changenote-type" select="'automatic'"/>      
+    </p:xslt>
+    
     <p:store>
       <p:with-option name="href" select="$out"/>
     </p:store>
