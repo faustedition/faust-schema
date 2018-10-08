@@ -42,6 +42,7 @@
         </mod>
     </xsl:template>
     
+    <!--
     <xsl:template match="f:overw">
         <mod>
             <xsl:attribute name="rend" select="('overwrite', @rend)" separator=" "/>
@@ -59,6 +60,40 @@
             <xsl:attribute name="rend" select="'under', @rend" separator=" "/>
             <xsl:apply-templates select="@* except @rend, node()"/>
         </seg>
+    </xsl:template>
+    -->
+    
+    <xsl:function name="f:attrib-without" as="attribute()?">
+        <xsl:param name="attrib" as="attribute()?"/>
+        <xsl:param name="without" as="xs:string"/>
+        <xsl:variable name="tokens" select="tokenize($attrib, '\s+')"/>
+        <xsl:variable name="clean-tokens" select="remove($tokens, index-of($tokens, $without))"/>
+        <xsl:choose>
+            <xsl:when test="empty($clean-tokens)"/>
+            <xsl:otherwise>
+                <xsl:attribute name="{name($attrib)}" select="string-join($clean-tokens, ' ')"/>
+            </xsl:otherwise>
+        </xsl:choose>        
+    </xsl:function>
+    
+    <!-- undo f:overw etc. -->
+    <xsl:template match="mod[tokenize(@rend, '\s+') = 'overwrite']">
+        <f:overw>
+            <xsl:sequence select="f:attrib-without(@rend, 'overwrite')"/>
+            <xsl:apply-templates select="@* except @rend, node()"/>
+        </f:overw>
+    </xsl:template>
+    
+    <xsl:template match="mod/seg[tokenize(@rend, '\s+') = 'over']">
+        <f:over>
+            <xsl:apply-templates select="f:attrib-without(@rend, 'over'), @* except @rend, node()"/>
+        </f:over>
+    </xsl:template>
+    
+    <xsl:template match="mod/seg[tokenize(@rend, '\s+') = 'under']">
+        <f:under>
+            <xsl:apply-templates select="f:attrib-without(@rend, 'under'), @* except @rend, node()"/>
+        </f:under>
     </xsl:template>
     
     <!-- physical structure -->
@@ -159,9 +194,10 @@
         </metamark>
     </xsl:template>
         
-    <xsl:template match="processing-instruction('oxygen')">
+    <xsl:template match="processing-instruction('oxygen')|processing-instruction('xml-model')[not(preceding::processing-instruction('xml-model'))]">
         <xsl:processing-instruction name="xml-model">href="http://dev.digital-humanities.de/ci/view/Faust/job/faust-schema-tei-340/lastSuccessfulBuild/artifact/target/schema/faust-tei.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"</xsl:processing-instruction>        
         <xsl:processing-instruction name="xml-model">href="http://dev.digital-humanities.de/ci/view/Faust/job/faust-schema-tei-340/lastSuccessfulBuild/artifact/target/schema/faust-tei.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
     </xsl:template>
+    <xsl:template match="processing-instruction('xml-model')[preceding::processing-instruction('xml-model')]"/>
     
 </xsl:stylesheet>

@@ -496,6 +496,46 @@
 						</attList>
 					</elementSpec>
 					
+					<classSpec ident="model.linePart.overwritten" type="model"/>
+					
+					<elementSpec ident="under" ns="http://www.faustedition.net/ns" mode="add">
+						<desc>Das unter der Überschreibung stehende.</desc>
+						<classes>
+							<memberOf key="model.linePart.overwritten"/>
+						</classes>
+						<content>
+							<macroRef key="macro.lineContent"/>
+						</content>
+					</elementSpec>
+					
+					<elementSpec ident="over" ns="http://www.faustedition.net/ns" mode="add">
+						<desc>Das auf dem Überschriebenden stehende.</desc>
+						<classes>
+							<memberOf key="model.linePart.overwritten"/>
+						</classes>
+						<content>
+							<macroRef key="macro.lineContent"/>
+						</content>
+					</elementSpec>
+					
+					<elementSpec ident="overw" ns="http://www.faustedition.net/ns" mode="add">
+						<desc>Umgebung zur Kodierung von Überschreibungen.</desc>
+						<classes>
+							<memberOf key="model.zonePart"/>
+							<memberOf key="model.linePart"/>
+							<memberOf key="model.pPart.transcriptional"/>
+							<memberOf key="model.linePart.overwritten"/>
+							<memberOf key="att.global"/>
+						</classes>
+						<content>
+							<sequence minOccurs="2" maxOccurs="unbounded">
+								<classRef key="model.linePart.overwritten"/>
+							</sequence>
+						</content>
+					</elementSpec>
+					
+					
+					
 					<!-- Die folgenden Elemente werden auch im dokumentarischen Transkript benutzt: -->
 					<elementSpec ident="abbr" mode="change">
 						<classes mode="change">
