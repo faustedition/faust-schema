@@ -30,6 +30,8 @@
     <p:with-option name="path" select="concat($_xmlroot, '/print')"/>
   </l:recursive-directory-list>
   
+  
+  
   <p:for-each>
     <p:iteration-source select="//c:file">
       <p:pipe port="result" step="transcript"/>
@@ -55,6 +57,14 @@
       <p:input port="parameters"><p:empty/></p:input>
       <p:input port="stylesheet"><p:document href="xml-source-issues.xsl"/></p:input>
       <p:with-param name="filename" select="$filename"/>      
+    </p:xslt>
+
+    <p:xslt>
+      <p:input port="stylesheet"><p:document href="header.xsl"/></p:input>
+      <p:with-option name="output-base-uri" select="$out"/>
+      <p:with-param name="faust-transcripts-uri" select="'http://dev.digital-humanities.de/ci/job/faust-gen-fast/lastSuccessfulBuild/artifact/target/faust-transcripts.xml'"/>
+      <p:with-param name="xmlroot" select="resolve-uri(concat($xmlroot, '/'))"/>
+      <p:with-param name="path" select="replace($filename, $_xmlroot, '')"/>
     </p:xslt>
     
     <p:xslt>
