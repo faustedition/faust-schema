@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.faustedition.net/ns" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <a:documentation>Dieses Schema wurde manuell aus macrogenesis.xsd übersetzt und leicht angepasst,
+um Weiterentwicklungen in den Daten widerzuspiegeln</a:documentation>
+    <ref name="macrogenesis"/>
+  </start>
+  <define name="faustURI">
+    <data type="anyURI">
+      <param name="pattern">faust://.+</param>
+    </data>
+  </define>
+  <define name="macrogenesis">
+    <element name="macrogenesis">
+      <a:documentation>The root element. Can contain any amount of genetic information</a:documentation>
+      <zeroOrMore>
+        <choice>
+          <ref name="relation"/>
+          <ref name="date"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="relation">
+    <element name="relation">
+      <a:documentation>Establishes a relation on two or more items</a:documentation>
+      <attribute name="name">
+        <choice>
+          <value>temp-pre</value>
+          <a:documentation>Temporal precedence</a:documentation>
+          <value>temp-syn</value>
+          <a:documentation>Synchronicity</a:documentation>
+        </choice>
+      </attribute>
+      <ref name="ignoreable"/>
+      <interleave>
+        <oneOrMore>
+          <ref name="source"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="comment"/>
+        </zeroOrMore>
+      </interleave>
+      <ref name="item"/>
+      <oneOrMore>
+        <ref name="item"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="ignoreable">
+    <optional>
+      <attribute name="ignore">
+        <a:documentation>if present and 'yes', this relation should not be considered
+when calculating datings</a:documentation>
+        <value>yes</value>
+      </attribute>
+    </optional>
+  </define>
+  <define name="date">
+    <element name="date">
+      <a:documentation>Assigns a date or date range to an item</a:documentation>
+      <oneOrMore>
+        <choice>
+          <attribute name="when">
+            <a:documentation>Specifies the exact date</a:documentation>
+            <data type="date"/>
+          </attribute>
+          <attribute name="notBefore">
+            <a:documentation>The earliest possible date</a:documentation>
+            <data type="date"/>
+          </attribute>
+          <attribute name="notAfter">
+            <a:documentation>The latest possible date</a:documentation>
+            <data type="date"/>
+          </attribute>
+          <attribute name="from">
+            <a:documentation>The starting point of the period</a:documentation>
+            <data type="date"/>
+          </attribute>
+          <attribute name="to">
+            <a:documentation>The ending point of the period</a:documentation>
+            <data type="date"/>
+          </attribute>
+        </choice>
+      </oneOrMore>
+      <optional>
+        <attribute name="type">
+          <value>normalized</value>
+          <a:documentation>the period is the normalized form that represents a fuzzy interval like 'Spring 1798'</a:documentation>
+        </attribute>
+      </optional>
+      <ref name="ignoreable"/>
+      <interleave>
+        <oneOrMore>
+          <ref name="source"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="comment"/>
+        </zeroOrMore>
+      </interleave>
+      <oneOrMore>
+        <ref name="item"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="item">
+    <element name="item">
+      <a:documentation>An item that can be dated or related to another item. Items can be
+manuscripts, but also events or anything else with genetic
+significance.</a:documentation>
+      <attribute name="uri">
+        <ref name="faustURI"/>
+      </attribute>
+    </element>
+  </define>
+  <define name="comment">
+    <element name="comment">
+      <a:documentation>Any information that cannot be expressed in the formalisation.</a:documentation>
+      <data type="normalizedString"/>
+    </element>
+  </define>
+  <define name="source">
+    <element name="source">
+      <a:documentation>The source of the information. The URI identifying the source must be
+given. More bibliogrpahical detail (volume, page, ...) can be given inside the
+element.</a:documentation>
+      <attribute name="uri">
+        <a:documentation>The URI identifying the source</a:documentation>
+        <ref name="faustURI"/>
+      </attribute>
+      <optional>
+        <text>
+          <a:documentation>additional information (page, ...)</a:documentation>
+        </text>
+      </optional>
+    </element>
+  </define>
+</grammar>
