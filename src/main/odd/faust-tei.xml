@@ -386,6 +386,12 @@
 									<valItem ident="indent-70">
 										<gloss>70% eingerückt</gloss>
 									</valItem>
+									<valItem ident="inbetween">
+										<gloss>dazwischen (nur seg)</gloss>
+									</valItem>
+									<valItem ident="strikethrough">
+										<gloss>durchstreichung (nur mod)</gloss>
+									</valItem>
 
 								</valList>
 							</attDef>
