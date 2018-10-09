@@ -124,7 +124,7 @@
     
     <p:xslt>
       <p:input port="stylesheet"><p:document href="changenote.xsl"/></p:input>
-      <p:with-param name="changenote" select="'Zu neuem Schema auf Basis von TEI P5 3.4.0 konvertiert'"/>
+      <p:with-param name="changenote" select="'Header und Schemaanpassungen'"/>
       <p:with-param name="changenote-who" select="'thvitt'"/>
       <p:with-param name="changenote-type" select="'automatic'"/>      
     </p:xslt>

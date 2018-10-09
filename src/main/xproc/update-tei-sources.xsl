@@ -195,8 +195,8 @@
     </xsl:template>
         
     <xsl:template match="processing-instruction('oxygen')|processing-instruction('xml-model')[not(preceding::processing-instruction('xml-model'))]">
-        <xsl:processing-instruction name="xml-model">href="http://dev.digital-humanities.de/ci/view/Faust/job/faust-schema-tei-340/lastSuccessfulBuild/artifact/target/schema/faust-tei.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"</xsl:processing-instruction>        
-        <xsl:processing-instruction name="xml-model">href="http://dev.digital-humanities.de/ci/view/Faust/job/faust-schema-tei-340/lastSuccessfulBuild/artifact/target/schema/faust-tei.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
+        <xsl:processing-instruction name="xml-model">href="http://faustedition.net/schema/faust-tei.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"</xsl:processing-instruction>        
+        <xsl:processing-instruction name="xml-model">href="http://faustedition.net/schema/faust-tei.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
     </xsl:template>
     <xsl:template match="processing-instruction('xml-model')[preceding::processing-instruction('xml-model')]"/>
     
