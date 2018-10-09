@@ -115,7 +115,9 @@
     <p:xslt cx:after="save-metadata">
       <p:input port="stylesheet"><p:document href="header.xsl"/></p:input>      
       <p:with-option name="output-base-uri" select="$out"/>
-      <p:with-param name="selected-md" select="p:resolve-uri('selected-metadata.xml', $_target)"/>      
+      <p:with-param name="selected-md" select="string(/)">
+        <p:pipe port="result" step="save-metadata"/>
+      </p:with-param>      
       <p:with-param name="xmlroot" select="$_xmlroot"/>
       <p:with-param name="uri" select="replace($filename, $_xmlroot, 'faust://xml')"/>
     </p:xslt>
