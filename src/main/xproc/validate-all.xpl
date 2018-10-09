@@ -19,45 +19,45 @@
 	<p:import href="validate-xml.xpl"/>
 	
 	<p:group name="validations">		
-	
-		<f:validate-xmls report-name="metadata" report-title="Metadata (Transcripts)">
+				
+		<f:validate-xmls report-name="metadata" report-title="Metadata (Transcripts)" linkroot='xml/document'>
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="resolve-uri('document', $_xml)"/>
 			<p:with-option name="xsd" select="resolve-uri('schema/metadata.xsd', $_target)"/>
 			<p:with-option name="exclude-filter" select="'print'"/>
-			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/document/'"/>
+			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/document/'"/>-->
 		</f:validate-xmls>
 		
-		<f:validate-xmls report-name="metadata_print" report-title="Metadata (Prints)">
+		<f:validate-xmls report-name="metadata_print" report-title="Metadata (Prints)" linkroot='xml/document'>
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="resolve-uri('document/print', $_xml)"/>
 			<p:with-option name="xsd" select="resolve-uri('schema/metadata_print.xsd', $_target)"/>
-			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/document/print/'"/>
+			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/document/print/'"/>-->
 		</f:validate-xmls>
 		
-		<f:validate-xmls report-name="macrogenesis" report-title="Macrogenesis Data">
+		<f:validate-xmls report-name="macrogenesis" report-title="Macrogenesis Data" linkroot='xml/macrogenesis'>
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="resolve-uri('macrogenesis', $_xml)"/>
 			<p:with-option name="xsd" select="resolve-uri('schema/macrogenesis.xsd', $_target)"/> <!-- TODO -->
-			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/macrogenesis/'"/>
+			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/macrogenesis/'"/>-->
 		</f:validate-xmls>
 				
-		<f:validate-xmls report-name="faust-tei" report-title="Transcripts (faust-tei)">
+		<f:validate-xmls report-name="faust-tei" report-title="Converted Transcripts and Prints (faust-tei)" linkroot='' exclude-filter="test">
 			<p:with-option name="target" select="$_target"/>
-			<p:with-option name="xmlroot" select="p:resolve-uri('transcript', $_xml)"/>
+			<p:with-option name="xmlroot" select="p:resolve-uri('converted', $_target)"/>
 			<p:with-option name="rng" select="resolve-uri('schema/faust-tei.rng', $_target)"/>
 			<p:with-option name="schematron" select="resolve-uri('schema/faust-tei.sch', $_target)"/>
-			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/transcript/'"/>
+			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/transcript/'"/>-->
 		</f:validate-xmls>
 	
-		<f:validate-xmls report-name="printed_editions_neu" report-title="Printed Editions Neu (printed_editions_neu)">
+<!--		<f:validate-xmls report-name="printed_editions_neu" report-title="Converted Prints (faust-tei)" linkroot='prints'>
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="concat($xml, 'print')"/>
 			<p:with-option name="rng" select="resolve-uri('schema/printed_editions_neu.rng', $_target)"/>
 			<p:with-option name="schematron" select="resolve-uri('schema/printed_editions_neu.sch', $_target)"/>
-			<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/print/'"/>
+			<!-\-<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/print/'"/>-\->
 		</f:validate-xmls>
-			
+-->			
 	</p:group>
 	
 	<cx:message>
@@ -99,6 +99,34 @@
 	<p:store method="xhtml" indent="true">
 		<p:with-option name="href" select="resolve-uri('report/index.html', $_target)"/>
 	</p:store>
+	
+	<p:directory-list include-filter=".*\.xml$">
+		<p:with-option name="path" select="resolve-uri('report', $_target)"/>
+	</p:directory-list>
+	<p:for-each>
+		<p:iteration-source select="//c:file"/>
+		<p:variable name="report-uri" select="resolve-uri(/c:file/@name, resolve-uri('report/', $_target))"/>
+		<cx:message>
+			<p:with-option name="message" select="concat('Annotating XMLs for ', $report-uri)"/>
+		</cx:message>
+		<p:try>
+			<p:group>
+				<p:exec command="src/main/tools/highlight-errors.py" source-is-xml="true" errors-is-xml="false" result-is-xml="false">
+					<p:with-option name="args" select="string-join(('-s1', '-o', resolve-uri('report/', $_target), $report-uri), ' ')"/>
+					<p:input port="source"><p:empty/></p:input>		
+				</p:exec>				
+			</p:group>
+			<p:catch name="catch-ann-xml">
+				<cx:message>
+					<p:with-option name="message" select="concat('Failed to load ', $report-uri, ': ', .)"/>
+					<p:input port="source"><p:pipe port="error" step="catch-ann-xml"/></p:input>
+				</cx:message>
+				<p:identity><p:input port="source"><p:empty/></p:input></p:identity>
+			</p:catch>
+		</p:try>
+		
+	</p:for-each>
 
+	<p:sink/>
 
 </p:declare-step>

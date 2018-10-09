@@ -6,8 +6,8 @@
 	<p:output port="result" sequence="true"><p:empty/></p:output>
 	
 	
-	<p:option name="stylesheetsUrl" select="'https://cdn.rawgit.com/TEIC/Stylesheets/v7.44.0/'"/>
-	<p:option name="p5subsetUrl" select="'http://www.tei-c.org/Vault/P5/1.9.1/xml/tei/odd/p5subset.xml'"/>
+	<p:option name="stylesheetsUrl" select="'https://cdn.rawgit.com/TEIC/Stylesheets/v7.45.0/'"/>
+	<p:option name="p5subsetUrl" select="'http://www.tei-c.org/Vault/P5/3.4.0/xml/tei/odd/p5subset.xml'"/>
 	<p:option name="builddir" select="'target/'"></p:option>	
 		
 	<p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
@@ -60,7 +60,7 @@
 					<p:input port="stylesheet"><p:pipe port="result" step="load-odd2odd"/></p:input>
 					<!--<p:with-param name="selectedSchema" select="'faust-tei'"/>-->
 					<p:with-param name="verbose" select="'false'"/>
-					<p:with-param name="stripped" select="'true'"/>
+					<!--<p:with-param name="stripped" select="'true'"/>-->
 					<p:with-param name="defaultSource" select="$p5subsetUrl"/>
 					<p:with-param name="TEIC" select="'true'"/>
 					<p:with-param name="lang" select="'en'"/>

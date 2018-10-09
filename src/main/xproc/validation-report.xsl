@@ -12,8 +12,8 @@
 	
 	<xsl:param name="report-title">Validation Errors</xsl:param>
 	<xsl:param name="report-name"/>
-	<xsl:param name="_xmlroot"/>
-	<xsl:param name="linkroot"/>
+	<xsl:param name="_xmlroot" select="static-base-uri()"/>
+	<xsl:variable name="linkroot" select="/*/@linkroot"/>
 	<xsl:param name="rng"/>
 	<xsl:param name="schematron"/>
 	<xsl:param name="xsd"/>
@@ -27,8 +27,9 @@
 						then substring($uri, string-length($_xmlroot) + 
 								(if (ends-with('/', $_xmlroot)) then 1 else 2))
 						else $uri"/>
-		<xsl:variable name="link" select="if ($linkroot != '') then resolve-uri($relpath, $linkroot) else $uri"/>
+		<xsl:variable name="link" select="replace(if ($linkroot != '') then string-join(($linkroot, $relpath), '/') else $relpath, '\.xml$', '.html')"/>
 		<a href="{$link}"><xsl:value-of select="$relpath"/></a>
+		
 	</xsl:function>
 	
 	
@@ -53,7 +54,7 @@
 				<td>documents are valid</td>
 			</tr>
 		</table>
-		<xsl:message select="concat('Valid documents: ', $valid, ', invalid by main schema: ', $validationErrors, ', invalid by schematron: ', $schematronErrors)"/>
+		<!--<xsl:message select="concat('Valid documents: ', $valid, ', invalid by main schema: ', $validationErrors, ', invalid by schematron: ', $schematronErrors)"/>-->
 	</xsl:template>
 	
 	<xsl:template name="rng-message-summary">
@@ -64,7 +65,7 @@
 				<th>Files</th>
 			</tr>
 			<xsl:for-each-group select="//c:error" group-by="c:message">
-				<xsl:sort select="current-grouping-key()"/>
+				<xsl:sort select="count(current-group())" order="descending"/>
 				<tr>
 					<td><a href="#{generate-id(current-group()[1])}"><xsl:value-of select="current-grouping-key()"/></a></td>
 					<td style="text-align:right;"><xsl:value-of select="count(current-group())"/></td>
@@ -137,12 +138,17 @@
 							<xsl:for-each-group select="current-group()" group-by="ancestor::f:validation-error/@filename">
 								<li>
 									<xsl:sequence select="f:linkxml(current-grouping-key())"/>:
+									<xsl:variable name="href" select="f:linkxml(current-grouping-key())/@href"/>
+									<!--<xsl:message select="concat('filename=', current-grouping-key(), 'href=', $href, ' xmlroot=', $_xmlroot, ' linkroot=', $linkroot)"/>-->
 									<span class="locations">
 										<xsl:value-of select="concat(count(current-group()), '×: ')"/>
 										<xsl:for-each select="current-group()">
 											<xsl:sort select="number(@line)"/>
 											<xsl:sort select="number(@column)"/>
-											<xsl:value-of select="concat(@line, ':', @column, ' ')"/>
+											<a href="{$href}#l{@line}">
+												<xsl:value-of select="concat(@line, ':', @column, ' ')"/>
+											</a>
+											
 										</xsl:for-each>									
 									</span>
 								</li>
@@ -173,9 +179,10 @@
 	</xsl:template>
 	
 	<xsl:template match="f:validation-error[c:errors]">
+		<xsl:variable name="href" select="f:linkxml(@filename)/@href"/>
 		<dt><a href="{@filename}"><xsl:value-of select="@filename"/></a></dt>
 		<dd>
-			<dl class="individual-errors">
+			<dl class="individual-errors">				
 				<xsl:for-each-group select=".//c:error" group-by="string-join((c:message, c:resolution), '|')">
 					<xsl:sort select="number(current-group()[1]/@line)"/>
 					<dt><xsl:value-of select="c:message"/></dt>
@@ -186,7 +193,9 @@
 							<xsl:for-each select="current-group()">
 								<xsl:sort select="number(@line)"/>
 								<xsl:sort select="number(@column)"/>
-								<xsl:value-of select="concat(@line, ':', @column, ' ')"/>
+								<a href="{$href}#l{@line}">
+									<xsl:value-of select="concat(@line, ':', @column, ' ')"/>
+								</a>
 							</xsl:for-each>
 						</p>		
 					</dd>
