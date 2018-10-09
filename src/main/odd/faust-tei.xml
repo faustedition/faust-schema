@@ -162,6 +162,11 @@
 							<memberOf key="att.changeRelated"/>
 						</classes>
 					</elementSpec>
+					<elementSpec ident="undo" mode="change">
+						<classes mode="change">
+							<memberOf key="att.changeRelated"/>
+						</classes>
+					</elementSpec>
 
 					<classSpec ident="att.layoutAlignment" type="atts" mode="add">
 						<desc>Definiert die Ausdehnung eines graphischen Elements.</desc>
