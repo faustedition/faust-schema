@@ -135,7 +135,7 @@
 					<elementSpec ident="addSpan" mode="change">
 						<classes mode="change">
 							<memberOf key="att.changeRelated"/>
-						</classes>
+						</classes>						
 					</elementSpec>
 					<elementSpec ident="del" mode="change">
 						<classes mode="change">
@@ -702,7 +702,7 @@
 						<content>
 							<alternate minOccurs="0" maxOccurs="unbounded" >
 								<macroRef key="macro.specialPara"/>
-								<elementRef key="listChangey"/>
+								<elementRef key="listChange"/>
 							</alternate>
 						</content>
 					</elementSpec>
