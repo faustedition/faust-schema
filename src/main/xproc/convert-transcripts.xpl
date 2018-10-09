@@ -17,7 +17,60 @@
   <p:import href="http://xproc.org/library/recursive-directory-list.xpl"/>
   <p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
   
+  <cx:message message="Collecting metadata ..."></cx:message>
+  
+  <l:recursive-directory-list name="metadata"> 
+    <p:with-option name="path" select="concat($_xmlroot, '/document')"/>
+  </l:recursive-directory-list>
+  
+  <p:for-each name="metadata-extracts">
+    <p:iteration-source select="//c:file">
+      <p:pipe port="result" step="metadata"/>
+    </p:iteration-source>
+    <p:variable name="filename" select="p:resolve-uri(/c:file/@name)"/>
+    <p:variable name="relative-doc" select="replace($filename, $_xmlroot, '')"/>
+    <p:load>
+      <p:with-option name="href" select="$filename"/>
+    </p:load>
+    <p:xslt>
+      <p:input port="stylesheet">
+        <p:inline>
+          <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" xpath-default-namespace="http://www.faustedition.net/ns"
+            exclude-result-prefixes="#all">
+            <xsl:param name="href"/>
+            <xsl:template match="/">
+              <document href="{$href}" xmlns="http://www.faustedition.net/ns">
+                <xsl:for-each select="descendant::textTranscript[@uri]|descendant::docTranscript[@uri]">
+                  <xsl:copy copy-namespaces="no">
+                    <xsl:attribute name="uri" select="resolve-uri(@uri, base-uri(.))"/>
+                  </xsl:copy>
+                </xsl:for-each>
+                <xsl:copy-of select="descendant::idno|descendant::repository" copy-namespaces="no"/>
+              </document>
+            </xsl:template>
+          </xsl:stylesheet>
+        </p:inline>
+      </p:input>
+      <p:with-param name="href" select="$relative-doc"/>
+    </p:xslt>
+  </p:for-each>
+  
+  <p:wrap-sequence wrapper="f:documents"/>
+  
+  <p:store name="save-metadata" indent="true">
+    <p:with-option name="href" select="p:resolve-uri('selected-metadata.xml', $_target)"/>
+  </p:store>
+  
+  <cx:message>
+    <p:with-option name="message" select="concat('Collected metadata in ', p:resolve-uri('selected-metadata.xml', $_target))"/>
+    <p:input port="source"><p:pipe port="result" step="save-metadata"/></p:input>
+  </cx:message>
+  
+  <p:sink/>
+    
+  
   <p:load href="http://dev.digital-humanities.de/ci/job/faust-gen-fast/lastSuccessfulBuild/artifact/target/lesetext/faust.xml"/>
+  <cx:message message="Fetched reading text"/>
   <p:store name="save-text"> <!-- does not need conversion -->
     <p:with-option name="href" select="concat($_target, '/converted/faust.xml')"/>
   </p:store>
@@ -32,7 +85,7 @@
   
   
   
-  <p:for-each>
+  <p:for-each cx:after="save-metadata">
     <p:iteration-source select="//c:file">
       <p:pipe port="result" step="transcript"/>
       <p:pipe port="result" step="print"/>      
@@ -59,12 +112,12 @@
       <p:with-param name="filename" select="$filename"/>      
     </p:xslt>
 
-    <p:xslt>
-      <p:input port="stylesheet"><p:document href="header.xsl"/></p:input>
+    <p:xslt cx:after="save-metadata">
+      <p:input port="stylesheet"><p:document href="header.xsl"/></p:input>      
       <p:with-option name="output-base-uri" select="$out"/>
-      <p:with-param name="faust-transcripts-uri" select="'http://dev.digital-humanities.de/ci/job/faust-gen-fast/lastSuccessfulBuild/artifact/target/faust-transcripts.xml'"/>
-      <p:with-param name="xmlroot" select="resolve-uri(concat($xmlroot, '/'))"/>
-      <p:with-param name="path" select="replace($filename, $_xmlroot, '')"/>
+      <p:with-param name="selected-md" select="p:resolve-uri('selected-metadata.xml', $_target)"/>      
+      <p:with-param name="xmlroot" select="$_xmlroot"/>
+      <p:with-param name="uri" select="replace($filename, $_xmlroot, 'faust://xml')"/>
     </p:xslt>
     
     <p:xslt>

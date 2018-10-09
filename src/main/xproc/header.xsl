@@ -6,16 +6,13 @@
     xmlns:f="http://www.faustedition.net/ns"
     exclude-result-prefixes="xs"
     version="2.0">
-    
-    <xsl:param name="faust-transcripts-uri" required="yes"/>
-    <xsl:param name="transcripts" select="document($faust-transcripts-uri)"/>
+        
     <xsl:param name="xmlroot"/>
-    <xsl:param name="path"/>
-    <xsl:variable name="transcript-el" select="$transcripts//f:textTranscript[@uri = concat('faust://xml/transcript/', $path)]"/>
-    <xsl:variable name="sigil" select="$transcript-el/f:idno[@type='faustedition']/text()"/>
-    <xsl:variable name="metadata-fn" select="resolve-uri($transcript-el/@document, $xmlroot)"/>
-    <xsl:variable name="metadata" select="document($metadata-fn)"/>
-    <xsl:variable name="archives" select="document(resolve-uri('archives.xml', $xmlroot))"/>
+    <xsl:param name="uri"/>
+    <xsl:param name="selected-md"/>
+    <xsl:variable name="md" select="doc($selected-md)"/>
+    <xsl:variable name="metadata" select="$md//*[@uri=$uri]/ancestor::f:document"/>
+    <xsl:variable name="archives" select="doc(concat($xmlroot, '/archives.xml'))"/>
 
     <xsl:variable name="repo-sigils">
       <labels xmlns="http://www.faustedition.net/ns">
@@ -54,7 +51,7 @@
         </xsl:copy>        
     </xsl:template>
     
-    <xsl:template match="fileDesc">
+    <xsl:template match="fileDesc">        
         <fileDesc>
             <titleStmt>
                 <title type="main">Faust</title>
@@ -82,27 +79,29 @@
             </titleStmt>
             <publicationStmt>
                 <publisher><!-- bleibt leer --></publisher>
-                <idno type="faustedition"><xsl:value-of select="$sigil"/></idno>                
+                <idno type="faustedition"><xsl:value-of select="$metadata//f:idno[@type='faustedition']"/></idno>                
                 <date><!-- generiert: date/@when --></date>
                 <availability>
                     <licence target="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-                        >CreativeCommons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA
+                        >Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA
                         4.0)</licence>
                 </availability>
             </publicationStmt>
             <sourceDesc>
-                <msDesc><xsl:comment select="concat('/xml/', $transcript-el/@document)"/>
+                <xsl:if test="count($metadata) != 1">
+                    <xsl:message select="concat('WARNING: For ', $uri, ', ', count($metadata), ' metadata records were found!')"/>
+                </xsl:if>
+                <msDesc><xsl:comment select="concat('xml', $metadata[1]/@href)"/>
                     <msIdentifier>
-                        <repository><xsl:value-of select="$archives//f:archive[@id=data($metadata//repository)]/f:displayName"/></repository>
-                        <xsl:variable name="signatures" select="$metadata//f:idno[@type=$repo-sigils//f:idno/@type]"/>
+                        <repository><xsl:value-of select="$archives//f:archive[@id=data($metadata//f:repository)]/f:displayName"/></repository>
+                        <xsl:variable name="signatures" select="$metadata//f:idno[@type=$repo-sigils//f:label/@type]"/>
                         <idno type="{$signatures[1]/@type}"><xsl:value-of select="$signatures[1]"/></idno>
-                        <xsl:if test="count($signatures) > 1">
+                        <xsl:for-each select="subsequence($signatures, 2)">
                             <altIdentifier>
-                                <xsl:for-each select="subsequence($signatures, 2)">
-                                    <idno type="@type"><xsl:value-of select="."/></idno>
-                                </xsl:for-each>
+                                    <idno type="{@type}"><xsl:value-of select="."/></idno>
                             </altIdentifier>
-                        </xsl:if>
+                        </xsl:for-each>
+                        
                     </msIdentifier>                    
                 </msDesc>
             </sourceDesc>
