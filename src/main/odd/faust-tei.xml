@@ -304,6 +304,9 @@
 									<valItem ident="correction">
 										<desc>Korrektur eines trivialen Fehlers.</desc>
 									</valItem>
+									<valItem ident="emendation">
+										<desc>Emendation.</desc>
+									</valItem>									
 									<!-- primarily without the following values: emendation, conjecture, see https://faustedition.uni-wuerzburg.de/xml/schema/printed_editions_neu.rng -->
 								</valList>
 							</attDef>
