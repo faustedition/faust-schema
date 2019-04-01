@@ -726,6 +726,15 @@
 						</content>
 					</elementSpec>
 					
+					<elementSpec ident="xenoData" mode="change">
+						<content change="replace">
+							<alternate>
+								<textNode/>
+								<anyElement exclude="http://www.faustedition.net/ns http://www.tei-c.org/ns/1.0 http://www.tei-c.org/ns/geneticEditions"/>
+							</alternate>
+						</content>
+					</elementSpec>
+					
 				</schemaSpec>
 			</div>
 		</body>
