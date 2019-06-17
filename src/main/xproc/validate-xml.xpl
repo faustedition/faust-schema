@@ -3,12 +3,14 @@
 	xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:f="http://www.faustedition.net/ns"
 	xmlns:pxf="http://exproc.org/proposed/steps/file"
 	xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+	xmlns:fx="http://www.faustedition.net/ns/xproc"
 	xmlns:l="http://xproc.org/library" type="f:validate-xmls" name="main" version="1.0">
 	
 	<p:option name="target" select="'../../../target/'"/>
 	<p:option name="_target" select="resolve-uri($target)"/>
 	<p:option name="xmlroot" select="'../../../data/xml/transcript'"></p:option>
 	<p:option name="_xmlroot" select="resolve-uri($xmlroot)"/>
+	<p:option name="rnc" select="''"/>
 	<p:option name="rng" select="''"/>
 	<p:option name="schematron" select="''"/>
 	<p:option name="xsd" select="''"/>
@@ -24,6 +26,7 @@
 	
 	<p:import href="http://xproc.org/library/recursive-directory-list.xpl"/>
 	<p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
+	<p:import href="load-data.xpl"/>
 
 	<p:variable name="errors-xml" select="resolve-uri(concat('report/', $report-name, '.xml'), $_target)"/>
 	<p:variable name="report" select="resolve-uri(concat('report/', $report-name, '.html'), $_target)"/>
@@ -39,11 +42,21 @@
 			)"></p:with-option>
 	</cx:message>
 	
-	<p:load name="load-schema">
-		<p:with-option name="href" select="resolve-uri(if ($rng) then $rng else $xsd)"/>
-	</p:load>
+	<p:choose>
+		<p:when test="$rnc">
+			<fx:load-data>
+				<p:with-option name="href" select="$rnc"/>
+			</fx:load-data>
+		</p:when>
+		<p:otherwise>
+			<p:load>
+				<p:with-option name="href" select="resolve-uri(if ($rng) then $rng else $xsd)"/>
+			</p:load>			
+		</p:otherwise>
+	</p:choose>
+	<p:identity name="load-schema"/>
 	
-	<p:choose name="load-schematron">
+	<p:choose name="load-schematron">		
 		<p:when test="$schematron != ''">
 			<p:output port="result"/>
 			<p:load>
@@ -57,7 +70,7 @@
 	</p:choose>
 
 	<l:recursive-directory-list>
-		<p:with-option name="path" select="$_xmlroot"/>
+		<p:with-option name="path" select="$_xmlroot"/>		
 		<p:with-option name="exclude-filter" select="$exclude-filter"/>
 	</l:recursive-directory-list>
 	
@@ -73,15 +86,32 @@
 <!--		<cx:message>
 			<p:with-option name="message" select="concat('Validating ', $filename)"></p:with-option>
 		</cx:message>
--->		
-		<p:load>
-			<p:with-option name="href" select="$filename"/>
-		</p:load>
+-->
+
+		<p:try>
+			<p:group>
+				<p:load>
+					<p:with-option name="href" select="$filename"/>
+				</p:load>				
+			</p:group>
+			<p:catch>
+				<cx:message>
+					<p:with-option name="message" select="concat('Could not load ', $filename)"/>
+				</cx:message>
+				
+				<p:template>
+					<p:input port="template"><p:inline>
+						<f:validation-skipped filename="{$filename}"/>						
+					</p:inline></p:input>
+					<p:with-param name="filename" select="$filename"/>					
+				</p:template>				
+			</p:catch>
+		</p:try>
 		
 		<p:try>
 			<p:group>
 				<p:choose>
-					<p:when test="$rng != ''">
+					<p:when test="$rng != '' or $rnc != ''">
 						<p:validate-with-relax-ng assert-valid="true">
 							<p:input port="schema">
 								<p:pipe port="result" step="load-schema"/>

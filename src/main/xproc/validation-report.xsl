@@ -178,6 +178,12 @@
 		</dl>
 	</xsl:template>
 	
+	<xsl:template match="f:validation-skipped">
+		<xsl:variable name="href" select="f:linkxml(@filename)/@href"/>
+		<dt class="skipped"><a href="{@filename}"><xsl:value-of select="@filename"/></a></dt>
+		<dd>skipped, probably not a well-formed XML file.</dd>
+	</xsl:template>
+	
 	<xsl:template match="f:validation-error[c:errors]">
 		<xsl:variable name="href" select="f:linkxml(@filename)/@href"/>
 		<dt><a href="{@filename}"><xsl:value-of select="@filename"/></a></dt>

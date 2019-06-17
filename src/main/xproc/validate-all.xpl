@@ -38,7 +38,7 @@
 		<f:validate-xmls report-name="macrogenesis" report-title="Macrogenesis Data" linkroot='xml/macrogenesis'>
 			<p:with-option name="target" select="$_target"/>
 			<p:with-option name="xmlroot" select="resolve-uri('macrogenesis', $_xml)"/>
-			<p:with-option name="xsd" select="resolve-uri('schema/macrogenesis.xsd', $_target)"/> <!-- TODO -->
+			<p:with-option name="rnc" select="resolve-uri('macrogenesis/macrogenesis.rnc', $_xml)"/> 
 			<!--<p:with-option name="linkroot" select="'https://faustedition.uni-wuerzburg.de/xml/macrogenesis/'"/>-->
 		</f:validate-xmls>
 				
